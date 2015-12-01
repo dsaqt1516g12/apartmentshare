@@ -1,5 +1,11 @@
 package edu.upc.eetac.dsa.apartmentshare.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import edu.upc.eetac.dsa.apartmentshare.ApartmentshareMediaType;
+import edu.upc.eetac.dsa.apartmentshare.LoginResource;
+import edu.upc.eetac.dsa.apartmentshare.UserResource;
+import org.glassfish.jersey.linking.Binding;
+import org.glassfish.jersey.linking.InjectLink;
 import org.glassfish.jersey.linking.InjectLinks;
 
 import javax.ws.rs.core.Link;
@@ -8,9 +14,17 @@ import java.util.List;
 /**
  * Created by mazp on 28/11/15.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 
-    @InjectLinks({})
+    @InjectLinks({
+
+            @InjectLink(resource = ApartmentshareRootAPI.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Apartmentshare Root API"),
+//            @InjectLink(resource = StingResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-stings", title = "Current stings", type= ApartmentshareMediaType.PARTMENTSHARE_FLAT_COLLECTION),
+            @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
+//            @InjectLink(resource = StingResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-sting", title = "Create sting", type=BeeterMediaType.BEETER_STING),
+            @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "self user-profile", title = "User profile", type= ApartmentshareMediaType.PARTMENTSHARE_USER, bindings = @Binding(name = "id", value = "${instance.id}"))
+    })
     private List<Link> links;
     private String id;
     private String loginid;

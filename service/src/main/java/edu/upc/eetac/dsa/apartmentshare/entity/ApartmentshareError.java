@@ -1,8 +1,11 @@
 package edu.upc.eetac.dsa.apartmentshare.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * Created by mazp on 28/11/15.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApartmentshareError {
 
     private int status;

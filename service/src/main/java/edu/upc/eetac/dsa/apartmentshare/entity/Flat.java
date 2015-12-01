@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.apartmentshare.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.glassfish.jersey.linking.InjectLinks;
 
 import javax.ws.rs.core.Link;
@@ -8,6 +9,7 @@ import java.util.List;
 /**
  * Created by mazp on 28/11/15.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Flat {
     @InjectLinks({})
     private List<Link> links;
@@ -30,6 +32,8 @@ public class Flat {
     private int furnished;
 
     private int numrooms;
+
+    private  int numbathrooms;
 
     private int  elevator;
 
@@ -206,5 +210,13 @@ public class Flat {
 
     public void setLastModified(long lastModified) {
         this.lastModified = lastModified;
+    }
+
+    public int getNumbathrooms() {
+        return numbathrooms;
+    }
+
+    public void setNumbathrooms(int numbathrooms) {
+        this.numbathrooms = numbathrooms;
     }
 }

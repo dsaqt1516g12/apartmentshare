@@ -10,5 +10,6 @@ public class ApartmentshareResourceConfig extends ResourceConfig {
     public ApartmentshareResourceConfig() {
 
         packages("edu.upc.eetac.dsa.apartmentshare");
+        packages("edu.upc.eetac.dsa.beeter.auth");
     }
 }
