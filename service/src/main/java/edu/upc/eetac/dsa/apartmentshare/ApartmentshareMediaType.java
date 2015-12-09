@@ -11,6 +11,10 @@ public interface ApartmentshareMediaType {
     public final static String PARTMENTSHARE_ROOM = "application/vnd.dsa.apartmentshare.room+json";
     public final static String PARTMENTSHARE_ROOM_COLLECTION = "application/vnd.dsa.apartmentshare.room.collection+json";
     public final static String PARTMENTSHARE_ROOT = "application/vnd.dsa.apartmentshare.root+json";
-    public final static String PARTMENTSHARE_IMAGENROOM = "application/vnd.dsa.apartmentshare.imagenroom+json";
-    public final static String PARTMENTSHARE_IMAGENFLAT = "application/vnd.dsa.apartmentshare.imagenflat+json";
+    public final static String PARTMENTSHARE_ROOM_IMG = "application/vnd.dsa.apartmentshare.room.img+json";
+    public final static String PARTMENTSHARE_ROOM_IMG_COLLECTION= "application/vnd.dsa.apartmentshare.room.img.collection+json";
+    public final static String PARTMENTSHARE_FLAT_IMG= "application/vnd.dsa.apartmentshare.flat.img+json";
+    public final static String PARTMENTSHARE_FLAT_IMG_COLLECTION= "application/vnd.dsa.apartmentshare.flat.img.collection+json";
+    public final static String PARTMENTSHARE_CAMPUS = "application/vnd.dsa.apartmentshare.campus+json";
+    public final static String PARTMENTSHARE_CAMPUS_COLLECTION = "application/vnd.dsa.apartmentshare.campus.collection+json";
 }
