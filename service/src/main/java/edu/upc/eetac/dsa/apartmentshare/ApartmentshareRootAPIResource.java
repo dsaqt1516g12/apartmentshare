@@ -1,12 +1,14 @@
 package edu.upc.eetac.dsa.apartmentshare;
 
+import edu.upc.eetac.dsa.apartmentshare.entity.ApartmentshareRootAPI;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.SecurityContext;
 
-import edu.upc.eetac.dsa.apartmentshare.entity.ApartmentshareRootAPI;
+
 /**
  * Created by Jordi on 09/12/2015.
  */

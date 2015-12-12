@@ -50,8 +50,8 @@ public class UserResource {
     private SecurityContext securityContext;
     @Path("/{id}")
     @PUT
-    @Consumes(ApartmentshareMediaType.PARTMENTSHARE_USER)
-    @Produces(ApartmentshareMediaType.PARTMENTSHARE_USER)
+    @Consumes(ApartmentshareMediaType.APARTMENTSHARE_USER)
+    @Produces(ApartmentshareMediaType.APARTMENTSHARE_USER)
     public User updateUser(@PathParam("id") String id, User user) {
         if(user == null)
             throw new BadRequestException("entity is null");
@@ -75,7 +75,7 @@ public class UserResource {
 
     @Path("/{id}")
     @GET
-    @Produces(ApartmentshareMediaType.PARTMENTSHARE_USER)
+    @Produces(ApartmentshareMediaType.APARTMENTSHARE_USER)
     public User getUser(@PathParam("id") String id) {
         User user = null;
         try {
