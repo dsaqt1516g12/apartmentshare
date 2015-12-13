@@ -73,8 +73,8 @@ public class UserDAOImpl implements UserDAO {
                 connection = Database.getConnection();
 
                 stmt = connection.prepareStatement(UserDAOQuery.UPDATE_USER);
-                stmt.setString(1, fullname);
-                stmt.setString(2, email);
+                stmt.setString(1, email);
+                stmt.setString(2, fullname);
                 stmt.setString(3, phone);
                 stmt.setString(4, id);
 

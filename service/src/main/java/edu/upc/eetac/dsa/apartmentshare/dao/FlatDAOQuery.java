@@ -5,7 +5,7 @@ package edu.upc.eetac.dsa.apartmentshare.dao;
  */
 public interface FlatDAOQuery {
     public final static String UUID = "select REPLACE(UUID(),'-','')";
-    public final static String CREATE_FLAT = "insert into stings (id, userid,  campusid,  address, description, numpartner,  smoker,  pets,  girlorboy,  sqm,  furnished,  numrooms,  numbathrooms,  elevator,  plantnum,  internet,  fianza, estancia) values (UNHEX(?), unhex(?), unhex(?), ?, ?,?,?,?, ?, ?,?,?,?, ?, ?,?,?,?)";
+    public final static String CREATE_FLAT = "insert into flat (id, userid,  campusid,  address, description, numpartner,  smoker,  pets,  girlorboy,  sqm,  furnished,  numrooms,  numbathrooms,  elevator,  plantnum,  internet,  fianza, estancia) values (UNHEX(?), unhex(?), unhex(?), ?, ?,?,?,?, ?, ?,?,?,?, ?, ?,?,?,?)";
     public final static String GET_FLAT_BY_ID = "select hex(s.id) as id, hex(s.userid) as userid, hex(s.campusid) as campusid, s.address, s.description, s.numpartner,  s.smoker,  s.pets,  s.girlorboy,  s.sqm,  s.furnished,  s.numrooms,  s.numbathrooms,  s.elevator,  s.plantnum,  s.internet,  s.fianza, s.estancia, s.creation_timestamp, s.last_modified, u.fullname, u.phone from flat s, users u where s.id=unhex(?) and u.id=s.userid";
     //TODOS!! public final static String GET_FLATS = "select hex(s.id) as id, hex(s.userid) as userid, s.subject, s.creation_timestamp, s.last_modified, u.fullname from stings s, users u where u.id=s.userid";
     // 5 en 5 public final static String GET_FLATS = "select hex(id) as id, hex(userid) as userid, subject, creation_timestamp, last_modified from stings order by creation_timestamp desc limit 5";

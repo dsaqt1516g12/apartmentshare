@@ -16,8 +16,12 @@ public class CampusLocation {
     private List<Link> links;
     private String id;
     private String campusname;
+    private String address;
     private float longitud;
     private float latitud;
+
+
+
 
     public List<Link> getLinks() {
         return links;
@@ -41,6 +45,14 @@ public class CampusLocation {
 
     public void setCampusname(String campusname) {
         this.campusname = campusname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public float getLongitud() {
