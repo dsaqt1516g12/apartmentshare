@@ -28,7 +28,7 @@ public class ApartmentshareClient {
 
     private AuthToken authToken = null;
 
-    private final static String BASE_URI = "http://192.168.1.105:8080/apartmentshare";
+    private final static String BASE_URI = "http://10.183.27.218:8080/apartmentshare";
     private static ApartmentshareClient instance;
     private Root root;
     private ClientConfig clientConfig = null;
@@ -37,6 +37,7 @@ public class ApartmentshareClient {
 
     private ApartmentshareClient() {
         clientConfig = new ClientConfig();
+        client = ClientBuilder.newClient(clientConfig);
         client = ClientBuilder.newClient(clientConfig);
         loadRoot();
     }
@@ -72,8 +73,10 @@ public class ApartmentshareClient {
         String loginUri = getLink(root.getLinks(),"login").getUri().toString();
         WebTarget target = client.target(loginUri);
         Form form = new Form();
-        form.param("login", "spongebob");
-        form.param("password", "1234");
+//        form.param("login", "spongebob");
+//        form.param("password", "1234");
+        form.param("login", userid);
+        form.param("password",password);
         String json = target.request().post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED_TYPE), String.class);
         authToken = (new Gson()).fromJson(json, AuthToken.class);
         Log.d(TAG, json);
