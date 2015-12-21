@@ -1,6 +1,7 @@
 package edu.upc.eetac.dsa.apartmentshare;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,10 +9,25 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import com.google.gson.Gson;
+
+import edu.upc.eetac.dsa.apartmentshare.client.ApartmentshareClient;
+import edu.upc.eetac.dsa.apartmentshare.client.ApartmentshareClientException;
+import edu.upc.eetac.dsa.apartmentshare.client.FlatCollectionAdapter;
+import edu.upc.eetac.dsa.apartmentshare.client.entity.Flat;
+import edu.upc.eetac.dsa.apartmentshare.client.entity.FlatCollection;
 
 public class Apartmentshare extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private final static String TAG = FlatsListActivity.class.toString();
+//    private GetStingsTask mGetStingsTask = null;
+    private FlatCollection flats = new FlatCollection();
+    private FlatCollectionAdapter adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +45,10 @@ public class Apartmentshare extends AppCompatActivity implements NavigationView.
 //            }
 //        });
 
+        ListView list = (ListView)findViewById(R.id.list);
+        adapter = new FlatCollectionAdapter(this,flats);
+        list.setAdapter(adapter);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -44,6 +64,11 @@ public class Apartmentshare extends AppCompatActivity implements NavigationView.
 //            // on first time display view for first nav item
 //            displayView(0);
 //        }
+
+        // Execute AsyncTask
+//        mGetStingsTask = new GetStingsTask(null);
+//        mGetStingsTask.execute((Void) null);
+
     }
 
     @Override
@@ -113,6 +138,36 @@ public class Apartmentshare extends AppCompatActivity implements NavigationView.
     }
 
 
-
+//    class GetStingsTask extends AsyncTask<Void, Void, String> {
+//        private String uri;
+//
+//        public GetStingsTask(String uri) {
+//            this.uri = uri;
+//
+//        }
+//
+//        @Override
+//        protected String doInBackground(Void... params) {
+//            String jsonFlatCollection = null;
+//            try {
+//                jsonFlatCollection = ApartmentshareClient.getInstance().getFlats(uri);
+////                        getFlats(uri);
+//            } catch (ApartmentshareClientException e) {
+//                // TODO: Handle gracefully
+//                Log.d(TAG, e.getMessage());
+//            }
+//            return jsonFlatCollection;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String jsonFlatCollection) {
+//            Log.d(TAG, jsonFlatCollection);
+//            FlatCollection flatCollection = (new Gson()).fromJson(jsonFlatCollection, FlatCollection.class);
+//            for(Flat flat : flatCollection.getFlats()){
+//                flats.getFlats().add(flats.getFlats().size(), flat);
+//            }
+//            adapter.notifyDataSetChanged();
+//        }
+//    }
 
 }

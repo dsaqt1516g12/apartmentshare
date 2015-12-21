@@ -1,80 +1,37 @@
-package edu.upc.eetac.dsa.apartmentshare.entity;
+package edu.upc.eetac.dsa.apartmentshare.client.entity;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import edu.upc.eetac.dsa.apartmentshare.ApartmentshareRootAPIResource;
-import edu.upc.eetac.dsa.apartmentshare.LoginResource;
-import edu.upc.eetac.dsa.apartmentshare.UserResource;
-import edu.upc.eetac.dsa.apartmentshare.FlatResource;
-import org.glassfish.jersey.linking.Binding;
-import org.glassfish.jersey.linking.InjectLink;
-import org.glassfish.jersey.linking.InjectLinks;
-
-import javax.ws.rs.core.Link;
-import javax.ws.rs.core.MediaType;
 import java.util.List;
+
+import javax.ws.rs.core.*;
+
 /**
- * Created by mazp on 28/11/15.
+ * Created by mazp on 20/12/15.
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Flat {
-    @InjectLinks({
-                    @InjectLink(resource = ApartmentshareRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Apartmentsahre Root API"),
-                    @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-flat", title = "Current flat"),
-                    @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-flat", title = "Current flat"),
-                    @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-flat", title = "Create flat", type = MediaType.APPLICATION_FORM_URLENCODED),
-                    @InjectLink(resource = FlatResource.class, method = "getFlat", style = InjectLink.Style.ABSOLUTE, rel = "self flat", title = "Flat", bindings = @Binding(name = "id", value = "${instance.id}")),
-                    @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
-                    @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", bindings = @Binding(name = "id", value = "${instance.userid}")),
-                    @InjectLink(resource = FlatResource.class, method = "getFlats", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer flats", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "false")}),
-                    @InjectLink(resource = FlatResource.class, method = "getFlats", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older flats", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "true")}),
-            })
-    private List<Link> links;
+
+   private List<Link> links;
     private String  id;
 
     private String userid;
-
     private String campusid;
-
     private int  numpartner;
-
     private  int smoker;
-
     private int pets;
-
     private int  girlorboy;
-
     private  int sqm;
-
     private int furnished;
-
     private int numrooms;
-
     private  int numbathrooms;
-
     private int  elevator;
-
     private int plantnum;
-
     private  int internet;
-
     private  int fianza;
-
     private int  estancia ;
-
     private  String  address;
-
     private String description;
-
     private long creationTimestamp;
     private long lastModified;
 
-    public List<Link> getLinks() {
-        return links;
-    }
-
-    public void setLinks(List<Link> links) {
-        this.links = links;
-    }
 
     public String getId() {
         return id;
@@ -234,5 +191,13 @@ public class Flat {
 
     public void setNumbathrooms(int numbathrooms) {
         this.numbathrooms = numbathrooms;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
     }
 }

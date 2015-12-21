@@ -204,8 +204,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(Void... params) {
             ApartmentshareClient client = ApartmentshareClient.getInstance();
-            boolean result = client.login("spongebob", "1234");
-
+            boolean result = client.login(mUsername, mPassword);
             // TODO: register the new account here.
             return result;
         }
@@ -216,7 +215,7 @@ public class LoginActivity extends AppCompatActivity {
             showProgress(false);
 
             if (success) {
-                startActivity(new Intent(LoginActivity.this,RoomListActivity.class));
+                startActivity(new Intent(LoginActivity.this,HomeActivity.class));
 //               finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

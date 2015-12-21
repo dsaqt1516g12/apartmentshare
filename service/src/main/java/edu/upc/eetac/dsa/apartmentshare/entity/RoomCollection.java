@@ -1,6 +1,11 @@
 package edu.upc.eetac.dsa.apartmentshare.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import edu.upc.eetac.dsa.apartmentshare.ApartmentshareRootAPIResource;
+import edu.upc.eetac.dsa.apartmentshare.FlatResource;
+import edu.upc.eetac.dsa.apartmentshare.LoginResource;
+import org.glassfish.jersey.linking.Binding;
+import org.glassfish.jersey.linking.InjectLink;
 import org.glassfish.jersey.linking.InjectLinks;
 
 import javax.ws.rs.core.Link;
@@ -13,7 +18,16 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RoomCollection {
 
-    @InjectLinks({})
+    @InjectLinks(
+            {
+                    @InjectLink(resource = ApartmentshareRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Apartmentshare Root API"),
+                    @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-flat", title = "Current flat"),
+                    @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-flat", title = "Current flat"),
+                    @InjectLink(resource = FlatResource.class, method = "getFlats", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer flats", bindings = {@Binding(name = "timestamp", value = "${instance.newestTimestamp}"), @Binding(name = "before", value = "false")}),
+                    @InjectLink(resource = FlatResource.class, method = "getFlats", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older flats", bindings = {@Binding(name = "timestamp", value = "${instance.oldestTimestamp}"), @Binding(name = "before", value = "true")}),
+                    @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout")
+            }
+    )
     private List<Link> links;
     private long newestTimestamp;
     private long oldestTimestamp;

@@ -18,5 +18,13 @@
   {
     "path": "login",
     "methods": ["POST"]
+  },
+  {
+    "path": "flat",
+    "methods": ["POST"]
+  },
+  {
+    "path": "flat",
+    "methods": ["GET"]
   }
 ]
