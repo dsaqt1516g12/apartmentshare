@@ -102,7 +102,7 @@ public class FlatDAOImpl implements FlatDAO {
     }
 
     @Override
-    public FlatCollection getFlats(long timestamp, boolean before) throws SQLException {
+    public FlatCollection getFlats(String userid, long timestamp, boolean before) throws SQLException {
         FlatCollection flatCollection = new FlatCollection();
 
         Connection connection = null;
@@ -115,6 +115,7 @@ public class FlatDAOImpl implements FlatDAO {
             else
                 stmt = connection.prepareStatement(FlatDAOQuery.GET_FLATS_AFTER);
             stmt.setTimestamp(1, new Timestamp(timestamp));
+            stmt.setString(2, userid);
 
             ResultSet rs = stmt.executeQuery();
             boolean first = true;

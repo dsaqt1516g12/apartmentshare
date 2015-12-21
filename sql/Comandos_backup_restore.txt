@@ -1,0 +1,6 @@
+Hacer BACKUP: Ubicarse encima de la carpeta SQL del apartmentshare, abrir una ventana de comandos y escribir:
+mysqldump -u root -p apartmentsharedb > aparmentshare-data.sql
+
+Hacer RESTORE: Ubicarse encima de la carpeta SQL del apartmentshare, abrir una ventana de comandos y escribir:
+mysql -u root -p apartmentsharedb < aparmentshare-data.sql
+ 
