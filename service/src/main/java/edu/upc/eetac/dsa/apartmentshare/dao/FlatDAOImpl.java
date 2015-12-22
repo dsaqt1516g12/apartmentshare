@@ -180,10 +180,10 @@ public class FlatDAOImpl implements FlatDAO {
             stmt.setInt(11, numbathrooms);
             stmt.setInt(12,elevator);
             stmt.setInt(13,plantnum);
-            stmt.setInt(13,internet);
-            stmt.setInt(14,fianza);
-            stmt.setInt(15, estancia);
-            stmt.setString(16, id);
+            stmt.setInt(14,internet);
+            stmt.setInt(15,fianza);
+            stmt.setInt(16, estancia);
+            stmt.setString(17, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)

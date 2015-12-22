@@ -84,7 +84,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public RoomCollection getRooms(long timestamp, boolean before) throws SQLException {
+    public RoomCollection getRooms(String flatid, String userid,long timestamp, boolean before) throws SQLException {
         RoomCollection flatCollection = new RoomCollection();
 
         Connection connection = null;
@@ -97,6 +97,8 @@ public class RoomDAOImpl implements RoomDAO {
             else
                 stmt = connection.prepareStatement(RoomDAOQuery.GET_ROOMS_AFTER);
             stmt.setTimestamp(1, new Timestamp(timestamp));
+            stmt.setString(2, userid);
+            stmt.setString(3, flatid);
 
             ResultSet rs = stmt.executeQuery();
             boolean first = true;
