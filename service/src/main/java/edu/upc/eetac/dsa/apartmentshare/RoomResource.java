@@ -10,10 +10,7 @@ import edu.upc.eetac.dsa.apartmentshare.entity.Room;
 import edu.upc.eetac.dsa.apartmentshare.entity.RoomCollection;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
@@ -65,8 +62,56 @@ public class RoomResource {
         return roomCollection;
     }
 
+    @Path("/{roomid}")
+    @GET
+    @Consumes(ApartmentshareMediaType.APARTMENTSHARE_ROOM)
+    @Produces(ApartmentshareMediaType.APARTMENTSHARE_ROOM)
+    public Response updateRoom(@PathParam("flatid") String flatid,@PathParam("roomid") String id, @Context Request request) {
+        // Create cache-control
 
+        CacheControl cacheControl = new CacheControl();
 
+        FlatDAO flatDAO = new FlatDAOImpl();
+        Room room = null;
+        Flat flat =null;
+        RoomDAO roomDAO = new RoomDAOImpl();
+
+        String userid = securityContext.getUserPrincipal().getName();
+
+        try {
+            room = roomDAO.getRoomById(id);
+            if (room == null)
+                throw new NotFoundException("Room with id = " + id + " doesn't exist");
+            if(!userid.equals(room.getUserid()))
+                throw new ForbiddenException("operation not allowed");
+
+            flat = flatDAO.getFlatById(flatid);
+            if (flat == null)
+                throw new NotFoundException("Flat with id = " + flatid + " doesn't exist");
+            if(!userid.equals(flat.getUserid()))
+                throw new ForbiddenException("operation not allowed");
+
+            // Calculate the ETag on last modified date of user resource
+            EntityTag eTag = new EntityTag(Long.toString(room.getLastModified()));
+
+            // Verify if it matched with etag available in http request
+            Response.ResponseBuilder rb = request.evaluatePreconditions(eTag);
+
+            // If ETag matches the rb will be non-null;
+            // Use the rb to return the response without any further processing
+            if (rb != null) {
+                return rb.cacheControl(cacheControl).tag(eTag).build();
+            }
+
+            // If rb is null then either it is first time request; or resource is
+            // modified
+            // Get the updated representation and return with Etag attached to it
+            rb = Response.ok(room).cacheControl(cacheControl).tag(eTag);
+            return rb.build();
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+    }
 
 
     @Path("/{roomid}")
