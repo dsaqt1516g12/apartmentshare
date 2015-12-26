@@ -1,7 +1,6 @@
 package edu.upc.eetac.dsa.apartmentshare.dao;
 
-import edu.upc.eetac.dsa.apartmentshare.entity.Room;
-import edu.upc.eetac.dsa.apartmentshare.entity.RoomCollection;
+import edu.upc.eetac.dsa.apartmentshare.entity.*;
 
 import java.sql.*;
 
@@ -9,6 +8,7 @@ import java.sql.*;
  * Created by Jordi on 21/12/2015.
  */
 public class RoomDAOImpl implements RoomDAO {
+    private String searchquery;
     @Override
     public Room createRoom(String userid, String flatid, String description,int girlorboy, int sqm, int furnished, int status, int price) throws SQLException {
         Connection connection = null;
@@ -146,7 +146,7 @@ public class RoomDAOImpl implements RoomDAO {
             stmt.setInt(3,girlorboy);
             stmt.setInt(4,sqm);
             stmt.setInt(5,furnished);
-            stmt.setInt(6,status);
+            stmt.setInt(6, status);
             stmt.setInt(7, price);
             stmt.setString(8, id);
 
@@ -181,5 +181,132 @@ public class RoomDAOImpl implements RoomDAO {
             if (stmt != null) stmt.close();
             if (connection != null) connection.close();
         }
+    }
+    @Override
+    public Room getListRoomById(String id) throws SQLException {
+        Room room = null;
+
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        try {
+            connection = Database.getConnection();
+
+            stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_ROOM_BY_ID);
+            stmt.setString(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                room = new Room();
+                room.setCampusname(rs.getString("campusname"));
+                room.setLatitud(rs.getFloat("latitud"));
+                room.setLongitud(rs.getFloat("longitud"));
+                room.setAddress(rs.getString("flataddress"));
+                room.setCampusaddress(rs.getString("campusaddress"));
+                room.setflatDescription(rs.getString("flatdescription"));
+                room.setNumpartner(rs.getInt("numpartner"));
+                room.setSmoker(rs.getInt("smoker"));
+                room.setPets(rs.getInt("pets"));
+                room.setflatGirlorboy(rs.getInt("flatgirlorboy"));
+                room.setflatSqm(rs.getInt("flatsqm"));
+                room.setflatFurnished(rs.getInt("flatfurnished"));
+                room.setNumrooms(rs.getInt("numrooms"));
+                room.setNumbathrooms(rs.getInt("numbathrooms"));
+                room.setElevator(rs.getInt("elevator"));
+                room.setPlantnum(rs.getInt("plantnum"));
+                room.setInternet(rs.getInt("internet"));
+                room.setFianza(rs.getInt("fianza"));
+                room.setEstancia(rs.getInt("estancia"));
+                room.setId(rs.getString("roomid"));
+                room.setUserid(rs.getString("userid"));
+                room.setFlatid(rs.getString("flatid"));
+                room.setDescription(rs.getString("roomdescription"));
+                room.setGirlorboy(rs.getInt("roomgirlorboy"));
+                room.setSqm(rs.getInt("roomsqm"));
+                room.setFurnished(rs.getInt("roomfurnished"));
+                room.setStatus(rs.getInt("status"));
+                room.setPrice(rs.getInt("price"));
+                room.setFullname(rs.getString("fullname"));
+                room.setPhone(rs.getString("phone"));
+                room.setEmail(rs.getString("email"));
+                room.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
+                room.setLastModified(rs.getTimestamp("last_modified").getTime());
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
+
+        return room;
+    }
+
+    @Override
+    public RoomCollection getListRooms(long timestamp, boolean before) throws SQLException {
+        RoomCollection flatCollection = new RoomCollection();
+        searchquery= "";
+
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        try {
+            connection = Database.getConnection();
+
+            if(before)
+                stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_ROOMS);
+            else
+                stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_ROOMS_AFTER);
+            stmt.setTimestamp(1, new Timestamp(timestamp));
+
+            ResultSet rs = stmt.executeQuery();
+            boolean first = true;
+            while (rs.next()) {
+                Room room = new Room();
+                room.setCampusname(rs.getString("campusname"));
+                room.setLatitud(rs.getFloat("latitud"));
+                room.setLongitud(rs.getFloat("longitud"));
+                room.setAddress(rs.getString("flataddress"));
+                room.setCampusaddress(rs.getString("campusaddress"));
+                room.setflatDescription(rs.getString("flatdescription"));
+                room.setNumpartner(rs.getInt("numpartner"));
+                room.setSmoker(rs.getInt("smoker"));
+                room.setPets(rs.getInt("pets"));
+                room.setflatGirlorboy(rs.getInt("flatgirlorboy"));
+                room.setflatSqm(rs.getInt("flatsqm"));
+                room.setflatFurnished(rs.getInt("flatfurnished"));
+                room.setNumrooms(rs.getInt("numrooms"));
+                room.setNumbathrooms(rs.getInt("numbathrooms"));
+                room.setElevator(rs.getInt("elevator"));
+                room.setPlantnum(rs.getInt("plantnum"));
+                room.setInternet(rs.getInt("internet"));
+                room.setFianza(rs.getInt("fianza"));
+                room.setEstancia(rs.getInt("estancia"));
+                room.setId(rs.getString("roomid"));
+                room.setUserid(rs.getString("userid"));
+                room.setFlatid(rs.getString("flatid"));
+                room.setDescription(rs.getString("roomdescription"));
+                room.setGirlorboy(rs.getInt("roomgirlorboy"));
+                room.setSqm(rs.getInt("roomsqm"));
+                room.setFurnished(rs.getInt("roomfurnished"));
+                room.setStatus(rs.getInt("status"));
+                room.setPrice(rs.getInt("price"));
+                room.setFullname(rs.getString("fullname"));
+                room.setPhone(rs.getString("phone"));
+                room.setEmail(rs.getString("email"));
+                room.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
+                room.setLastModified(rs.getTimestamp("last_modified").getTime());
+                if (first) {
+                    flatCollection.setNewestTimestamp(room.getLastModified());
+                    first = false;
+                }
+                flatCollection.setOldestTimestamp(room.getLastModified());
+                flatCollection.getRooms().add(room);
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
+        return flatCollection;
     }
 }

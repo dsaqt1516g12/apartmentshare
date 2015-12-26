@@ -12,6 +12,8 @@ public interface RoomDAO {
 
     public Room createRoom(String userid, String flatid, String description, int girlorboy, int sqm, int furnished, int status, int price) throws SQLException;
     public Room getRoomById(String id) throws SQLException;
+    public Room getListRoomById(String id) throws SQLException;
+    public RoomCollection getListRooms(long timestamp, boolean before) throws SQLException;
     public RoomCollection getRooms(String flatid,String userid,long timestamp, boolean before) throws SQLException;
     public Room updateRoom(String id,  String flatid, String description, int girlorboy, int sqm, int furnished, int status, int price) throws SQLException;
     public boolean deleteRoom(String id) throws SQLException;
