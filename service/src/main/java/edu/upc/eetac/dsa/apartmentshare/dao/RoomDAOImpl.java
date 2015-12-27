@@ -1,7 +1,6 @@
 package edu.upc.eetac.dsa.apartmentshare.dao;
 
 import edu.upc.eetac.dsa.apartmentshare.entity.*;
-
 import java.sql.*;
 
 /**
@@ -244,7 +243,6 @@ public class RoomDAOImpl implements RoomDAO {
     @Override
     public RoomCollection getListRooms(long timestamp, boolean before) throws SQLException {
         RoomCollection flatCollection = new RoomCollection();
-        searchquery= "";
 
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -256,6 +254,79 @@ public class RoomDAOImpl implements RoomDAO {
             else
                 stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_ROOMS_AFTER);
             stmt.setTimestamp(1, new Timestamp(timestamp));
+
+            ResultSet rs = stmt.executeQuery();
+            boolean first = true;
+            while (rs.next()) {
+                Room room = new Room();
+                room.setCampusname(rs.getString("campusname"));
+                room.setLatitud(rs.getFloat("latitud"));
+                room.setLongitud(rs.getFloat("longitud"));
+                room.setAddress(rs.getString("flataddress"));
+                room.setCampusaddress(rs.getString("campusaddress"));
+                room.setflatDescription(rs.getString("flatdescription"));
+                room.setNumpartner(rs.getInt("numpartner"));
+                room.setSmoker(rs.getInt("smoker"));
+                room.setPets(rs.getInt("pets"));
+                room.setflatGirlorboy(rs.getInt("flatgirlorboy"));
+                room.setflatSqm(rs.getInt("flatsqm"));
+                room.setflatFurnished(rs.getInt("flatfurnished"));
+                room.setNumrooms(rs.getInt("numrooms"));
+                room.setNumbathrooms(rs.getInt("numbathrooms"));
+                room.setElevator(rs.getInt("elevator"));
+                room.setPlantnum(rs.getInt("plantnum"));
+                room.setInternet(rs.getInt("internet"));
+                room.setFianza(rs.getInt("fianza"));
+                room.setEstancia(rs.getInt("estancia"));
+                room.setId(rs.getString("roomid"));
+                room.setUserid(rs.getString("userid"));
+                room.setFlatid(rs.getString("flatid"));
+                room.setDescription(rs.getString("roomdescription"));
+                room.setGirlorboy(rs.getInt("roomgirlorboy"));
+                room.setSqm(rs.getInt("roomsqm"));
+                room.setFurnished(rs.getInt("roomfurnished"));
+                room.setStatus(rs.getInt("status"));
+                room.setPrice(rs.getInt("price"));
+                room.setFullname(rs.getString("fullname"));
+                room.setPhone(rs.getString("phone"));
+                room.setEmail(rs.getString("email"));
+                room.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
+                room.setLastModified(rs.getTimestamp("last_modified").getTime());
+                if (first) {
+                    flatCollection.setNewestTimestamp(room.getLastModified());
+                    first = false;
+                }
+                flatCollection.setOldestTimestamp(room.getLastModified());
+                flatCollection.getRooms().add(room);
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
+        return flatCollection;
+    }
+
+    @Override
+    public RoomCollection getListFilterRooms(String campusname,Float latitud,Float longitud,String flataddress,String campusaddress,String flatdescription,int numpartner,int smoker,int pets,int flatgirlorboy,int flatsqm,int flatfurnished,int numrooms,int numbathrooms,int elevator,int plantnum,int internet,int fianza,int estancia,String roomid,String userid,String flatid,String roomdescription,int roomgirlorboy,int roomsqm,int roomfurnished,int status,int price,String fullname,String phone,String email,long creation_timestamp,long last_modified, long timestamp, boolean before) throws SQLException {
+        RoomCollection flatCollection = new RoomCollection();
+        searchquery= "";
+        if(roomsqm!=0)
+            searchquery=searchquery+" and r.sqm="+roomsqm+" ";
+
+
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        try {
+            connection = Database.getConnection();
+
+            if(before)
+                stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_FILTER_ROOMS);
+           else
+                stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_FILTER_ROOMS_AFTER);
+            stmt.setTimestamp(1, new Timestamp(timestamp));
+            stmt.setString(2, searchquery);
 
             ResultSet rs = stmt.executeQuery();
             boolean first = true;

@@ -18,5 +18,9 @@
   {
     "path": "(?i)rooms/([0-9a-f]{32})?",
     "methods": ["GET"]
+  },
+  {
+    "path": "rooms",
+    "methods": ["POST"]
   }
 ]

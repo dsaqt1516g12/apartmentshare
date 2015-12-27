@@ -17,6 +17,20 @@ import java.sql.SQLException;
  */
 @Path("rooms")
 public class ListRoomResource {
+    @POST
+    @Produces(ApartmentshareMediaType.APARTMENTSHARE_ROOM_COLLECTION)
+    public RoomCollection getListFilterRoom(@FormParam("campusname") String campusname,@FormParam("latitud") float latitud,@FormParam("longitud") float longitud,@FormParam("flataddress") String flataddress,@FormParam("campusaddress") String campusaddress,@FormParam("flatdescription") String flatdescription,@FormParam("numpartner") int numpartner,@FormParam("smoker") int smoker,@FormParam("pets") int pets,@FormParam("flatgirlorboy") int flatgirlorboy,@FormParam("flatsqm") int flatsqm,@FormParam("flatfurnished") int flatfurnished,@FormParam("numrooms") int numrooms,@FormParam("numbathrooms") int numbathrooms,@FormParam("elevator") int elevator,@FormParam("plantnum") int plantnum,@FormParam("internet") int internet,@FormParam("fianza") int fianza,@FormParam("estancia") int estancia,@FormParam("roomid") String roomid,@FormParam("userid") String userid,@FormParam("flatid") String flatid,@FormParam("roomdescription") String roomdescription,@FormParam("roomgirlorboy") int roomgirlorboy,@FormParam("roomsqm") int roomsqm,@FormParam("roomfurnished") int roomfurnished,@FormParam("status") int status,@FormParam("price") int price,@FormParam("fullname") String fullname,@FormParam("phone") String phone,@FormParam("email") String email,@FormParam("creation_timestamp") long creation_timestamp,@FormParam("last_modified") long last_modified,@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
+        RoomCollection roomCollection = null;
+        RoomDAO roomDAO = new RoomDAOImpl();
+        try {
+            if (before && timestamp == 0) timestamp = System.currentTimeMillis();
+            roomCollection = roomDAO.getListFilterRooms(campusname,latitud,longitud,flataddress,campusaddress,flatdescription,numpartner,smoker,pets,flatgirlorboy,flatsqm,flatfurnished,numrooms,numbathrooms,elevator,plantnum,internet,fianza,estancia,roomid,userid,flatid,roomdescription,roomgirlorboy,roomsqm,roomfurnished,status,price,fullname,phone,email,creation_timestamp,last_modified,timestamp, before);
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+        return roomCollection;
+    }
+
     @GET
     @Produces(ApartmentshareMediaType.APARTMENTSHARE_ROOM_COLLECTION)
     public RoomCollection getListRooms(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {

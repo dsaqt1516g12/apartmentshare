@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.apartmentshare;
 
+
 import edu.upc.eetac.dsa.apartmentshare.dao.CampusDAO;
 import edu.upc.eetac.dsa.apartmentshare.dao.CampusDAOImpl;
 import edu.upc.eetac.dsa.apartmentshare.dao.FlatDAO;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
+
 
 /**
  * Created by Jordi on 09/12/2015.
