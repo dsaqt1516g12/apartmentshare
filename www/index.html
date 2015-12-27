@@ -23,17 +23,16 @@
 
 	</head>
 	<body>
+
  
 
-<div class="navbar navbar-default">
+ <div class="navbar navbar-default">
   <div class="container-fluid">
     
-
-
     <div class="navbar-collapse collapse" id="navbar">
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right" id="navbar-form navbar-right">
 
-            <div class="form-group">
+           <!-- <div class="form-group">
               <input type="text" id="inputLoginid" class="form-control"  placeholder="Login ID" required autofocus>
             </div>
 
@@ -43,11 +42,27 @@
 
             <button class="btn btn-success" type="submit">Entrar</button>
             <a class="btn btn-warning" href="registro.html" type="submit">Regístrate</a>
+
+            -->
+
+      <div class="container">
+      <form class="form-signin" id="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputLoginid" class="sr-only">Username</label>
+            <input type="text" id="inputLoginid" class="form-control" placeholder="Username" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <button class="btn btn-success" type="submit">Sign in</button>
+            <a class="btn btn-warning" href="registro.html" type="submit">Regístrate</a>
+      </form>
+     </div>
+
+
           </form>
-        </div>
+   </div>
   </div>
 </div>
-
+ 
 <center>
       <a title="ApartmentShare" href="index.html"><img src="imagenes/logocompleto500.png" alt="ApartmentShare" /></a>
 </center>   
@@ -136,7 +151,8 @@
   </div>
  <!-- /container -->
 	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 		   <!--<script src="js/bootstrap.min.js"></script>-->
     <script src="js/api.js"></script>
     <script src="js/login.js"></script>

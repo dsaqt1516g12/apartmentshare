@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="en">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -13,12 +13,39 @@
 		<link href="css/styles.css" rel="stylesheet">
     <STYLE TYPE="text/css">
     
-   
     </STYLE>
 	</head>
-	<body>
- 
 
+  <script type="text/javascript" language="javascript">
+        $(window).load(function(){
+
+        $(function() {
+          $('#file-input').change(function(e) {
+              addImage(e); 
+             });
+
+             function addImage(e){
+              var file = e.target.files[0],
+              imageType = /image.*/;
+            
+              if (!file.type.match(imageType))
+               return;
+          
+              var reader = new FileReader();
+              reader.onload = fileOnload;
+              reader.readAsDataURL(file);
+             }
+          
+             function fileOnload(e) {
+              var result=e.target.result;
+              $('#imgSalida').attr("src",result);
+             }
+            });
+          });
+  </script>
+
+
+	<body>
 <div class="navbar navbar-default">
   <div class="container-fluid">
     
@@ -162,13 +189,25 @@
         <input style="width:10% !important" name="fianza" class="form-control" id="fianza" type="text">
     </div>
 
-    <form name="imagen" method="post" enctype="multipart/form-data">
+
+
+
+
+    <label for="foto">Añade imagenes del piso (si hay más de una, selecciónalas todas a la vez)</label>
+    <input name="file-input" id="file-input" multiple="true" type="file" />
+    <br/>
+    <img id="imgSalida"  width="20%" height="20%" src="" />
+
+
+
+ <!--       forma para añadir archivos, en prueba
+    <form name="imagen" method="post" id="imagenes" enctype="multipart/form-data">
+
       <label for="foto">Añade imagenes del piso (si hay más de una, selecciónalas todas a la vez)</label>
-      <input name="foto" type="file" multiple="true">
+      <input type="file" name="foto" id="foto" multiple="true">
+
     </form>
-
-
-      
+-->
     <div class="form-group">
         <label for="description">Descripción</label>
         <textarea name="description" class="form-control" id="description" rows="8"></textarea>
@@ -180,14 +219,21 @@
 
 
       <a class="btn btn-large btn-danger" href="indexusuario.html" style="float:left;" type="submit">Cancelar</a>
-      <button class="btn btn-large btn-primary" style="float:right;" type="submit">Crear</button>
+      <button class="btn btn-large btn-primary" id="crearpiso" style="float:right;" type="submit">Crear</button>
     
   </div>
   </div>
   </div>
  <!-- /container -->
+
+    <div id="result"></div>
+    <br>
+
+
   <!-- script references -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="js/crearpiso.js"></script>
+    <script src="js/api.js"></script>
+
   </body>
 </html>

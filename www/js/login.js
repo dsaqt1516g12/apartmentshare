@@ -1,4 +1,4 @@
-$( "#form-signin" ).submit(function( event ) {
+$( "#navbar" ).submit(function( event ) {
   event.preventDefault();
   login($("#inputLoginid").val(), $("#inputPassword").val(), function(){
   	console.log("change");
