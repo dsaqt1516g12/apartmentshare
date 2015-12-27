@@ -37,7 +37,7 @@ CREATE TABLE `auth_tokens` (
 
 LOCK TABLES `auth_tokens` WRITE;
 /*!40000 ALTER TABLE `auth_tokens` DISABLE KEYS */;
-INSERT INTO `auth_tokens` VALUES ('uß¡¿å«õ\0#¥lŒ','xôà¡¿å«õ\0#¥lŒ'),('.Jã\"¡Àå«õ\0#¥lŒ','.L»ä¡Àå«õ\0#¥lŒ'),('T­·y¡Ãå«õ\0#¥lŒ','T°Q¡Ãå«õ\0#¥lŒ'),('ÿˆù•¡Êå«õ\0#¥lŒ','ÿŒUš¡Êå«õ\0#¥lŒ');
+INSERT INTO `auth_tokens` VALUES ('uß¡¿å«õ\0#¥lŒ','Læx§ôå‘4\0#¥lŒ'),('.Jã\"¡Àå«õ\0#¥lŒ','.L»ä¡Àå«õ\0#¥lŒ'),('T­·y¡Ãå«õ\0#¥lŒ','T°Q¡Ãå«õ\0#¥lŒ'),('ÿˆù•¡Êå«õ\0#¥lŒ','ÿŒUš¡Êå«õ\0#¥lŒ');
 /*!40000 ALTER TABLE `auth_tokens` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +110,7 @@ CREATE TABLE `flat` (
 
 LOCK TABLES `flat` WRITE;
 /*!40000 ALTER TABLE `flat` DISABLE KEYS */;
-INSERT INTO `flat` VALUES ('Ù!Q–¡Ñå«õ\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ','y˜I¡Ğå«õ\0#¥lŒ',4,0,0,1,82,1,3,2,1,4,1,200,3,'Pompeu Fabra 20, Castelldefels','Piso soleado de maÃ±ana a tardes, bien comunicado en tres y autobus','2015-12-13 19:43:56','2015-12-13 20:43:56');
+INSERT INTO `flat` VALUES ('ÀÚG§úå‘4\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ','y˜I¡Ğå«õ\0#¥lŒ',4,1,0,1,82,1,3,2,1,4,1,200,3,'Pompeu Fabra 240, Castelldefels','Piso soleado de maÃ±ana a tardes, bien comunicado en tres y autobus','2015-12-22 15:10:30','2015-12-21 16:46:33'),('	kJ¬¯å–\0#¥lŒ','T­·y¡Ãå«õ\0#¥lŒ','y˜I¡Ğå«õ\0#¥lŒ',6,1,1,1,145,1,6,2,0,3,1,275,4,'Carrer Manresa, 21, Castelldefels, Barcelona','Piso reformado','2015-12-27 15:32:28','2015-12-27 16:32:28'),('$€“¨%å‘¸\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ','y˜I¡Ğå«õ\0#¥lŒ',4,0,0,1,82,1,3,2,1,4,1,200,3,'Pompeu Fabra 20, Castelldefels','Piso soleado de maÃ±ana a tardes, bien comunicado en tres y autobus','2015-12-21 20:55:18','2015-12-21 21:55:18'),('4ÒZ¬¬­å–\0#¥lŒ','uß¡¿å«õ\0#¥lŒ','y˜I¡Ğå«õ\0#¥lŒ',3,0,1,1,95,1,3,1,1,2,1,215,3,'Carrer de la CoruÃ±a, 28, Castelldefels, Barcelona','Piso soleado de maÃ±ana a tardes, bien comunicado en tres y autobus','2015-12-27 15:19:22','2015-12-27 16:19:22'),('ö+ì¬­å–\0#¥lŒ','T­·y¡Ãå«õ\0#¥lŒ','y˜I¡Ğå«õ\0#¥lŒ',2,1,1,1,45,1,2,1,0,0,0,175,6,'Carrer Molinot, 9,  Castelldefels, Barcelona','Piso soleado de maÃ±ana a tardes, bien comunicado en tres y autobus','2015-12-27 15:21:54','2015-12-27 16:21:54'),('¡Z;Ì¨%å‘¸\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ','y˜I¡Ğå«õ\0#¥lŒ',4,0,0,1,82,1,3,2,1,4,1,200,3,'Pompeu Fabra 18, Castelldefels','Piso soleado de maÃ±ana a tardes, bien comunicado en tres y autobus','2015-12-21 20:58:47','2015-12-21 21:58:47'),('ş.a¬¬å–\0#¥lŒ','uß¡¿å«õ\0#¥lŒ','y˜I¡Ğå«õ\0#¥lŒ',2,1,0,2,74,1,2,1,0,1,1,200,2,'Carrer de Joaquim Folguera, 23, GavÃ , Barcelona','Piso soleado de maÃ±ana a tardes, bien comunicado en tres y autobus','2015-12-27 15:17:51','2015-12-27 16:17:51');
 /*!40000 ALTER TABLE `flat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,6 +198,7 @@ CREATE TABLE `room` (
 
 LOCK TABLES `room` WRITE;
 /*!40000 ALTER TABLE `room` DISABLE KEYS */;
+INSERT INTO `room` VALUES ('	KÀ¼¬±å–\0#¥lŒ','ş.a¬¬å–\0#¥lŒ','uß¡¿å«õ\0#¥lŒ',1,9,0,1,200,'Cerca de la playa','2015-12-27 15:46:47','2015-12-27 16:46:47'),('\',Í€¬±å–\0#¥lŒ','4ÒZ¬¬­å–\0#¥lŒ','uß¡¿å«õ\0#¥lŒ',1,12,1,1,275,'Vistas amplias','2015-12-27 15:47:37','2015-12-27 16:47:37'),('0‚nO¨¼å\0#¥lŒ','$€“¨%å‘¸\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ',1,16,1,1,350,'Muy iluminado en verano','2015-12-27 15:38:25','2015-12-22 15:56:32'),('6<dJ¬±å–\0#¥lŒ','4ÒZ¬¬­å–\0#¥lŒ','uß¡¿å«õ\0#¥lŒ',1,10,1,0,215,'HabitaciÃ³n bien distribuida','2015-12-27 15:48:03','2015-12-27 16:48:03'),('<=â–¨¼å\0#¥lŒ','$€“¨%å‘¸\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ',2,10,1,1,300,'Muy iluminado en verano','2015-12-27 15:38:54','2015-12-22 15:56:52'),('JF=¬±å–\0#¥lŒ','4ÒZ¬¬­å–\0#¥lŒ','uß¡¿å«õ\0#¥lŒ',1,8,0,1,200,'Silenciosa y confortable','2015-12-27 15:48:37','2015-12-27 16:48:37'),('eÓèù¬±å–\0#¥lŒ','ö+ì¬­å–\0#¥lŒ','T­·y¡Ãå«õ\0#¥lŒ',0,18,1,1,350,'Paraiso','2015-12-27 15:49:23','2015-12-27 16:49:23'),('uˆ˜â¬±å–\0#¥lŒ','ö+ì¬­å–\0#¥lŒ','T­·y¡Ãå«õ\0#¥lŒ',0,15,1,1,325,'Paraiso terrenal','2015-12-27 15:49:49','2015-12-27 16:49:49'),('œš€#¬±å–\0#¥lŒ','	kJ¬¯å–\0#¥lŒ','T­·y¡Ãå«õ\0#¥lŒ',1,9,1,1,225,'Acogedora','2015-12-27 15:50:55','2015-12-27 16:50:55'),('«½;…¬±å–\0#¥lŒ','	kJ¬¯å–\0#¥lŒ','T­·y¡Ãå«õ\0#¥lŒ',2,7,1,1,235,'Encantadora','2015-12-27 15:51:20','2015-12-27 16:51:20'),('½ıæ¬±å–\0#¥lŒ','	kJ¬¯å–\0#¥lŒ','T­·y¡Ãå«õ\0#¥lŒ',1,9,1,1,255,'Ideal estudiantes, muy silenciosa','2015-12-27 15:51:51','2015-12-27 16:51:51'),('Ì#åï¨Âå\0#¥lŒ','¡Z;Ì¨%å‘¸\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ',1,8,1,0,275,'Muy iluminado en verano','2015-12-22 15:43:50','2015-12-22 16:43:50'),('ÍyƒA¨Âå\0#¥lŒ','¡Z;Ì¨%å‘¸\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ',1,8,1,1,275,'Muy iluminado en verano','2015-12-27 15:40:59','2015-12-22 16:43:53'),('Îk!6¬±å–\0#¥lŒ','	kJ¬¯å–\0#¥lŒ','T­·y¡Ãå«õ\0#¥lŒ',1,9,1,0,300,'Vistas al mar y montaÃ±a','2015-12-27 15:52:18','2015-12-27 16:52:18'),('ÎÔÖ{¨Âå\0#¥lŒ','¡Z;Ì¨%å‘¸\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ',1,8,1,1,275,'Muy iluminado en verano','2015-12-27 15:41:16','2015-12-22 16:43:55'),('ÏWB¨Âå\0#¥lŒ','ÀÚG§úå‘4\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ',1,8,1,1,275,'Muy iluminado en verano','2015-12-27 15:41:33','2015-12-22 16:43:56'),('Ò¶ù¨Àå\0#¥lŒ','ÀÚG§úå‘4\0#¥lŒ','.Jã\"¡Àå«õ\0#¥lŒ',1,9,1,0,275,'Muy iluminado en verano','2015-12-27 15:39:55','2015-12-22 16:29:41'),('åpX2¬±å–\0#¥lŒ','	kJ¬¯å–\0#¥lŒ','T­·y¡Ãå«õ\0#¥lŒ',2,14,1,1,400,'Con terraza individual','2015-12-27 15:52:57','2015-12-27 16:52:57'),('ù ‰Ö¬°å–\0#¥lŒ','ş.a¬¬å–\0#¥lŒ','uß¡¿å«õ\0#¥lŒ',1,5,0,1,150,'Cerca de la playa','2015-12-27 15:46:20','2015-12-27 16:46:20');
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-13 20:46:50
+-- Dump completed on 2015-12-27 16:54:08
