@@ -311,10 +311,10 @@ public class RoomDAOImpl implements RoomDAO {
     @Override
     public RoomCollection getListFilterRooms(String campusname,Float latitud,Float longitud,String flataddress,String campusaddress,String flatdescription,int numpartner,int smoker,int pets,int flatgirlorboy,int flatsqm,int flatfurnished,int numrooms,int numbathrooms,int elevator,int plantnum,int internet,int fianza,int estancia,String roomid,String userid,String flatid,String roomdescription,int roomgirlorboy,int roomsqm,int roomfurnished,int status,int price,String fullname,String phone,String email,long creation_timestamp,long last_modified, long timestamp, boolean before) throws SQLException {
         RoomCollection flatCollection = new RoomCollection();
-        searchquery= "";
+        searchquery = "";
         if(roomsqm!=0)
-            searchquery=searchquery+" and r.sqm="+roomsqm+" ";
-
+            searchquery=searchquery+"*/ and r.sqm=" + roomsqm+" /*" ;
+        System.out.println(searchquery);
 
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -329,6 +329,7 @@ public class RoomDAOImpl implements RoomDAO {
             stmt.setString(2, searchquery);
 
             ResultSet rs = stmt.executeQuery();
+
             boolean first = true;
             while (rs.next()) {
                 Room room = new Room();

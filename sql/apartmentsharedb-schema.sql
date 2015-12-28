@@ -153,6 +153,12 @@ CREATE TABLE imagenflat (
     id BINARY(16) NOT NULL,
 
     flatid BINARY(16) NOT NULL,
+	
+	title VARCHAR(100) NOT NULL,
+	
+	filename VARCHAR(100) NOT NULL,
+	
+	imageURL VARCHAR(1000) NOT NULL,
 
     FOREIGN KEY (flatid) REFERENCES flat(id) on delete cascade,
 	
@@ -166,6 +172,12 @@ CREATE TABLE imagenroom (
     id BINARY(16) NOT NULL,
 
     roomid BINARY(16) NOT NULL,
+	
+	title VARCHAR(100) NOT NULL,
+	
+	filename VARCHAR(100) NOT NULL,
+	
+	imageURL VARCHAR(1000) NOT NULL,
 
     FOREIGN KEY (id) REFERENCES imagenflat(id) on delete cascade,
 

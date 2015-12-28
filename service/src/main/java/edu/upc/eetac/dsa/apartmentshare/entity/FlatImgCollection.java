@@ -9,17 +9,17 @@ import java.util.List;
  * Created by Jordi on 27/12/2015.
  */
 public class FlatImgCollection {
-    private List<ImageData> images = new ArrayList<>();
+    private List<FlatImg> images = new ArrayList<>();
 
-    public List<ImageData> getImages() {
+    public List<FlatImg> getImages() {
         return images;
     }
 
-    public void setImages(List<ImageData> images) {
+    public void setImages(List<FlatImg> images) {
         this.images = images;
     }
 
-    public void addImage(ImageData image) {
+    public void addImage(FlatImg image) {
         images.add(image);
     }
 }
