@@ -8,6 +8,7 @@ import java.sql.*;
  */
 public class RoomDAOImpl implements RoomDAO {
     private String searchquery;
+    private int searchqueryorder;
     @Override
     public Room createRoom(String userid, String flatid, String description,int girlorboy, int sqm, int furnished, int status, int price) throws SQLException {
         Connection connection = null;
@@ -312,8 +313,9 @@ public class RoomDAOImpl implements RoomDAO {
     public RoomCollection getListFilterRooms(String campusname,Float latitud,Float longitud,String flataddress,String campusaddress,String flatdescription,int numpartner,int smoker,int pets,int flatgirlorboy,int flatsqm,int flatfurnished,int numrooms,int numbathrooms,int elevator,int plantnum,int internet,int fianza,int estancia,String roomid,String userid,String flatid,String roomdescription,int roomgirlorboy,int roomsqm,int roomfurnished,int status,int price,String fullname,String phone,String email,long creation_timestamp,long last_modified, long timestamp, boolean before) throws SQLException {
         RoomCollection flatCollection = new RoomCollection();
         searchquery = "";
+        searchqueryorder=1;
         if(roomsqm!=0)
-            searchquery=searchquery+"*/ and r.sqm=" + roomsqm+" /*" ;
+            searchquery=searchquery+"and r.sqm=?" ;
         System.out.println(searchquery);
 
         Connection connection = null;
@@ -322,11 +324,13 @@ public class RoomDAOImpl implements RoomDAO {
             connection = Database.getConnection();
 
             if(before)
-                stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_FILTER_ROOMS);
+                stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_FILTER_ROOMS + searchquery + RoomDAOQuery.GET_LIST_FILTER_ROOMS_END);
            else
-                stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_FILTER_ROOMS_AFTER);
+                stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_FILTER_ROOMS_AFTER + searchquery + RoomDAOQuery.GET_LIST_FILTER_ROOMS_END);
             stmt.setTimestamp(1, new Timestamp(timestamp));
-            stmt.setString(2, searchquery);
+            if(roomsqm!=0)
+                        searchqueryorder=searchqueryorder+1;
+                        stmt.setInt(searchqueryorder, roomsqm);
 
             ResultSet rs = stmt.executeQuery();
 

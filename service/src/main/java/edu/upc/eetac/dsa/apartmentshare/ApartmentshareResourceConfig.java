@@ -3,7 +3,7 @@ package edu.upc.eetac.dsa.apartmentshare;
 import org.glassfish.jersey.linking.DeclarativeLinkingFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
-import org.glassfish.jersey.media.multipart.MultiPartFeature;
+//import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
 import java.util.Enumeration;
 import java.util.ResourceBundle;
@@ -21,13 +21,13 @@ public class ApartmentshareResourceConfig extends ResourceConfig {
         packages("edu.upc.eetac.dsa.apartmentshare.cors");
 
 
-        register(MultiPartFeature.class);
-        ResourceBundle bundle = ResourceBundle.getBundle("apartmentshare");
-
-        Enumeration<String> keys = bundle.getKeys();
-        while (keys.hasMoreElements()) {
-            String key = keys.nextElement();
-            property(key, bundle.getObject(key));
-        }
+//        register(MultiPartFeature.class);
+//        ResourceBundle bundle = ResourceBundle.getBundle("apartmentshare");
+//
+//        Enumeration<String> keys = bundle.getKeys();
+//        while (keys.hasMoreElements()) {
+//            String key = keys.nextElement();
+//            property(key, bundle.getObject(key));
+//        }
     }
 }
