@@ -1,4 +1,6 @@
 var BASE_URI="http://0.0.0.0:8080/apartmentshare"
+var BASE_URI_USER="http://0.0.0.0:8080/apartmentshare/users"
+
 
 function linksToMap(links){
 	var map = {};
@@ -25,7 +27,8 @@ function loadAPI(complete){
 function login(loginid, password, complete){
 	loadAPI(function(){
 		var api = JSON.parse(sessionStorage.api);
-		var uri = api.login.uri;
+		//var uri = api.login.uri;
+		var uri = BASE_URI;
 		$.post(uri,
 			{
 				login: loginid,
@@ -42,6 +45,32 @@ function login(loginid, password, complete){
 		);
 	});
 }
+
+/*
+function getUserByID(id){
+	loadAPI(function(){
+		var api = JSON.parse(sessionStorage.api);
+		//TODO: check uri
+
+		var uri = BASE_URI_USER + "/" + id;
+
+		// "http://0.0.0.0:8080/apartmentshare/users/"+id;
+		//api.users.uri;//+"/"+loginid;
+		$.get(uri,
+		{
+			//params : ID loginid
+			id: loginid
+
+		}).done(function(user){
+			console.log(user);
+
+		}).fail(function(jqXHR, textStatus, errorThrown){
+				var error = jqXHR.responseJSON;
+				alert(error.reason);
+		});
+	});
+}
+*/
 
 function users(loginid, password, fullname, email, phone, complete){
 	loadAPI(function(){
