@@ -310,13 +310,22 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public RoomCollection getListFilterRooms(String campusname,Float latitud,Float longitud,String flataddress,String campusaddress,String flatdescription,int numpartner,int smoker,int pets,int flatgirlorboy,int flatsqm,int flatfurnished,int numrooms,int numbathrooms,int elevator,int plantnum,int internet,int fianza,int estancia,String roomid,String userid,String flatid,String roomdescription,int roomgirlorboy,int roomsqm,int roomfurnished,int status,int price,String fullname,String phone,String email,long creation_timestamp,long last_modified, long timestamp, boolean before) throws SQLException {
+    public RoomCollection getListFilterRooms(String campusname,Float latitud,Float longitud,String flataddress,String campusaddress,String flatdescription,int numpartner,int smoker,int pets,int flatgirlorboy,int flatsqm,int flatfurnished,int numrooms,int numbathrooms,int elevator,int plantnum,int internet,int fianza,int estancia,String roomid,String userid,String flatid,String roomdescription,int roomgirlorboy,int roomsqm,int roomfurnished,int status,int minprice,int maxprice,String fullname,String phone,String email,long creation_timestamp,long last_modified, long timestamp, boolean before) throws SQLException {
         RoomCollection flatCollection = new RoomCollection();
         searchquery = "";
         searchqueryorder=1;
-        if(roomsqm!=0)
-            searchquery=searchquery+"and r.sqm=?" ;
-        System.out.println(searchquery);
+        if(minprice!=0 || maxprice!=0)
+            searchquery=searchquery+" and r.price>=? and r.price<=? " ;
+        if(smoker!=0)
+            searchquery=searchquery+" and f.smoker=? " ;
+        if(pets!=0)
+            searchquery=searchquery+" and f.pets=? " ;
+        if(numpartner!=0 && numpartner!=5)
+            searchquery=searchquery+" and f.numpartner=? " ;
+        if(numpartner==5)
+            searchquery=searchquery+" and f.numpartner>=? " ;
+        if(roomgirlorboy!=0)
+            searchquery=searchquery+" and r.girlorboy=? " ;
 
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -328,9 +337,29 @@ public class RoomDAOImpl implements RoomDAO {
            else
                 stmt = connection.prepareStatement(RoomDAOQuery.GET_LIST_FILTER_ROOMS_AFTER + searchquery + RoomDAOQuery.GET_LIST_FILTER_ROOMS_END);
             stmt.setTimestamp(1, new Timestamp(timestamp));
-            if(roomsqm!=0)
-                        searchqueryorder=searchqueryorder+1;
-                        stmt.setInt(searchqueryorder, roomsqm);
+            if(minprice!=0 || maxprice!=0) {
+                searchqueryorder = searchqueryorder + 1;
+                stmt.setInt(searchqueryorder, minprice);
+                searchqueryorder = searchqueryorder + 1;
+                stmt.setInt(searchqueryorder, maxprice);
+            }
+            if(smoker!=0) {
+                searchqueryorder = searchqueryorder + 1;
+                stmt.setInt(searchqueryorder, smoker);
+            }
+            if(pets!=0) {
+                searchqueryorder = searchqueryorder + 1;
+                stmt.setInt(searchqueryorder, pets);
+            }
+            if(numpartner!=0) {
+                searchqueryorder = searchqueryorder + 1;
+                stmt.setInt(searchqueryorder, numpartner);
+            }
+            if(roomgirlorboy!=0) {
+                searchqueryorder = searchqueryorder + 1;
+                stmt.setInt(searchqueryorder, roomgirlorboy);
+            }
+
 
             ResultSet rs = stmt.executeQuery();
 

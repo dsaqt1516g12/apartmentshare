@@ -1,6 +1,5 @@
 package edu.upc.eetac.dsa.apartmentshare.entity;
 
-import com.sun.scenario.effect.ImageData;
 
 import java.util.ArrayList;
 import java.util.List;

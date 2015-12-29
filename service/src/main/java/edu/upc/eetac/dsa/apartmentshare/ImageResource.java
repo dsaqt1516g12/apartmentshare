@@ -1,6 +1,6 @@
 package edu.upc.eetac.dsa.apartmentshare;
 
-import com.sun.scenario.effect.ImageData;
+
 import edu.upc.eetac.dsa.apartmentshare.dao.Database;
 import edu.upc.eetac.dsa.apartmentshare.entity.FlatImg;
 import edu.upc.eetac.dsa.apartmentshare.entity.FlatImgCollection;
