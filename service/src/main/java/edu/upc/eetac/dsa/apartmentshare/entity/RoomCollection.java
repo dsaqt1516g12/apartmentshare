@@ -1,9 +1,7 @@
 package edu.upc.eetac.dsa.apartmentshare.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import edu.upc.eetac.dsa.apartmentshare.ApartmentshareRootAPIResource;
-import edu.upc.eetac.dsa.apartmentshare.FlatResource;
-import edu.upc.eetac.dsa.apartmentshare.LoginResource;
+import edu.upc.eetac.dsa.apartmentshare.*;
 import org.glassfish.jersey.linking.Binding;
 import org.glassfish.jersey.linking.InjectLink;
 import org.glassfish.jersey.linking.InjectLinks;
@@ -21,11 +19,10 @@ public class RoomCollection {
     @InjectLinks(
             {
                     @InjectLink(resource = ApartmentshareRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Apartmentshare Root API"),
-                    @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-flat", title = "Current flat"),
-                    @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-flat", title = "Current flat"),
-                    @InjectLink(resource = FlatResource.class, method = "getFlats", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer flats", bindings = {@Binding(name = "timestamp", value = "${instance.newestTimestamp}"), @Binding(name = "before", value = "false")}),
-                    @InjectLink(resource = FlatResource.class, method = "getFlats", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older flats", bindings = {@Binding(name = "timestamp", value = "${instance.oldestTimestamp}"), @Binding(name = "before", value = "true")}),
-                    @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout")
+                    @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
+                    @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room", title = "Current room"),
+                    @InjectLink(resource = RoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer Rooms", bindings = {@Binding(name = "timestamp", value = "${instance.newestTimestamp}"), @Binding(name = "before", value = "false")}),
+                    @InjectLink(resource = RoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older Rooms", bindings = {@Binding(name = "timestamp", value = "${instance.oldestTimestamp}"), @Binding(name = "before", value = "true")}),
             }
     )
     private List<Link> links;
@@ -40,6 +37,7 @@ public class RoomCollection {
     public void setLinks(List<Link> links) {
         this.links = links;
     }
+
 
     public long getNewestTimestamp() {
         return newestTimestamp;

@@ -24,7 +24,7 @@ public class CampusLocationCollection {
             @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-campus", title = "Current campus"),
             @InjectLink(resource = CampusResource.class, method = "getCampus", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer campus", bindings = {@Binding(name = "timestamp", value = "${instance.newestTimestamp}"), @Binding(name = "before", value = "false")}),
             @InjectLink(resource =CampusResource.class, method = "getCampus", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older campus", bindings = {@Binding(name = "timestamp", value = "${instance.oldestTimestamp}"), @Binding(name = "before", value = "true")}),
-            @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout")
+            @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
     })
     private List<Link> links;
     private List<CampusLocation> campus = new ArrayList<>();

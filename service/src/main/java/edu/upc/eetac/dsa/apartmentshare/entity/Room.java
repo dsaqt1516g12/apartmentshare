@@ -1,9 +1,13 @@
 package edu.upc.eetac.dsa.apartmentshare.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import edu.upc.eetac.dsa.apartmentshare.*;
+import org.glassfish.jersey.linking.Binding;
+import org.glassfish.jersey.linking.InjectLink;
 import org.glassfish.jersey.linking.InjectLinks;
 
 import javax.ws.rs.core.Link;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
@@ -11,7 +15,17 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Room {
-    @InjectLinks({})
+    @InjectLinks({
+            @InjectLink(resource = ApartmentshareRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Apartmentsahre Root API"),
+            @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room", title = "Current room"),
+            @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room", title = "Current room"),
+            @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-room", title = "Create room", type = MediaType.APPLICATION_FORM_URLENCODED),
+            @InjectLink(resource = RoomResource.class, method = "getRoom", style = InjectLink.Style.ABSOLUTE, rel = "self room", title = "Room", bindings = @Binding(name = "id", value = "${instance.id}")),
+            @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
+            @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", bindings = @Binding(name = "id", value = "${instance.userid}")),
+            @InjectLink(resource = RoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer rooms", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "false")}),
+            @InjectLink(resource = RoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older rooms", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "true")}),
+    })
 
     private List<Link> links;
     private String  id;

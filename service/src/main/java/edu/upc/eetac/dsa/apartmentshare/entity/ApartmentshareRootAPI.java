@@ -24,9 +24,11 @@ public class ApartmentshareRootAPI {
             @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", condition = "${!empty resource.userid}", type = ApartmentshareMediaType.APARTMENTSHARE_USER, bindings = @Binding(name = "id", value = "${resource.userid}")),
             @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-flat", title = "Create flat", condition="${!empty resource.userid}", type=ApartmentshareMediaType.APARTMENTSHARE_FLAT),
             @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-flat", title = "Current flat", type= ApartmentshareMediaType.APARTMENTSHARE_FLAT_COLLECTION),
-            @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-campus", title = "Create campus", condition="${!empty resource.userid}", type=ApartmentshareMediaType.APARTMENTSHARE_CAMPUS),
-            @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-campus", title = "Current campus", type= ApartmentshareMediaType.APARTMENTSHARE_CAMPUS_COLLECTION),
-
+//            @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-campus", title = "Create campus", condition="${!empty resource.userid}", type=ApartmentshareMediaType.APARTMENTSHARE_CAMPUS),
+//            @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-campus", title = "Current campus", type= ApartmentshareMediaType.APARTMENTSHARE_CAMPUS_COLLECTION),
+//            @InjectLink(resource = ListRoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room", title = "Current room", type= ApartmentshareMediaType.APARTMENTSHARE_ROOM_COLLECTION),
+//            @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-room", title = "Create room", condition="${!empty resource.userid}", type=ApartmentshareMediaType.APARTMENTSHARE_ROOM),
+//            @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room", title = "Current room", type= ApartmentshareMediaType.APARTMENTSHARE_ROOM_COLLECTION)
 
     })
 
