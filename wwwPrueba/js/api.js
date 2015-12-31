@@ -122,6 +122,21 @@ function loadFlats(uri, complete){
 		.fail(function(){});
 
 }
+function loadRooms( complete){
+
+	//var authToken = JSON.parse(sessionStorage["auth-token"]);
+	//var uri = authToken["links"]["current-room-list"].uri;
+	$.ajax({
+		    	type: 'GET',
+		   		url: 'http://localhost:8080/apartmentshare/rooms',
+		    	
+		    }).done(function(rooms){
+			rooms.links = linksToMap(rooms.links);
+			complete(rooms);
+		})
+		.fail(function(){});
+
+}
 
 function getSting(uri, complete){
 	$.get(uri)

@@ -42,6 +42,33 @@ function login(loginid, password, complete){
 	});
 }
 
+function createuser(loginid, password, fullname, email, phone, complete){
+	loadAPI(function(){
+		var api = JSON.parse(sessionStorage.api);
+		var uri = "http://0.0.0.0:8080/apartmentshare/users";
+		//var uri = api.createuser.uri;
+		$.post(uri,
+			{
+				loginid: loginid,
+				password: password,
+				fullname: fullname,
+				email: email,
+				phone: phone
+
+			}).done(function(authToken){
+				authToken.links = linksToMap(authToken.links);
+				sessionStorage["create-user"] = JSON.stringify(authToken);
+				complete();
+			}).fail(function(jqXHR, textStatus, errorThrown){
+				var error = jqXHR.responseJSON;
+				alert(error.reason);
+			}
+		);
+	});
+}
+
+
+
 function logout(complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	var uri = authToken["links"]["logout"].uri;
@@ -88,6 +115,21 @@ function loadFlats(uri, complete){
 		    	headers: {
 				"X-Auth-Token":authToken.token
 		    	}
+		    }).done(function(flats){
+			flats.links = linksToMap(flats.links);
+			complete(flats);
+		})
+		.fail(function(){});
+
+}
+function loadRooms( complete){
+
+	//var authToken = JSON.parse(sessionStorage["auth-token"]);
+	//var uri = authToken["links"]["current-room-list"].uri;
+	$.ajax({
+		    	type: 'GET',
+		   		url: 'http://localhost:8080/apartmentshare/rooms',
+		    	
 		    }).done(function(flats){
 			flats.links = linksToMap(flats.links);
 			complete(flats);

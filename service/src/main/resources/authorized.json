@@ -22,5 +22,9 @@
   {
     "path": "rooms",
     "methods": ["POST"]
+  },
+  {
+    "path": "rooms",
+    "methods": ["GET"]
   }
 ]

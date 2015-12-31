@@ -23,15 +23,18 @@ public class AuthToken {
             @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-flat", title = "Create flat", type=ApartmentshareMediaType.APARTMENTSHARE_FLAT),
             @InjectLink(resource = FlatResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-flat", title = "Current flat", type= ApartmentshareMediaType.APARTMENTSHARE_FLAT_COLLECTION),
             @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-campus", title = "Create campus", type=ApartmentshareMediaType.APARTMENTSHARE_CAMPUS),
-            @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-cumpus", title = "Current campus", type= ApartmentshareMediaType.APARTMENTSHARE_CAMPUS_COLLECTION),
-//            @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-room", title = "Create room", type=ApartmentshareMediaType.APARTMENTSHARE_ROOM),
-//            @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room", title = "Current room", type= ApartmentshareMediaType.APARTMENTSHARE_ROOM_COLLECTION)
+            @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-campus", title = "Current campus", type= ApartmentshareMediaType.APARTMENTSHARE_CAMPUS_COLLECTION),
+            @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-room", title = "Create room", type=ApartmentshareMediaType.APARTMENTSHARE_ROOM),
+            @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room", title = "Current room", type= ApartmentshareMediaType.APARTMENTSHARE_ROOM_COLLECTION),
+            @InjectLink(resource = ListRoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room-list", title = "Current room list", type= ApartmentshareMediaType.APARTMENTSHARE_ROOM_COLLECTION),
     })
 
     private List<Link> links;
 
     private String userid;
     private String token;
+    private  String flatid;
+
 
     public String getUserid() {
         return userid;
@@ -55,5 +58,13 @@ public class AuthToken {
 
     public void setLinks(List<Link> links) {
         this.links = links;
+    }
+
+    public String getFlatid() {
+        return flatid;
+    }
+
+    public void setFlatid(String flatid) {
+        this.flatid = flatid;
     }
 }

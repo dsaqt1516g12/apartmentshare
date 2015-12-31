@@ -21,11 +21,15 @@ public class RoomCollection {
                     @InjectLink(resource = ApartmentshareRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Apartmentshare Root API"),
                     @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
                     @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room", title = "Current room"),
+                    @InjectLink(resource = ListRoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room-list", title = "Current room list"),
                     @InjectLink(resource = RoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer Rooms", bindings = {@Binding(name = "timestamp", value = "${instance.newestTimestamp}"), @Binding(name = "before", value = "false")}),
                     @InjectLink(resource = RoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older Rooms", bindings = {@Binding(name = "timestamp", value = "${instance.oldestTimestamp}"), @Binding(name = "before", value = "true")}),
+                    @InjectLink(resource = ListRoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer Rooms", bindings = {@Binding(name = "timestamp", value = "${instance.newestTimestamp}"), @Binding(name = "before", value = "false")}),
+                    @InjectLink(resource = ListRoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older Rooms", bindings = {@Binding(name = "timestamp", value = "${instance.oldestTimestamp}"), @Binding(name = "before", value = "true")}),
             }
     )
     private List<Link> links;
+    private String flatid;
     private long newestTimestamp;
     private long oldestTimestamp;
     private List<Room> rooms = new ArrayList<>();
@@ -61,5 +65,13 @@ public class RoomCollection {
 
     public void setRooms(List<Room> rooms) {
         this.rooms = rooms;
+    }
+
+    public String getFlatid() {
+        return flatid;
+    }
+
+    public void setFlatid(String flatid) {
+        this.flatid = flatid;
     }
 }

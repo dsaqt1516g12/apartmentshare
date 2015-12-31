@@ -19,12 +19,17 @@ public class Room {
             @InjectLink(resource = ApartmentshareRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Apartmentsahre Root API"),
             @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room", title = "Current room"),
             @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room", title = "Current room"),
+            @InjectLink(resource = ListRoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room-list", title = "Current room list"),
+            @InjectLink(resource = ListRoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-room-list", title = "Current room list"),
             @InjectLink(resource = RoomResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-room", title = "Create room", type = MediaType.APPLICATION_FORM_URLENCODED),
             @InjectLink(resource = RoomResource.class, method = "getRoom", style = InjectLink.Style.ABSOLUTE, rel = "self room", title = "Room", bindings = @Binding(name = "id", value = "${instance.id}")),
+            @InjectLink(resource = ListRoomResource.class, method = "getRoom", style = InjectLink.Style.ABSOLUTE, rel = "self room", title = "Room", bindings = @Binding(name = "id", value = "${instance.id}")),
             @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
             @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", bindings = @Binding(name = "id", value = "${instance.userid}")),
             @InjectLink(resource = RoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer rooms", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "false")}),
             @InjectLink(resource = RoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older rooms", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "true")}),
+            @InjectLink(resource = ListRoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer rooms", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "false")}),
+            @InjectLink(resource = ListRoomResource.class, method = "getRooms", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older rooms", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "true")})
     })
 
     private List<Link> links;
