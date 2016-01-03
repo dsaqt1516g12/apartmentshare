@@ -5,79 +5,74 @@ $(function(){
    });
 
    var authToken = JSON.parse(sessionStorage["auth-token"]);
-   var currentFlatsUri = authToken["links"]["current-flat"].uri;
+   //var currentRoomsUri = authToken["links"]["current-rooms-list"].uri;
+	var currentRoomsUri = JSON.parse(sessionStorage["uri-flat"]);
+	currentRoomsUri = currentRoomsUri + '/room';
+	console.log(currentRoomsUri);
 
-	$.ajax({
-			    	type: 'GET',
-			   		url: 'http://localhost:8080/apartmentshare/flat',
-			    	headers: {
-					"X-Auth-Token":authToken.token
-			    	}
-			    })
-
-   loadFlats(currentFlatsUri, function(flats){
+   loadRoomsList(currentRoomsUri, function(rooms){
       $("#stings-list").empty();
-      processFlatsCollection(flats);
+      processRoomsCollection(rooms);
    });
 });
 
-   $("#formCrearpiso").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      $("#buttonCrearpiso").blur();
-	  	window.location.replace('crearpiso.html');
-	
-    });
+ $("#buttonRegresar").click(function(){window.location.replace('descriptionflat.html')});
+  
 
-function previousStings(){
-  loadFlats($('#formPrevious').attr('action'), function(flats){
-    processFlatsCollection(flats);
+function previousRooms(){
+  loadFlats($('#formPrevious').attr('action'), function(rooms){
+    processRoomsCollection(rooms);
   });
 }
 
-function processFlatsCollection(flats){
+function processRoomsCollection(rooms){
 
- 	var lastIndex = flats["flats"].length-1;
+ 	var lastIndex = rooms["rooms"].length-1;
 	
 	console.log(lastIndex);
-  $.each(flats["flats"], function(i,flats){
+  $.each(rooms["rooms"], function(i,rooms){
 
-      flats.links=linksToMap(flats.links);
-      var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
-      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, flats.creationTimestamp, flats.id, edit));
+      rooms.links=linksToMap(rooms.links);
+      var edit = rooms.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
+      $("#stings-list").append(listItemHTML(rooms.links["self"].uri, rooms.address, rooms.description, rooms.lastModified, rooms.creationTimestamp, rooms.id, edit));
       if(i==0)
         $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
      if(i==lastIndex){
-      $('#formPrevious').attr('action', flats["links"].previous.uri);}
+      $('#formPrevious').attr('action', rooms["links"].previous.uri);}
   });
 
    $("#formPrevious").submit(function(e){
       e.preventDefault();
       e.stopImmediatePropagation();
-      previousStings();
+      previousRooms();
       $("#buttonPrevious").blur();
     });
 
   $("a.list-group-item").click(function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    var uri = $(this).attr("href");
-	sessionStorage["uri-flat"] = JSON.stringify(uri);
+   // var uri = $(this).attr("href");
+	//sessionStorage["uri-flat"] = JSON.stringify(uri);
 	var uri = JSON.parse(sessionStorage["uri-flat"]);
+	console.log(uri);
+	uri = uri + '/room'+ $(this).attr("href");
+	sessionStorage["uriroom"] = JSON.stringify(uri);
+	var flatjson = JSON.parse(sessionStorage["uriroom"]);
+
 	console.log(uri);
 
  
-    getFlat(uri, function(flat){
+    getRoom(uri, function(room){
 
       // In this example we only log the sting
-      console.log(flat);	
+      console.log(room);	
 	
-     var flat2 = JSON.parse(JSON.stringify(flat))
-	console.log(flat2);
-	sessionStorage["flat"] = JSON.stringify(flat2);
-	var flatjson = JSON.parse(sessionStorage["flat"]);
+     var Room2 = JSON.parse(JSON.stringify(room))
+	console.log(rooms);
+	sessionStorage["room"] = JSON.stringify(room);
+	var flatjson = JSON.parse(sessionStorage["room"]);
 	console.log(flatjson);
-  	window.location.replace('descriptionflat.html');
+  	window.location.replace('descriptionroom.html');
     });
   });
   $(".glyphicon-pencil").click(function(e){
@@ -92,13 +87,8 @@ $("#aCloseSession").click(function(e){
   });
 });
 
-$("#aGoToProfile").click(function(e){
-  e.preventDefault();
-    window.location.replace('perfil.html');
-});
-
 function listItemHTML(uri, address, description,lastModifield, creationTimestamp, id, edit){
-  var a = '<a class="list-group-item" href="'+ uri +'/'+ id + '">';
+  var a = '<a class="list-group-item" href="'+ '/'+ id + '">';
   var p = '<p class="list-group-item-text unclickable">' +description+ '</p>';
   var m = '<m class="list-group-item-text unclickable">' +address+ '</m>';
   var l = (edit) ? '<h6 class="list-group-item-heading unclickable" align="right">'+  creationTimestamp +' <span class="glyphicon glyphicon-pencil clickable"></span></h6>' : '<h6 class="list-group-item-heading unclickable" align="right">'+ creationTimestamp +'</h6>';;

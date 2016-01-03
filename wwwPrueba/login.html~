@@ -14,7 +14,6 @@
 
 	<body>
 		<div class="container">
-			<form class="form-signin" id="form-signin">
 				<h2 class="form-signin-heading">Entra a tu cuenta o registrate </h2>
 
 				<label for="inputLoginid" class="sr-only">Usuario</label>
@@ -24,9 +23,13 @@
         		<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
 
 
-        		<button class="btn btn-lg btn-primary btn-block" type="submit">Entra</button>
-          		  <button class="btn btn-lg btn-primary btn-block" href="registro.html" type="submit">Regístrate</button>
-			</form>
+        		<div class="row">
+	    	<form id="formEntrar">
+    			<button id="buttonEntrar" type="submit" class="btn btn-default center-block">Entrar</button>
+    		</form>
+    		</div>
+          		  <a class="btn btn-warning" href="registro.html" type="submit">Regístrate</a>
+
 		</div>
 
 		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>

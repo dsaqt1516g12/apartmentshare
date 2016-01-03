@@ -132,6 +132,11 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
+    public RoomCollection getRoomsByFlatId(String flatid) throws SQLException {
+        return null;
+    }
+
+    @Override
     public Room updateRoom(String id, String flatid,String description,int girlorboy, int sqm, int furnished, int status, int price) throws SQLException {
         Room room = null;
 

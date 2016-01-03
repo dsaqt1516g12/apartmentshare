@@ -74,5 +74,5 @@ function listItemHTML(uri, address, description, fullname, email, phone ){
 
   var p = '<p class="list-group-item-text unclickable">' + phone + '</p>';
 
-  return u + d + a + f + e + p +'</a>';
+  return u + d + a + f + e + p +'</u>';
 }

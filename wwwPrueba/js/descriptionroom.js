@@ -5,42 +5,65 @@ $(function(){
    });
 
    var authToken = JSON.parse(sessionStorage["auth-token"]);
-   var currentFlatsUri = authToken["links"]["current-flat"].uri;
+	var uri = JSON.parse(sessionStorage["uriroom"]);
 
 	$.ajax({
 			    	type: 'GET',
-			   		url: 'http://localhost:8080/apartmentshare/flat',
+			   		url: uri,
 			    	headers: {
 					"X-Auth-Token":authToken.token
 			    	}
 			    })
 
-   loadFlats(currentFlatsUri, function(flats){
+   getRoom(uri, function(flats){
       $("#stings-list").empty();
+      var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
+      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 			flats.creationTimestamp, flats.id, edit));
       processFlatsCollection(flats);
    });
 });
 
-   $("#formCrearpiso").submit(function(e){
+ $("#buttonRegresar").click(function(){window.location.replace('listrooms.html')});
+
+   $("#formPrevious").submit(function(e){
       e.preventDefault();
       e.stopImmediatePropagation();
-      $("#buttonCrearpiso").blur();
-	  	window.location.replace('crearpiso.html');
-	
+     // previousStings();
+      $("#buttonVerhabitaciones").blur();
+	window.location.replace('listrooms.html');
     });
 
-function previousStings(){
-  loadFlats($('#formPrevious').attr('action'), function(flats){
-    processFlatsCollection(flats);
+
+ $("#buttonVerhabitaciones").click(function(){window.location.replace('listrooms.html')});
+
+   $("#formPrevious").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+     // previousStings();
+      $("#buttonVerhabitaciones").blur();
+
+	window.location.replace('listrooms.html');
+
+ });
+
+   $("#formEliminarhabitacion").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+		EliminarHabitacion(function(){
+	window.location.replace('apartmentshare.html');
   });
-}
+
+});
+
 
 function processFlatsCollection(flats){
 
- 	var lastIndex = flats["flats"].length-1;
+
+	var lastIndex = flats["room"].length-1;
 	
 	console.log(lastIndex);
-  $.each(flats["flats"], function(i,flats){
+
+  $.each(flats["flat"], function(i,flats){
 
       flats.links=linksToMap(flats.links);
       var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
@@ -51,33 +74,24 @@ function processFlatsCollection(flats){
       $('#formPrevious').attr('action', flats["links"].previous.uri);}
   });
 
-   $("#formPrevious").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      previousStings();
-      $("#buttonPrevious").blur();
-    });
-
   $("a.list-group-item").click(function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     var uri = $(this).attr("href");
 	sessionStorage["uri-flat"] = JSON.stringify(uri);
-	var uri = JSON.parse(sessionStorage["uri-flat"]);
-	console.log(uri);
 
  
-    getFlat(uri, function(flat){
+    getRoom(uri, function(flat){
 
       // In this example we only log the sting
       console.log(flat);	
 	
      var flat2 = JSON.parse(JSON.stringify(flat))
 	console.log(flat2);
-	sessionStorage["flat"] = JSON.stringify(flat2);
-	var flatjson = JSON.parse(sessionStorage["flat"]);
+	sessionStorage["room"] = JSON.stringify(flat2);
+	var flatjson = JSON.parse(sessionStorage["room"]);
 	console.log(flatjson);
-  	window.location.replace('descriptionflat.html');
+  	//window.location.replace('descriptionflat.html');
     });
   });
   $(".glyphicon-pencil").click(function(e){
@@ -91,6 +105,7 @@ $("#aCloseSession").click(function(e){
     window.location.replace('login.html');
   });
 });
+
 
 $("#aGoToProfile").click(function(e){
   e.preventDefault();

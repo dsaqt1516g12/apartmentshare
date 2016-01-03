@@ -1,7 +1,14 @@
-$( "#form-signin" ).submit(function( event ) {
-  event.preventDefault();
-  login($("#inputLoginid").val(), $("#inputPassword").val(), function(){
+ $("#formEntrar").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+	login($("#inputLoginid").val(), $("#inputPassword").val(), function(){
   	console.log("change");
-  	window.location.replace('beeter.html');
+  	window.location.replace('apartmentshare.html');
   });
-});
+      $("#buttonEntrar").blur();
+	  		console.log("change");
+  	window.location.replace('apartmentshare.html');
+	
+    });
+

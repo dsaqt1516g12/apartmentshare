@@ -5,42 +5,58 @@ $(function(){
    });
 
    var authToken = JSON.parse(sessionStorage["auth-token"]);
-   var currentFlatsUri = authToken["links"]["current-flat"].uri;
+var uri = JSON.parse(sessionStorage["uri-flat"]);
 
 	$.ajax({
 			    	type: 'GET',
-			   		url: 'http://localhost:8080/apartmentshare/flat',
+			   		url: uri,
 			    	headers: {
 					"X-Auth-Token":authToken.token
 			    	}
 			    })
 
-   loadFlats(currentFlatsUri, function(flats){
+   getFlat(uri, function(flats){
       $("#stings-list").empty();
+      var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
+      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 			flats.creationTimestamp, flats.id, edit));
       processFlatsCollection(flats);
    });
 });
 
-   $("#formCrearpiso").submit(function(e){
+ $("#buttonRegresar").click(function(){window.location.replace('apartmentshare.html')});
+ $("#buttonEditarpiso").click(function(){window.location.replace('crearpiso.html')});
+ $("#buttonEliminarpiso").click(function(e){
+  EliminarPiso(function(){
+    window.location.replace('apartmentshare.html');
+  });
+		
+
+					});
+   $("#formCrearhabitacion").submit(function(e){
       e.preventDefault();
       e.stopImmediatePropagation();
-      $("#buttonCrearpiso").blur();
-	  	window.location.replace('crearpiso.html');
+      $("#buttonCrearhabitacion").blur();
+	  	window.location.replace('crearhabitacion.html');
 	
     });
 
-function previousStings(){
-  loadFlats($('#formPrevious').attr('action'), function(flats){
-    processFlatsCollection(flats);
-  });
-}
+   $("#formPrevious").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+     // previousStings();
+      $("#buttonVerhabitaciones").blur();
+	window.location.replace('listrooms.html');
+    });
+
 
 function processFlatsCollection(flats){
 
- 	var lastIndex = flats["flats"].length-1;
+
+	var lastIndex = flats["flat"].length-1;
 	
 	console.log(lastIndex);
-  $.each(flats["flats"], function(i,flats){
+
+  $.each(flats["flat"], function(i,flats){
 
       flats.links=linksToMap(flats.links);
       var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
@@ -51,20 +67,11 @@ function processFlatsCollection(flats){
       $('#formPrevious').attr('action', flats["links"].previous.uri);}
   });
 
-   $("#formPrevious").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      previousStings();
-      $("#buttonPrevious").blur();
-    });
-
   $("a.list-group-item").click(function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     var uri = $(this).attr("href");
 	sessionStorage["uri-flat"] = JSON.stringify(uri);
-	var uri = JSON.parse(sessionStorage["uri-flat"]);
-	console.log(uri);
 
  
     getFlat(uri, function(flat){
@@ -91,6 +98,7 @@ $("#aCloseSession").click(function(e){
     window.location.replace('login.html');
   });
 });
+
 
 $("#aGoToProfile").click(function(e){
   e.preventDefault();

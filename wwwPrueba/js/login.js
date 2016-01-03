@@ -5,3 +5,4 @@ $( "#form-signin" ).submit(function( event ) {
   	window.location.replace('apartmentshare.html');
   });
 });
+
