@@ -64,7 +64,7 @@ $("#aCloseSession").click(function(e){
 function listItemHTML(uri, address, description, fullname, email, phone ){
   var u = '<u class="list-group-item" href="'+ uri +'">';
 
-  var d = '<d class="list-group-item-text unclickable">' + description + '</d>' &nbsp;
+  var d = '<d class="list-group-item-text unclickable">' + description + '</d>';
 
   var a = '<a class="list-group-item-text unclickable">' + address + '</a>';
 

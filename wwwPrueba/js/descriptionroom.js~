@@ -50,7 +50,7 @@ $(function(){
       e.preventDefault();
       e.stopImmediatePropagation();
 		EliminarHabitacion(function(){
-	window.location.replace('listrooms.html');
+	window.location.replace('apartmentshare.html');
   });
 
 });

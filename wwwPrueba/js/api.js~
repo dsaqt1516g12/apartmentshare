@@ -74,8 +74,8 @@ function EliminarPiso(complete){
         	"X-Auth-Token":authToken.token
     	}
     }).done(function(data) { 
-    	sessionStorage.removeItem("api");
-    	sessionStorage.removeItem("auth-token");
+    	//sessionStorage.removeItem("api");
+    //	sessionStorage.removeItem("auth-token");
     	complete();
   	}).fail(function(){});
 }
@@ -94,8 +94,8 @@ function EliminarHabitacion(complete){
         	"X-Auth-Token":authToken.token
     	}
     }).done(function(data) { 
-    	sessionStorage.removeItem("api");
-    	sessionStorage.removeItem("auth-token");
+    //	sessionStorage.removeItem("api");
+    	//sessionStorage.removeItem("auth-token");
     	complete();
   	}).fail(function(){});
 }
@@ -259,16 +259,20 @@ function crearpiso(campusid, address , description, numpartner, smoker, pets, gi
 	internet: internet,
 	fianza: fianza,
 	estancia: estancia,
-	
-   		url: uri,
     	headers: {
         	"X-Auth-Token":authToken.userid
     	}
 	
-    }).done(function(data) { 
-	console.log(data);
+    }).done(function(authToken) { 
+		authToken.links = linksToMap(authToken.links);
+			sessionStorage["create-flat"] = JSON.stringify(authToken);
+	console.log(authToken);
     	complete();
-  	}).fail(function(){});
+  	}).fail(function(jqXHR, textStatus, errorThrown){	
+			var error = jqXHR.responseJSON;
+				alert(error.reason);
+
+});
 }
 
 function crearhabitacion(campusid, address , description, numpartner, smoker, pets, girlorboy, sqm, furnished, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, complete){
