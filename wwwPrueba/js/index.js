@@ -61,8 +61,10 @@ $("#aCloseSession").click(function(e){
   });
 });
 
-function listItemHTML(uri, address, description, fullname, email, phone ){
-  var u = '<u class="list-group-item" href="'+ uri +'">';
+function listItemHTML(uri, address, description, fullname, email, phone){
+
+
+  var u = '<u class="list-group-item" href="'+ uri + '</u>';
 
   var d = '<d class="list-group-item-text unclickable">' + description + '</d>';
 
@@ -74,5 +76,5 @@ function listItemHTML(uri, address, description, fullname, email, phone ){
 
   var p = '<p class="list-group-item-text unclickable">' + phone + '</p>';
 
-  return u + d + a + f + e + p +'</u>';
+  return  u + 'Descripción del piso: ' + d + '  ;  ' + 'Dirección: ' +  a + '  ;  ' + 'Nombre del contacto: ' + f + '  ;  ' + 'E-mail: ' + e + '  ;  ' + 'Teléfono: ' + p;
 }
