@@ -31,6 +31,16 @@ $(function(){
 	window.location.replace('listrooms.html');
     });
 
+   $("#formEliminarusuario").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+  EliminarUsuario(function(){
+  });
+ logout(function(){
+  });
+      $("#buttonEliminarusuario").blur();
+	window.location.replace('login.html');
+    });
 
 function processFlatsCollection(user){
 

@@ -59,6 +59,22 @@ function logout(complete){
   	}).fail(function(){});
 }
 
+function EliminarUsuario(complete){
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	var uri = authToken["links"]["user-profile"].uri;
+	console.log(authToken.token);
+	$.ajax({
+    	type: 'DELETE',
+   		url: uri,
+    	headers: {
+        	"X-Auth-Token":authToken.token
+    	}
+    }).done(function(data) { 
+    	sessionStorage.removeItem("api");
+    	sessionStorage.removeItem("auth-token");
+    	complete();
+  	}).fail(function(){});
+}
 
 
 function EliminarPiso(complete){

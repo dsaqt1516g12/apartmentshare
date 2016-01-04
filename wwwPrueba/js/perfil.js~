@@ -5,7 +5,7 @@ $(function(){
       $("#stings-list").append(listItemHTML(user.links["self"].uri, user.logingid, user.fullname, user.email, user.phone, user.id, edit));
       $("#aProfile").text(user.fullname + ' ');
       $("#aProfile").append('<span class="caret"></span>');
-	  
+	      processFlatsCollection(user);
    });
 
    var authToken = JSON.parse(sessionStorage["auth-token"]);
@@ -19,12 +19,6 @@ $(function(){
 			    	}
 			    })
 
-   getCurrentUserProfile(function(user){
-      $("#stings-list").empty();
-      var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
-      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 			flats.creationTimestamp, flats.id, edit));
-      processFlatsCollection(flats);
-   });
 });
 
  $("#buttonRegresar").click(function(){window.location.replace('listrooms.html')});
@@ -37,6 +31,14 @@ $(function(){
 	window.location.replace('listrooms.html');
     });
 
+   $("#formEliminarusuario").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+  EliminarUsuario(function(){
+  });
+      $("#buttonEliminarusuario").blur();
+	window.location.replace('login.html');
+    });
 
 function processFlatsCollection(user){
 
