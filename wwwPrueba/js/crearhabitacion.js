@@ -19,17 +19,11 @@ $(function(){
 
 $("#formCrearhabitacion").submit(function(e){
       e.preventDefault();
-    //  e.stopImmediatePropagation();
-      //creatflat($('#campusid').val(), $('#address').val(), $('#description').val(), $('#numpartner').val(), $('#smoker').val(), $('#pets').val(),$('#girlorboy').val(),$('#sqm').val(),$('#furnished').val(),$('#numrooms').val(),$('#numbathrooms').val(),$('#elevator').val(),$('#plantnum').val(),$('#internet').val(),$('#fianza').val(),$('#estancia').val(), function(){
-  	
-//  });
-
-  e.preventDefault();
-  crearhabitacion($('#campusid').val(),  $('#address').val(), $('#description').val(), $('#numpartner').val(), $('#smoker').val(), $('#pets').val(),$('#girlorboy').val(), $('#sqm').val(), $('#furnished').val(), $('#numrooms').val(), $('#numbathrooms').val(), $('#elevator').val(), $('#plantnum').val(), $('#internet').val(), $('#fianza').val(), $('#estancia').val(), function(){
+  crearhabitacion($('#description').val(),  $('#girlorboy').val(), $('#sqm').val(), $('#furnished').val(), $('#status').val(), $('#price').val(), function(){
   });
 
       $("#buttonCrearhabitacion").blur();
 	console.log("change");
-  	window.location.replace('apartmentshare.html');
+  	window.location.replace('listrooms.html');
     });
 

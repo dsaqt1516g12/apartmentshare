@@ -19,12 +19,6 @@ $(function(){
 
 $("#formCrearpiso").submit(function(e){
       e.preventDefault();
-    //  e.stopImmediatePropagation();
-      //creatflat($('#campusid').val(), $('#address').val(), $('#description').val(), $('#numpartner').val(), $('#smoker').val(), $('#pets').val(),$('#girlorboy').val(),$('#sqm').val(),$('#furnished').val(),$('#numrooms').val(),$('#numbathrooms').val(),$('#elevator').val(),$('#plantnum').val(),$('#internet').val(),$('#fianza').val(),$('#estancia').val(), function(){
-  	
-//  });
-
-  e.preventDefault();
   crearpiso($('#campusid').val(),  $('#address').val(), $('#description').val(), $('#numpartner').val(), $('#smoker').val(), $('#pets').val(),$('#girlorboy').val(), $('#sqm').val(), $('#furnished').val(), $('#numrooms').val(), $('#numbathrooms').val(), $('#elevator').val(), $('#plantnum').val(), $('#internet').val(), $('#fianza').val(), $('#estancia').val(), function(){
   });
 

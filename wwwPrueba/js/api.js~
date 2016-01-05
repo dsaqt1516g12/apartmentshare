@@ -61,7 +61,7 @@ function logout(complete){
 
 function EliminarUsuario(complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
-	var uri = authToken["links"]["logout"].uri;
+	var uri = authToken["links"]["user-profile"].uri;
 	console.log(authToken.token);
 	$.ajax({
     	type: 'DELETE',
@@ -252,37 +252,43 @@ function crearpiso(campusid, address , description, numpartner, smoker, pets, gi
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	campusid= '7998490EA1D011E5ABF5002318A56C8C';
 	console.log(authToken.token);
-	//var uri = JSON.parse(sessionStorage["uri-flat"]);
+	var nuevopiso = new Object();
+	nuevopiso.campusid= campusid;
+	nuevopiso.address= address;
+	nuevopiso.description= description;
+	nuevopiso.numpartner= numpartner;
+	nuevopiso.smoker= smoker;
+	nuevopiso.pets= pets;
+	nuevopiso.girlorboy= girlorboy;
+	nuevopiso.sqm= sqm;
+	nuevopiso.furnished= furnished;
+	nuevopiso.numrooms= numrooms;
+	nuevopiso.numbathrooms= numbathrooms;
+	nuevopiso.elevator= elevator;
+	nuevopiso.plantnum= plantnum;
+	nuevopiso.internet= internet;
+	nuevopiso.fianza= fianza;
+	nuevopiso.estancia= estancia;
+	console.log(nuevopiso);
 
 	var uri = authToken["links"]["create-flat"].uri;
 	console.log(uri);
-	$.post(uri,
+	//$.post(uri,
 
-{
-	campusid:campusid,
-	address:address,
-	description:description,
-	numpartner:numpartner,
-	smoker:smoker,
-	pets:pets,
-	girlorboy: girlorboy,
-	sqm: sqm,
-	furnished: furnished,
-	numrooms: numrooms,
-	numbathrooms: numbathrooms,
-	elevator: elevator,
-	plantnum: plantnum,
-	internet: internet,
-	fianza: fianza,
-	estancia: estancia,
+	$.ajax({
+	type: 'POST',
+	url: uri,
+	crossDomain : true,
+	dataType : 'json',
+	data: nuevopiso,
+        contentType: "application/x-www-form-urlencoded", 
     	headers: {
         	"X-Auth-Token":authToken.token
     	}
 	
-    }).done(function(authToken) { 
-		authToken.links = linksToMap(authToken.links);
-			sessionStorage["create-flat"] = JSON.stringify(authToken);
-	console.log(authToken);
+    }).done(function(flat) { 
+		flat.links = linksToMap(flat.links);
+	console.log(flat);
     	complete();
   	}).fail(function(jqXHR, textStatus, errorThrown){	
 			var error = jqXHR.responseJSON;
@@ -291,40 +297,35 @@ function crearpiso(campusid, address , description, numpartner, smoker, pets, gi
 });
 }
 
-function crearhabitacion(campusid, address , description, numpartner, smoker, pets, girlorboy, sqm, furnished, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, complete){
+function crearhabitacion(description, girlorboy , sqm, furnished, status, price, complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	campusid= '7998490EA1D011E5ABF5002318A56C8C';
 	console.log(authToken.token);
-	//var uri = JSON.parse(sessionStorage["uri-flat"]);
-
 	var uri = JSON.parse(sessionStorage["uri-flat"]);
 	console.log(uri);
 
 	var uri = uri +'/room';
 	console.log(uri);
-	$.post(uri,
 
-{
-	campusid:campusid,
-	address:address,
-	description:description,
-	numpartner:numpartner,
-	smoker:smoker,
-	pets:pets,
-	girlorboy: girlorboy,
-	sqm: sqm,
-	furnished: furnished,
-	numrooms: numrooms,
-	numbathrooms: numbathrooms,
-	elevator: elevator,
-	plantnum: plantnum,
-	internet: internet,
-	fianza: fianza,
-	estancia: estancia,
-	
-   		url: uri,
+	var nuevahabitacion = new Object();
+	nuevahabitacion.description= description;
+	nuevahabitacion.girlorboy= girlorboy;
+	nuevahabitacion.sqm= sqm;
+	nuevahabitacion.furnished= furnished;
+	nuevahabitacion.status= status;
+	nuevahabitacion.price= price;
+	console.log(nuevahabitacion);
+
+
+	$.ajax({
+	type: 'POST',
+	url: uri,
+	crossDomain : true,
+	dataType : 'json',
+	data: nuevahabitacion,
+        contentType: "application/x-www-form-urlencoded", 
     	headers: {
-        	"X-Auth-Token":authToken.userid
+        	"X-Auth-Token":authToken.token
     	}
 	
     }).done(function(data) { 

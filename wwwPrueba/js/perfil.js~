@@ -36,6 +36,8 @@ $(function(){
       e.stopImmediatePropagation();
   EliminarUsuario(function(){
   });
+ logout(function(){
+  });
       $("#buttonEliminarusuario").blur();
 	window.location.replace('login.html');
     });
