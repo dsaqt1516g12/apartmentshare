@@ -26,5 +26,9 @@
   {
     "path": "rooms",
     "methods": ["GET"]
+  },
+  {
+    "path": "images",
+    "methods": ["GET"]
   }
 ]

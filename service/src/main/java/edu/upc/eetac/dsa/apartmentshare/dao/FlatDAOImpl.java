@@ -2,7 +2,13 @@ package edu.upc.eetac.dsa.apartmentshare.dao;
 
 import edu.upc.eetac.dsa.apartmentshare.entity.Flat;
 import edu.upc.eetac.dsa.apartmentshare.entity.FlatCollection;
+import edu.upc.eetac.dsa.apartmentshare.entity.FlatImg;
+import edu.upc.eetac.dsa.apartmentshare.entity.FlatImgCollection;
 
+import javax.ws.rs.ServerErrorException;
+import javax.ws.rs.core.Application;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
 import java.sql.*;
 
 /**
@@ -217,4 +223,5 @@ public class FlatDAOImpl implements FlatDAO {
             if (connection != null) connection.close();
         }
     }
+
 }

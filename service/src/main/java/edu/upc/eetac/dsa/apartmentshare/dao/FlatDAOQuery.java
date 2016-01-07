@@ -13,5 +13,10 @@ public interface FlatDAOQuery {
     public final static String GET_FLATS_AFTER = "select hex(id) as id, hex(userid) as userid, hex(campusid) as campusid, address, description, numpartner,  smoker,  pets,  girlorboy,  sqm, creation_timestamp, last_modified from flat where creation_timestamp > ? and userid=unhex(?) order by creation_timestamp desc limit 5 ";
     public final static String UPDATE_FLAT = "update flat set campusid=unhex(?),  address=?, description=?, numpartner=?,  smoker=?,  pets=?,  girlorboy=?,  sqm=?,  furnished=?,  numrooms=?,  numbathrooms=?,  elevator=?,  plantnum=?,  internet=?,  fianza=?, estancia=? where id=unhex(?) ";
     public final static String DELETE_FLAT = "delete from flat where id=unhex(?)";
+    public final static String ADD_IMAGE_FLAT = "insert into imagenflat (id,flatid,filename) values (unhex(?),unhex(?),?)";
+    public final static String DELETE_IMAGE_FLAT = "delete from imagenflat where id=unhex(?)";
+    public final static String GET_IMAGES_FLAT_BY_FLATID ="select filename,hex(id) as id,hex(flatid) as flatid from imagenflat where flatid=unhex(?)";
+    public final static String GET_IMAGE_FLAT_BY_ID="select filename from imagenflat where id=unhex(?)";
+    //public final static String GET_IMAGES_FLAT ="select hex(id) from imagenflat where flatid=unhex(?)";
 
 }

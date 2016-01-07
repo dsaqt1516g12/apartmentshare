@@ -1,17 +1,14 @@
 package edu.upc.eetac.dsa.apartmentshare.entity;
 
-import java.util.List;
-import java.util.ArrayList;
-
 /**
  * Created by Jordi on 27/12/2015.
  */
 
-public class FlatImg {
+public class RoomImg {
     private String filename;
     private String imageURL;
     private String id;
-    private String flatid;
+    private String roomid;
 
 
     public String getId() {
@@ -22,11 +19,11 @@ public class FlatImg {
         this.id = id;
     }
 
-    public String getFlatid() {
-        return flatid;
+    public String getRoomid() {
+        return roomid;
     }
-    public void setFlatid(String flatid) {
-        this.flatid = flatid;
+    public void setRoomid(String roomid) {
+        this.roomid = roomid;
     }
 
 

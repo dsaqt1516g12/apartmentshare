@@ -1,20 +1,26 @@
 package edu.upc.eetac.dsa.apartmentshare;
 
 
-import edu.upc.eetac.dsa.apartmentshare.dao.CampusDAO;
-import edu.upc.eetac.dsa.apartmentshare.dao.CampusDAOImpl;
-import edu.upc.eetac.dsa.apartmentshare.dao.FlatDAO;
-import edu.upc.eetac.dsa.apartmentshare.dao.FlatDAOImpl;
-import edu.upc.eetac.dsa.apartmentshare.entity.AuthToken;
-import edu.upc.eetac.dsa.apartmentshare.entity.CampusLocation;
-import edu.upc.eetac.dsa.apartmentshare.entity.Flat;
-import edu.upc.eetac.dsa.apartmentshare.entity.FlatCollection;
+import edu.upc.eetac.dsa.apartmentshare.dao.*;
+import edu.upc.eetac.dsa.apartmentshare.entity.*;
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
+import javax.imageio.ImageIO;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
+
 
 
 /**
@@ -24,6 +30,7 @@ import java.sql.SQLException;
 public class FlatResource {
     @Context
     private SecurityContext securityContext;
+    private Application app;
     @POST
     public Response createFlat(@FormParam("campusid") String campusid, @FormParam("address") String address,@FormParam("description") String description,@FormParam("numpartner") int numpartner,@FormParam("smoker") int smoker,@FormParam("pets") int pets,@FormParam("girlorboy") int girlorboy,@FormParam("sqm") int sqm,@FormParam("furnished") int furnished,@FormParam("numrooms") int numrooms,@FormParam("numbathrooms") int numbathrooms,@FormParam("elevator") int elevator,@FormParam("plantnum") int plantnum,@FormParam("internet") int internet,@FormParam("fianza") int fianza,@FormParam("estancia") int estancia, @Context UriInfo uriInfo) throws URISyntaxException {
         if(campusid==null || address == null)
@@ -142,5 +149,4 @@ public class FlatResource {
             throw new InternalServerErrorException();
         }
     }
-
 }

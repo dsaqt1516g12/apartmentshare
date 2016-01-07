@@ -2,6 +2,8 @@ package edu.upc.eetac.dsa.apartmentshare.dao;
 
 import edu.upc.eetac.dsa.apartmentshare.entity.Flat;
 import edu.upc.eetac.dsa.apartmentshare.entity.FlatCollection;
+import edu.upc.eetac.dsa.apartmentshare.entity.FlatImg;
+import edu.upc.eetac.dsa.apartmentshare.entity.FlatImgCollection;
 
 import java.sql.SQLException;
 
