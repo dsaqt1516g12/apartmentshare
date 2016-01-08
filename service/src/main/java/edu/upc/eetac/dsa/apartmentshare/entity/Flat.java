@@ -65,6 +65,9 @@ public class Flat {
 
     private String description;
 
+    private String filename;
+    private String imageURL;
+
     private long creationTimestamp;
     private long lastModified;
 
@@ -234,5 +237,21 @@ public class Flat {
 
     public void setNumbathrooms(int numbathrooms) {
         this.numbathrooms = numbathrooms;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL  = imageURL;
     }
 }

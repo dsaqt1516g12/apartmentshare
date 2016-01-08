@@ -112,7 +112,7 @@ public class RoomImageResource {
 
 
     @GET
-    @Produces(ApartmentshareMediaType.APARTMENTSHARE_FLAT_IMG_COLLECTION)
+    @Produces(ApartmentshareMediaType.APARTMENTSHARE_ROOM_IMG_COLLECTION)
     public RoomImgCollection getImages(@PathParam("id") String flatid,@PathParam("roomid") String roomid, @Context UriInfo uriInfo) throws URISyntaxException {
         RoomImgCollection images = new RoomImgCollection();
 

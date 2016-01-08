@@ -71,6 +71,7 @@ public class RoomDAOImpl implements RoomDAO {
                 room.setFurnished(rs.getInt("furnished"));
                 room.setStatus(rs.getInt("status"));
                 room.setPrice(rs.getInt("price"));
+                room.setFilename(rs.getString("filename"));
                 room.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
                 room.setLastModified(rs.getTimestamp("last_modified").getTime());
             }
@@ -84,7 +85,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public RoomCollection getRooms(String flatid, String userid,long timestamp, boolean before) throws SQLException {
+    public RoomCollection getRooms(String flatid, String userid,long timestamp, boolean before,String URL) throws SQLException {
         RoomCollection flatCollection = new RoomCollection();
 
         Connection connection = null;
@@ -113,6 +114,8 @@ public class RoomDAOImpl implements RoomDAO {
                 room.setFurnished(rs.getInt("furnished"));
                 room.setStatus(rs.getInt("status"));
                 room.setPrice(rs.getInt("price"));
+                room.setFilename(rs.getString("filename"));
+                room.setImageURL(URL+rs.getString("filename"));
                 room.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
                 room.setLastModified(rs.getTimestamp("last_modified").getTime());
                 if (first) {
@@ -233,6 +236,7 @@ public class RoomDAOImpl implements RoomDAO {
                 room.setFullname(rs.getString("fullname"));
                 room.setPhone(rs.getString("phone"));
                 room.setEmail(rs.getString("email"));
+                room.setFilename(rs.getString("filename"));
                 room.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
                 room.setLastModified(rs.getTimestamp("last_modified").getTime());
             }
@@ -247,7 +251,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public RoomCollection getListRooms(long timestamp, boolean before) throws SQLException {
+    public RoomCollection getListRooms(long timestamp, boolean before,String URL) throws SQLException {
         RoomCollection flatCollection = new RoomCollection();
 
         Connection connection = null;
@@ -296,6 +300,8 @@ public class RoomDAOImpl implements RoomDAO {
                 room.setFullname(rs.getString("fullname"));
                 room.setPhone(rs.getString("phone"));
                 room.setEmail(rs.getString("email"));
+                room.setFilename(rs.getString("filename"));
+                room.setImageURL(URL+rs.getString("filename"));
                 room.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
                 room.setLastModified(rs.getTimestamp("last_modified").getTime());
                 if (first) {
@@ -402,6 +408,7 @@ public class RoomDAOImpl implements RoomDAO {
                 room.setFullname(rs.getString("fullname"));
                 room.setPhone(rs.getString("phone"));
                 room.setEmail(rs.getString("email"));
+                room.setFilename(rs.getString("filename"));
                 room.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
                 room.setLastModified(rs.getTimestamp("last_modified").getTime());
                 if (first) {

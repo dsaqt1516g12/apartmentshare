@@ -95,6 +95,7 @@ public class FlatDAOImpl implements FlatDAO {
                 flat.setInternet(rs.getInt("internet"));
                 flat.setFianza(rs.getInt("fianza"));
                 flat.setEstancia(rs.getInt("estancia"));
+                flat.setFilename(rs.getString("filename"));
                 flat.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
                 flat.setLastModified(rs.getTimestamp("last_modified").getTime());
             }
@@ -108,7 +109,7 @@ public class FlatDAOImpl implements FlatDAO {
     }
 
     @Override
-    public FlatCollection getFlats(String userid, long timestamp, boolean before) throws SQLException {
+    public FlatCollection getFlats(String userid, long timestamp, boolean before,String URL) throws SQLException {
         FlatCollection flatCollection = new FlatCollection();
 
         Connection connection = null;
@@ -137,14 +138,16 @@ public class FlatDAOImpl implements FlatDAO {
                 flat.setPets(rs.getInt("pets"));
                 flat.setGirlorboy(rs.getInt("girlorboy"));
                 flat.setSqm(rs.getInt("sqm"));
-//                flat.setFurnished(rs.getInt("furnished"));
-//                flat.setNumrooms(rs.getInt("numrooms"));
-//                flat.setNumbathrooms(rs.getInt("numbathrooms"));
-//                flat.setElevator(rs.getInt("elevator"));
-//                flat.setPlantnum(rs.getInt("plantnum"));
-//                flat.setInternet(rs.getInt("internet"));
-//                flat.setFianza(rs.getInt("fianza"));
-//                flat.setEstancia(rs.getInt("estancia"));
+                flat.setFurnished(rs.getInt("furnished"));
+                flat.setNumrooms(rs.getInt("numrooms"));
+                flat.setNumbathrooms(rs.getInt("numbathrooms"));
+                flat.setElevator(rs.getInt("elevator"));
+                flat.setPlantnum(rs.getInt("plantnum"));
+                flat.setInternet(rs.getInt("internet"));
+                flat.setFianza(rs.getInt("fianza"));
+                flat.setEstancia(rs.getInt("estancia"));
+                flat.setFilename(rs.getString("filename"));
+                flat.setImageURL(URL+rs.getString("filename"));
                 flat.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
                 flat.setLastModified(rs.getTimestamp("last_modified").getTime());
                 if (first) {

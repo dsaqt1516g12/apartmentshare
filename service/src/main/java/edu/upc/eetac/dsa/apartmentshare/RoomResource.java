@@ -21,8 +21,12 @@ import java.sql.SQLException;
 
 @Path("flat/{flatid}/room")
 public class RoomResource {
+
     @Context
     private SecurityContext securityContext;
+    @Context
+    private Application app;
+
     @POST
     public Response createRoom(@PathParam("flatid") String flatid,@FormParam("description") String description,@FormParam("girlorboy") int girlorboy,@FormParam("sqm") int sqm,@FormParam("furnished") int furnished,@FormParam("status") int status,@FormParam("price") int price,@Context UriInfo uriInfo) throws URISyntaxException {
         if(flatid==null )
@@ -50,12 +54,12 @@ public class RoomResource {
     @GET
     @Produces(ApartmentshareMediaType.APARTMENTSHARE_ROOM_COLLECTION)
     public RoomCollection getRooms(@PathParam("flatid") String flatid,@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
-
+        String URL = String.valueOf(app.getProperties().get("imgBaseURL")).toString();
         RoomCollection roomCollection = null;
         RoomDAO roomDAO = new RoomDAOImpl();
         try {
             if (before && timestamp == 0) timestamp = System.currentTimeMillis();
-            roomCollection = roomDAO.getRooms(flatid,securityContext.getUserPrincipal().getName(),timestamp, before);
+            roomCollection = roomDAO.getRooms(flatid,securityContext.getUserPrincipal().getName(),timestamp, before,URL);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }

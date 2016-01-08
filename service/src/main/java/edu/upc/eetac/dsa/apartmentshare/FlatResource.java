@@ -30,6 +30,7 @@ import java.util.UUID;
 public class FlatResource {
     @Context
     private SecurityContext securityContext;
+    @Context
     private Application app;
     @POST
     public Response createFlat(@FormParam("campusid") String campusid, @FormParam("address") String address,@FormParam("description") String description,@FormParam("numpartner") int numpartner,@FormParam("smoker") int smoker,@FormParam("pets") int pets,@FormParam("girlorboy") int girlorboy,@FormParam("sqm") int sqm,@FormParam("furnished") int furnished,@FormParam("numrooms") int numrooms,@FormParam("numbathrooms") int numbathrooms,@FormParam("elevator") int elevator,@FormParam("plantnum") int plantnum,@FormParam("internet") int internet,@FormParam("fianza") int fianza,@FormParam("estancia") int estancia, @Context UriInfo uriInfo) throws URISyntaxException {
@@ -57,12 +58,12 @@ public class FlatResource {
     @Produces(ApartmentshareMediaType.APARTMENTSHARE_FLAT_COLLECTION)
     public FlatCollection getFlats(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
 
-
+        String URL = String.valueOf(app.getProperties().get("imgBaseURL")).toString();
         FlatCollection flatCollection = null;
         FlatDAO flatDAO = new FlatDAOImpl();
         try {
             if (before && timestamp == 0) timestamp = System.currentTimeMillis();
-            flatCollection = flatDAO.getFlats(securityContext.getUserPrincipal().getName(),timestamp, before);
+            flatCollection = flatDAO.getFlats(securityContext.getUserPrincipal().getName(),timestamp, before,URL);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }

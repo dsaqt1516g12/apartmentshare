@@ -14,7 +14,7 @@ public interface FlatDAO {
 
         public Flat createFlat(String userid, String campusid, String address,String description,int numpartner, int smoker, int pets, int girlorboy, int sqm, int furnished, int numrooms, int numbathrooms, int elevator, int plantnum, int internet, int fianza, int estancia) throws SQLException;
         public Flat getFlatById(String id) throws SQLException;
-        public FlatCollection getFlats(String userid,long timestamp, boolean before) throws SQLException;
+        public FlatCollection getFlats(String userid,long timestamp, boolean before,String URL) throws SQLException;
         public Flat updateFlat(String id, String campusid, String address,String description,int numpartner, int smoker, int pets, int girlorboy, int sqm, int furnished, int numrooms, int numbathrooms, int elevator, int plantnum, int internet, int fianza, int estancia) throws SQLException;
         public boolean deleteFlat(String id) throws SQLException;
 

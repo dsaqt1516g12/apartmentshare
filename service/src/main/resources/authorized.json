@@ -28,7 +28,7 @@
     "methods": ["GET"]
   },
   {
-    "path": "images",
+    "path": "(?i)rooms/([0-9a-f]{32})?/img",
     "methods": ["GET"]
   }
 ]
