@@ -12,4 +12,5 @@ public interface UserDAOQuery {
     public final static String GET_USER_BY_USERNAME = "select hex(u.id) as id, u.loginid, u.fullname, u.email, u.phone from users u where u.loginid=?";
     public final static String DELETE_USER = "delete from users where id=unhex(?)";
     public final static String GET_PASSWORD =  "select hex(password) as password from users where id=unhex(?)";
+    public final static String CREATE_MSG = "insert into messages (id,fromuser,touser,text) values (unhex(?),unhex(?),unhex(?),?)";
 }
