@@ -17,4 +17,5 @@ public interface ApartmentshareMediaType {
     public final static String APARTMENTSHARE_ROOM_IMG_COLLECTION= "application/vnd.dsa.apartmentshare.room.img.collection+json";
     public final static String APARTMENTSHARE_CAMPUS = "application/vnd.dsa.apartmentshare.campus+json";
     public final static String APARTMENTSHARE_CAMPUS_COLLECTION = "application/vnd.dsa.apartmentshare.campus.collection+json";
+    public final static String APARTMENTSHARE_SEND_EMAIL = "application/vnd.dsa.apartmentshare.send.email+json";
 }

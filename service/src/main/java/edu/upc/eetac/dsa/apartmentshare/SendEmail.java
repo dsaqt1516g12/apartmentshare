@@ -10,6 +10,7 @@ import edu.upc.eetac.dsa.apartmentshare.entity.Room;
 import edu.upc.eetac.dsa.apartmentshare.entity.User;
 
 
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.*;
@@ -19,24 +20,27 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.*;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.SecurityContext;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.*;
 
 /**
  * Created by Jordi on 08/01/2016.
  */
+
+
 @Path("rooms/{roomid}/email")
 public class SendEmail {
     @Context
     private SecurityContext securityContext;
+
+    @Context
+    private Application app;
 
     static Properties mailServerProperties;
     static Session getMailSession;
     static MimeMessage generateMailMessage;
 
     @POST
-    public Email createEmail(@PathParam("roomid") String roomid,@FormParam("text") String bodytext, @Context UriInfo uriInfo) throws AddressException, MessagingException,URISyntaxException {
+    public Response createEmail(@PathParam("roomid") String roomid,@FormParam("text") String bodytext, @Context UriInfo uriInfo) throws AddressException, MessagingException,URISyntaxException {
         Email email = new Email();
         String userid=securityContext.getUserPrincipal().getName();
         Room room = null;
@@ -69,7 +73,7 @@ public class SendEmail {
             throw new InternalServerErrorException();
         }
 
-        try {
+ //       try {
 
         mailServerProperties = System.getProperties();
         mailServerProperties.put("mail.smtp.port", "587");
@@ -87,19 +91,25 @@ public class SendEmail {
         generateMailMessage.addRecipient(Message.RecipientType.BCC, new InternetAddress("marcelus.adolfo.zeron@estudiant.upc.edu"));
         generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(fromuser.getEmail().toString()));
         generateMailMessage.setSubject("ApartmentShare Message - No Reply");
-        generateMailMessage.setContent(bodytext, "text/html");
+        String emailBody = "Hola "+ touser.getFullname()+"," + "<br><br>" + fromuser.getFullname() + " esta interesado/a en la habitación <a href="+app.getProperties().get("apartmentshare.context").toString()+"/rooms/"+roomid+">Clicar aquí</a> y te acaba de enviar un mensaje:<br><br><i>"+bodytext+"</i><br><br>Atentamente ApartmentShare Staff";
+        generateMailMessage.setContent(emailBody, "text/html");
 
         Transport transport = getMailSession.getTransport("smtp");
         transport.connect("smtp.gmail.com", "apartmentsharenoreply@gmail.com", "Dsa12345");
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
 
-        } catch (MessagingException  e) {
-            throw new InternalServerErrorException();
-        }
-        email.setBody("Your Java Program has just sent an SendEmail successfully");
-        return email;
-    }
+//        } catch (MessagingException  e) {
+//            throw new InternalServerErrorException();
+//        }
+        //email.setBody("Your Java Program has just sent an SendEmail successfully");
+        email.setBody(bodytext);
+        email.setSubject("ApartmentShare Message - No Reply");
+        email.setTo(touser.getEmail().toString());
+
+        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + email.getTo());
+        return Response.created(uri).type(ApartmentshareMediaType.APARTMENTSHARE_SEND_EMAIL).entity(email).build();
+   }
 
 
 }
