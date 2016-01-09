@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<meta name="description" content="Apartment Share  page">
-		<meta name="author" content="DSA">
+    <meta name="description" content="Apartment Share  page">
+    <meta name="author" content="DSA">
 
-		<title>Apartment Share</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link href="css/navbar-fixed-top.css" rel="stylesheet">
-		<link href="css/apartmentshare.css" rel="stylesheet">
-	</head>
+    <title>Apartment Share</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+    <link href="css/apartmentshare.css" rel="stylesheet">
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
+    </style>
+  </head>
 
-	<body>
-		<!-- Fixed navbar -->
+  <body>
+
+    <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -32,7 +37,7 @@
             <li class="dropdown">
               <a id="aProfile" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a id="aGoToProfile">Mi Cuenta</a></li>
+                <li><a id="aGoToProfile" href="micuenta.html">Mi Cuenta</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
                 <li role="separator" class="divider"></li>
@@ -55,15 +60,20 @@
   
   <div class="jumbotron text-left">
     <h2>Crea el piso a partir del cual realizar el anuncio</h2>
-    
+
+    <div class="form-group">
+      <label for="campusid">Campus ID</label>
+      <input type="text" id="campusid" class="form-control" placeholder="campusid" required autofocus>
+    </div>
+
     <div class="form-group">
         <label for="address">Dirección completa del piso</label>
         <input name="address" class="form-control" id="address" type="text">
     </div> 
-
+<!--
     <div class="form-group">
         <label for="personas">Numero de personas alojadas actualmente en el piso</label>
-        <select  style="width:10% !important" name="personas" class="form-control" id="personas">
+        <select  style="width:10% !important" name="personas" class="form-control" id="numpartner">
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -76,10 +86,10 @@
                       <option value="10">10</option>                      
         </select>
     </div>
-
+-->
     <div class="form-group ">
         <label for="fumadores">¿Se admiten fumadores?</label>
-        <select style="width:10% !important" name="fumadores" class="form-control" id="fumadores">
+        <select style="width:10% !important" name="fumadores" class="form-control" id="smoker">
                       <option value="1">Si</option>
                       <option value="2">No</option>                   
         </select>
@@ -87,7 +97,7 @@
 
    <div class="form-group ">
         <label for="mascotas">¿Se admiten mascotas?</label>
-        <select style="width:10% !important" name="mascotas" class="form-control" id="mascotas">
+        <select style="width:10% !important" name="mascotas" class="form-control" id="pets">
                       <option value="1">Si</option>
                       <option value="2">No</option>                   
         </select>
@@ -95,7 +105,7 @@
 
    <div class="form-group">
         <label for="amueblado">¿El piso está amueblado?</label>
-        <select style="width:10% !important" name="amueblado" class="form-control" id="amueblado">
+        <select style="width:10% !important" name="amueblado" class="form-control" id="furnished">
                       <option value="1">Si</option>
                       <option value="2">No</option>                   
         </select>
@@ -103,7 +113,7 @@
 
   <div class="form-group">
         <label for="estancia">Número de habitaciones</label>
-        <select style="width:20% !important" name="estancia" class="form-control" id="estancia">
+        <select style="width:20% !important" name="estancia" class="form-control" id="numrooms">
                       <option value="1">1 habitación</option>
                       <option value="2">2 habitaciones</option>
                       <option value="3">3 habitaciones</option>
@@ -113,7 +123,7 @@
     </div>
     <div class="form-group">
         <label for="bano">Numero de cuartos de baño del piso</label>
-        <select style="width:10% !important" name="bano" class="form-control" id="bano">
+        <select style="width:10% !important" name="bano" class="form-control" id="numbathrooms">
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -124,7 +134,7 @@
 
      <div class="form-group">
        <label for="sexo">Restricción de sexo</label>
-       <select style="width:30% !important" name="sexo" class="form-control" id="sexo" required="">
+       <select style="width:30% !important" name="sexo" class="form-control" id="girlorboy" required="">
        
                       <option value="1">Solo se admiten hombres</option>
                       <option value="2">Solo se admiten mujeres</option>
@@ -133,7 +143,7 @@
     </div>
     <div class="form-group">
         <label for="estancia">Piso situado en una planta</label>
-        <select style="width:20% !important" name="estancia" class="form-control" id="estancia">
+        <select style="width:20% !important" name="estancia" class="form-control" id="plantnum">
                       <option value="1">Bajos/Entresuelo/Edificio sin plantas</option>
                       <option value="2">1ª planta</option>
                       <option value="3">2ª planta</option>
@@ -151,12 +161,12 @@
 
     <div class="form-group">
         <label for="metros">Número de metros cuadrados del piso</label>
-        <input  style="width:20% !important"  name="metros" class="form-control" id="metros" type="text">
+        <input  style="width:20% !important"  name="metros" class="form-control" id="sqm" type="text">
     </div>
 
     <div class="form-group">
         <label for="ascensor">¿Tiene acceso a un ascensor?</label>
-        <select style="width:10% !important" name="ascensor" class="form-control" id="ascensor">
+        <select style="width:10% !important" name="ascensor" class="form-control" id="elevator">
                       <option value="1">Si</option>
                       <option value="2">No</option>                   
         </select>
@@ -170,7 +180,7 @@
    </div>
    <div class="form-group">
         <label for="estancia">Numero de personas que ya viven en el piso</label>
-        <select style="width:20% !important" name="estancia" class="form-control" id="estancia">
+        <select style="width:20% !important" name="estancia" class="form-control" id="numpartner">
                       <option value="1">0 personas</option>
                       <option value="2">1 persona</option>
                       <option value="3">2 personas</option>
@@ -229,11 +239,32 @@
     </div>   
     <br>
 
+
 <!--<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="800" height="400" src="https://maps.google.com/maps?hl=en&q=$("#address").val()&ie=UTF8&t=m&z=15&iwloc=B&output=embed"></iframe>
 <br>
 -->
 
-<!--gmaps-->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--gmaps
 
 <div id="floating-panel">
       <input id="address" type="textbox" value="Sydney, NSW">
@@ -268,9 +299,8 @@ function geocodeAddress(geocoder, resultsMap) {
   });
 }
 
-    </script>
-
-
+  </script>
+-->
 
        <!--/gmaps-->
 
@@ -278,10 +308,13 @@ function geocodeAddress(geocoder, resultsMap) {
 
           <br><br>
           <a class="btn btn-large btn-danger" href="apartmentshare.html" style="float:right;" type="submit">Cancelar</a>
+          
+        <form id="formCrearpiso">
           <button id="buttonCrearpiso" type="submit" class="btn btn-default center-block">Crear piso</button>
+        </form>
     
   </div>
-  
+      
 <!--
     <div class="row">
         <form id="formCrearpiso">
@@ -292,12 +325,29 @@ function geocodeAddress(geocoder, resultsMap) {
 -->
      </div>
     
+     
 
   </div>
+<div id="map"></div>
+
+    <script type="text/javascript">
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  });
+}
+
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5EGBBYkdhKGuhVE0uvbB5LIviOle-25s&callback=initMap">
+    </script>
   
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="js/api.js"></script>
-	<script src="js/crearpiso.js"></script>
-	</body>
+  <script src="js/crearpiso.js"></script>
+  </body>
 </html>
