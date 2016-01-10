@@ -12,7 +12,10 @@ public class Messages {
     private String text;
     private String fromuser;
     private String touser;
+    private String fromusername;
+    private String tousername;
     private String creationTimestamp;
+    private int nummsgs;
 
     public String getId() {
         return id;
@@ -52,5 +55,29 @@ public class Messages {
 
     public void setCreationTimestamp(String creationTimestamp) {
         this.creationTimestamp = creationTimestamp;
+    }
+
+    public int getNummsgs() {
+        return nummsgs;
+    }
+
+    public void setNummsgs(int nummsgs) {
+        this.nummsgs = nummsgs;
+    }
+
+    public String getFromusername() {
+        return fromusername;
+    }
+
+    public void setFromusername(String fromusername) {
+        this.fromusername = fromusername;
+    }
+
+    public String getTousername() {
+        return tousername;
+    }
+
+    public void setTousername(String tousername) {
+        this.tousername = tousername;
     }
 }
