@@ -22,7 +22,6 @@
 
 	</head>
 	<body>
- 
 
  <div class="navbar-collapse collapse" id="navbar">
   <div class="container-fluid">
@@ -46,81 +45,54 @@
     <br>
 
 
-    <!--<div class="container">
+      <div class="container">
       <form class="form-signin" id="form-signin">
+        	<label for="loginid" class="sr-only">Username</label>
+            <input type="text" id="loginid" class="form-control" placeholder="Nombre de Usuario" required autofocus>
 
-          <div class="form-group">
-            <label for="loginid">Nombre de Usuario</label>
-            <input name="loginid" class="form-control" id="loginid" type="text">
-          </div>
-          <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input name="password" class="form-control" id="password" type="password">
-          </div>
-          <div class="form-group">
-            <label for="name">Nombre Completo</label>
-            <input name="name" class="form-control" id="fullname" type="text">
-          </div> 
-           <div class="form-group">
-            <label for="email">E-mail</label>
-            <input name="email" class="form-control" id="email" type="text">
-          </div>
-          <div class="form-group">
-            <label for="telefono">Teléfono</label>
-            <input name="telefono" class="form-control" id="phone" type="text">
-          </div>    
-        
-       <br>
-       <a class="btn btn-large btn-danger" href="index.html" style="float:left;" type="submit">Cancelar</a>
-       <button class="btn btn-large btn-primary" style="float:right;" type="submit">Registrar</button>
-      
-     </form>
-    </div>   
-    -->
 
-   <div id="templatemo_section_1_1">
-<div class="container">
-<form  id="imageForm" class="form-horizontal col-md-6" role="form" >
-          <div class="form-group" align="left">
-            
-            <H3><label>Nombre de Usuario</label></H3>
-            <input name="loginid" type="text" size="50" id="loginid" class="form-control" placeholder="Escribe username" required="required"></ul>
-              <br></br>
-            <H3><label>Contraseña</label></H3>
-            <input name="password" type="password" size="50" id="password" class="form-control" placeholder="Escribe contraseña" required="required"></ul>
-              <br></br>
-            <H3><label>Nombre</label></H3>
-            <input name="fullame" type="text" size="50" id="fullname" class="form-control" placeholder="Escribe tu nombre" required="required"></ul>
-              <br></br>
-            <H3><label>Correo electronico</label></H3>
-            <input name="email" type="text" size="50" id="email" class="form-control" placeholder="Escribe correo electronico" required="required"></ul>
-              <br></br>
+         	<label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Contraseña" required>
 
-              <H3><label>Telefono</label></H3>
-            <input name="phone" type="text" size="50" id="phone" class="form-control" placeholder="Escribe correo electronico" required="required"></ul>
-            
-          </div>
-         
-          <a><button id="registrar" type="submit" class="boton" align="left">Registrarse</button></a>
-          <progress style="display: none;"></progress>
-          
+	
+         	<label for="fullname" class="sr-only">Password</label>
+            <input type="text" id="fullname" class="form-control" placeholder="Nombre completo (Nombre y apellidos)" required>
+
+	         <label for="email" class="sr-only">Password</label>
+            <input type="text" id="email" class="form-control" placeholder="Correo electrónico" required>
+
+   	 		<label for="phone" class="sr-only">Password</label>
+            <input type="text" id="phone" class="form-control" placeholder="Teléfono de contacto" required>
+
+            <button class="btn btn-success" id='registrar' type="submit">Clic para registrar</button>
+            <br>
+            <a class="btn btn-danger" href="index.html"  type="submit">Atrás</a>
       </form>
-      
-    </div>
-
-   <pre><p id="result_registro"></p></pre>
-    </div>
+     </div>
+		
 
   </div>
   </div>
   </div>
+
+
+
  <!-- /container type="text/javascript" -->
-	<!-- script references -->
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>-->
+	<!-- script references 
     <script src="js/api.js"></script>
-    <script  src="js/registro.js"></script>
+
 		<script src="js/bootstrap.min.js"></script>
+   		 <script  src="js/registro.js"></script>
+
+  <h2 class="form-signin-heading">Register</h2>
+
+   -->
+
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		   <!--<script src="js/bootstrap.min.js"></script>-->
+    <script src="js/api.js"></script>
+    <script src="js/registroOK.js"></script>
 	</body>
 </html>

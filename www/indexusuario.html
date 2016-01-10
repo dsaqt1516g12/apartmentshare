@@ -1,44 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<title>Apartment Share</title>
-		<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link href="css/styles.css" rel="stylesheet">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Apartment Share  page">
+    <meta name="author" content="DSA">
+
+    <title>Apartment Share</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+    <link href="css/apartmentshare.css" rel="stylesheet">
+
     <STYLE TYPE="text/css">
     body{
-      background: url(5.gif) no-repeat center bottom;
+      background: url(5.gif) no-repeat center;
       }
-   
     </STYLE>
-	</head>
-	<body>
- 
 
-<div class="navbar navbar-default">
-  <div class="container-fluid">
-     <a class="navbar-brand" href="micuenta.html">Mi Cuenta</a>
-     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Busca tu habitación</a></li>
-      <li><a href="crearpiso.html">Crear Piso/Vivienda</a></li>
-      <li><a href="crearhabitacion.html">Crear Habitación</a></li>
-    </ul>
-    
-    <div class="navbar-collapse collapse" id="navbar">
-          <form class="navbar-form navbar-right">
-           
-            <button class="btn btn-danger" href="#" type="submit">Logout</button>
+  </head>
 
-          </form>
+  <body>
+
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand"> </a>
         </div>
-  </div>
-</div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-left">
+                <li><a id="Quiensomos" href="quiensomos.html">Acerca de nosotros</a></li>
+            </ul>
+        
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a id="aProfile" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a id="aGoToProfile" href="micuenta.html">Mi Cuenta</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="aCloseSession">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
 <center>
       <a title="ApartmentShare" href="indexusuario.html"><img src="imagenes/logocompleto500.png" alt="ApartmentShare" /></a>
@@ -125,11 +142,36 @@
     </form>
   </div>
   </div>
-  </div>
- <!-- /container -->
-  <!-- script references -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script type="text/javascript" src="js/api.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+  </div>  
+
+  <div class="jumbotron text-center col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1">
+ <h2>Últimas 5 habitaciones anunciadas</h2>
+    <div class="container">
+      <div id="stings">
+
+        <div class="row row-margin">
+          <div class="col-sm-8 col-center-block">
+            <div id="stings-list" class="list-group">
+              <a class="list-group-item">
+                <p class="list-group-item-text">Muchos años después</p>
+                <h6 class="list-group-item-heading" align="right">Cabecera</h6> 
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        <form id="formPrevious">
+          <button id="buttonPrevious" type="submit" class="btn btn-default center-block">Refrescar</button>
+        </form>
+        </div>
+      </div>
+    </div> <!-- /container -->
+    </div>
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/indexusuario.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

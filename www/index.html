@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>ApartmentShare</title>
-		<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link href="css/styles.css" rel="stylesheet">
-   
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <STYLE TYPE="text/css">
+		<meta name="description" content="Apartment Share  page">
+		<meta name="author" content="DSA">
+
+		<title>Apartment Share</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+		<link href="css/apartmentshare.css" rel="stylesheet">
+
+     <STYLE TYPE="text/css">
     body{
       background: url(5.gif) no-repeat center bottom;
       }
-   
     </STYLE>
-
-
 	</head>
+
 	<body>
-
- 
-
- <div class="navbar navbar-default">
+		<!-- Fixed navbar -->
+     <div class="navbar navbar-default">
   <div class="container-fluid">
     
     <div class="navbar-collapse collapse" id="navbar">
@@ -39,43 +34,30 @@
             <div class="form-group">
               <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña" required>
             </div>
-
             <button class="btn btn-success" type="submit">Entrar</button>
-            <a class="btn btn-warning" href="registro.html" type="submit">Regístrate</a>
-
             -->
 
-      <div class="container">
-      <form class="form-signin" id="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputLoginid" class="sr-only">Username</label>
-            <input type="text" id="inputLoginid" class="form-control" placeholder="Username" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <button class="btn btn-success" type="submit">Sign in</button>
+            <a class="btn btn-success" href="login.html" type="submit">Entra en ApartmentShare</a>
+
             <a class="btn btn-warning" href="registro.html" type="submit">Regístrate</a>
-      </form>
-     </div>
 
-
+            
           </form>
    </div>
   </div>
 </div>
  
-<center>
+ <center>
       <a title="ApartmentShare" href="index.html"><img src="imagenes/logocompleto500.png" alt="ApartmentShare" /></a>
-</center>   
+</center> 
 
-<div class="container">
-  <div style="padding:10px">
+    <div class="jumbotron text-center col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1">
 
-  <hr>
-    
-  <div class="jumbotron text-center col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1">
+
     <h2>Buscar habitaciones</h2>
     <p class="lead">Indícanos tus preferencias y nosotros buscamos lo mejor para ti.</p>
    
+
       <div class="form-group col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-3">
           <label for="campus">Campus deseado</label>
          
@@ -149,12 +131,34 @@
   </div>
   </div>
   </div>
- <!-- /container -->
-	<!-- script references -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+  <div class="jumbotron text-center col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1">
+     <h2>Últimas 5 habitaciones anunciadas</h2>
+    <div class="container">
+      <div id="stings">
+
+        <div class="row row-margin">
+          <div class="col-sm-8 col-center-block">
+            <div id="stings-list" class="list-group">
+              <a class="list-group-item">
+                <p class="list-group-item-text">Muchos años después</p>
+                <h6 class="list-group-item-heading" align="right">Cabecera</h6> 
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        <form id="formPrevious">
+          <button id="buttonPrevious" type="submit" class="btn btn-default center-block">Refrescar</button>
+        </form>
+        </div>
+      </div>
+    </div> <!-- /container -->
+    </div>
+
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-		   <!--<script src="js/bootstrap.min.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="js/api.js"></script>
-    <script src="js/login.js"></script>
+	<script src="js/index.js"></script>
 	</body>
 </html>
