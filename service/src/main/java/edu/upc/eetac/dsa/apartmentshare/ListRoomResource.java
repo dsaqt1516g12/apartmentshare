@@ -20,8 +20,6 @@ public class ListRoomResource {
     @Context
     private Application app;
 
-
-
     @POST
     @Produces(ApartmentshareMediaType.APARTMENTSHARE_ROOM_COLLECTION)
     public RoomCollection getListFilterRoom(@FormParam("campusname") String campusname,@FormParam("latitud") float latitud,@FormParam("longitud") float longitud,@FormParam("flataddress") String flataddress,@FormParam("campusaddress") String campusaddress,@FormParam("flatdescription") String flatdescription,@FormParam("numpartner") int numpartner,@FormParam("smoker") int smoker,@FormParam("pets") int pets,@FormParam("flatgirlorboy") int flatgirlorboy,@FormParam("flatsqm") int flatsqm,@FormParam("flatfurnished") int flatfurnished,@FormParam("numrooms") int numrooms,@FormParam("numbathrooms") int numbathrooms,@FormParam("elevator") int elevator,@FormParam("plantnum") int plantnum,@FormParam("internet") int internet,@FormParam("fianza") int fianza,@FormParam("estancia") int estancia,@FormParam("roomid") String roomid,@FormParam("userid") String userid,@FormParam("flatid") String flatid,@FormParam("roomdescription") String roomdescription,@FormParam("roomgirlorboy") int roomgirlorboy,@FormParam("roomsqm") int roomsqm,@FormParam("roomfurnished") int roomfurnished,@FormParam("status") int status,@FormParam("minprice") int minprice,@FormParam("maxprice") int maxprice,@FormParam("fullname") String fullname,@FormParam("phone") String phone,@FormParam("email") String email,@FormParam("creation_timestamp") long creation_timestamp,@FormParam("last_modified") long last_modified,@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
