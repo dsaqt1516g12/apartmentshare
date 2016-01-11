@@ -1,73 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="description" content="Apartment Share  page">
+		<meta name="author" content="DSA">
+
 		<title>Apartment Share</title>
-		<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link href="css/styles.css" rel="stylesheet">
-    <STYLE TYPE="text/css">
-    
-   
-    </STYLE>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link href="css/navbar-fixed-top.css" rel="stylesheet">
+		<link href="css/apartmentshare.css" rel="stylesheet">
 	</head>
+
 	<body>
- 
-
-<div class="navbar navbar-default">
-  <div class="container-fluid">
-    
-     <a class="navbar-brand" href="micuenta.html">Mi Cuenta</a>
-    <ul class="nav navbar-nav">
-      <li><a href="indexusuario.html">Busca tu habitación</a></li>
-      <li><a href="crearpiso.html">Crear Piso/Vivienda</a></li>
-      <li class="active"><a href="crearhabitacion.html">Crear Habitación</a></li>
-    </ul>
-
-      
-    <div class="navbar-collapse collapse" id="navbar">
-      
-        <form class="navbar-form navbar-right">
-           
-          <button class="btn btn-danger" href="#" type="submit">Logout</button>
-
-        </form>
+		<!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Crea tu habitación en ApartmentShare</a>
         </div>
-  </div>
-</div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a id="aProfile" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a id="aGoToProfile" href="micuenta.html">Mi Cuenta</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="aCloseSession">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
- <div align="center">
-      <img src="imagenes/apartmentshare.png" alt="ApartmentShare">
- </div>
-   
+     <center>
+      <a title="ApartmentShare"><img src="imagenes/apartmentshare.png" alt="ApartmentShare" /></a>
+    </center>
 
-<div class="container">
+    <div class="container">
   <div style="padding:10px">
 
   <hr>
   
   <div class="jumbotron text-left">
-    <h2>Anuncia la habitación que quieras alquilar a partir de uno de tus pisos/viviendas</h2>
+    <h2>Crea una habitación para tu piso</h2>
+   <!-- 
+    <div class="form-group">
+        <label for="address">Dirección completa del piso</label>
+        <input name="address" class="form-control" id="address" type="text">
+    </div> 
+-->
     
-  <div class="form-group">
-          <label for="campus">Seleccione el piso desde el que quiere anunciar una habitación</label>
-         
-          <select name="campus" class="form-control" id="campus" required="">
-            <option value="0">- Debes seleccionar un piso/vivienda -</option>
-                          <option value="1">piso 1</option>
-                          <option value="2">piso2</option>
-                          
-          </select>
-
-      </div>
-
-   
-
+<!--
     <div class="form-group ">
         <label for="fumadores">¿Se admiten fumadores?</label>
         <select style="width:10% !important" name="fumadores" class="form-control" id="fumadores">
@@ -76,50 +71,178 @@
         </select>
    </div>
 
-   <div class="form-group">
-        <label for="amueblado">¿La habitación está amueblada?</label>
-        <select style="width:10% !important" name="amueblado" class="form-control" id="amueblado">
+   <div class="form-group ">
+        <label for="mascotas">¿Se admiten mascotas?</label>
+        <select style="width:10% !important" name="mascotas" class="form-control" id="mascotas">
                       <option value="1">Si</option>
                       <option value="2">No</option>                   
         </select>
    </div>
-
+-->
    <div class="form-group">
-       <label for="sexo">Restricción de sexo</label>
-       <select style="width:30% !important" name="sexo" class="form-control" id="sexo" required="">
+        <label for="furnished">¿La habitación está amueblada?</label>
+        <select style="width:10% !important" name="furnished" class="form-control" id="furnished">
+                      <option value="1">Si</option>
+                      <option value="2">No</option>                   
+        </select>
+   </div>
+<!--
+  <div class="form-group">
+        <label for="estancia">Número de habitaciones</label>
+        <select style="width:20% !important" name="estancia" class="form-control" id="estancia">
+                      <option value="1">1 habitación</option>
+                      <option value="2">2 habitaciones</option>
+                      <option value="3">3 habitaciones</option>
+                      <option value="4">4 habitaciones</option>   
+                      <option value="5">5 habitaciones o más</option>                                      
+        </select>
+    </div>
+    -->
+    <!--
+    <div class="form-group">
+        <label for="bano">Numero de cuartos de baño del piso</label>
+        <select style="width:10% !important" name="bano" class="form-control" id="bano">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>   
+                      <option value="5">5</option>                    
+        </select>
+    </div>
+    -->
+
+     <div class="form-group">
+       <label for="girlorboy">Restricción de sexo</label>
+       <select style="width:30% !important" name="girlorboy" class="form-control" id="girlorboy">
        
                       <option value="1">Solo se admiten hombres</option>
                       <option value="2">Solo se admiten mujeres</option>
                       <option value="2">Indiferente</option>               
       </select>
-  </div>
-
+    </div>
+    <!--
     <div class="form-group">
-        <label for="metros">Número de metros cuadrados de la habitación</label>
-        <input  style="width:20% !important"  name="metros" class="form-control" id="metros" type="text">
-    </div>  
-
-        <div class="form-group">
-        <label for="fianza">Indique el precio al mes (en €)</label>
-        <input style="width:10% !important" name="fianza" class="form-control" id="fianza" type="text">
+        <label for="estancia">Piso situado en una planta</label>
+        <select style="width:20% !important" name="estancia" class="form-control" id="estancia">
+                      <option value="1">Bajos/Entresuelo/Edificio sin plantas</option>
+                      <option value="2">1ª planta</option>
+                      <option value="3">2ª planta</option>
+                      <option value="4">3ª planta</option>   
+                      <option value="5">4ª planta</option>
+                      <option value="6">5ª planta</option>   
+                      <option value="7">6ª planta</option>
+                      <option value="8">7ª planta</option>   
+                      <option value="9">8ª planta</option>
+                      <option value="10">9ª planta</option>
+                      <option value="11">10ª planta</option> 
+                                         
+        </select>
+    </div>
+-->
+    <div class="form-group">
+        <label for="sqm">Número de metros cuadrados de la habitación</label>
+        <input  style="width:20% !important"  name="sqm" class="form-control" id="sqm" type="text">
     </div>
 
-    <form name="imagen" method="post" enctype="multipart/form-data">
-      <label for="foto">Añade fotos de la habitación (si hay más de una, selecciónalas todas a la vez)</label>
-      <input name="foto" type="file" multiple="true">
+     <div class="form-group">
+        <label for="price">Precio</label>
+        <input  style="width:20% !important"  name="price" class="form-control" id="price" type="text">
+    </div>
+
+
+<!--
+    <div class="form-group">
+        <label for="ascensor">¿Tiene acceso a un ascensor?</label>
+        <select style="width:10% !important" name="ascensor" class="form-control" id="ascensor">
+                      <option value="1">Si</option>
+                      <option value="2">No</option>                   
+        </select>
+   </div> 
+   <div class="form-group">
+        <label for="internet">¿Tiene acceso a Internet?</label>
+        <select style="width:10% !important" name="internet" class="form-control" id="internet">
+                      <option value="1">Si</option>
+                      <option value="2">No</option>                   
+        </select>
+   </div>
+   <div class="form-group">
+        <label for="estancia">Numero de personas que ya viven en el piso</label>
+        <select style="width:20% !important" name="estancia" class="form-control" id="estancia">
+                      <option value="1">0 personas</option>
+                      <option value="2">1 persona</option>
+                      <option value="3">2 personas</option>
+                      <option value="4">3 personas</option>   
+                      <option value="5">4 personas</option>
+                      <option value="6">5 personas</option>   
+                      <option value="7">6 personas o más</option>
+                                       
+        </select>
+    </div>
+-->
+ 
+     <div class="form-group">
+        <label for="status">Estado de la habitación</label>
+        <select style="width:20% !important" name="status" class="form-control" id="status">
+                      <option value="1">Disponible</option>
+                      <option value="2">No Disponible</option>
+        </select>
+    </div>
+
+
+    <label for="foto">Añade imagenes de la habitación (si hay más de una, selecciónalas todas a la vez)</label>
+    <input name="file-input" id="file-input" multiple="true" type="file" />
+    <br/>
+    <img id="imgSalida"  width="20%" height="20%" src="" />
+
+
+
+ <!--       forma para añadir archivos, en prueba
+    <form name="imagen" method="post" id="imagenes" enctype="multipart/form-data">
+
+      <label for="foto">Añade imagenes del piso (si hay más de una, selecciónalas todas a la vez)</label>
+      <input type="file" name="foto" id="foto" multiple="true">
+
     </form>
-      
+-->
+    <div class="form-group">
+        <label for="description">Descripción de la habitación</label>
+        <textarea name="description" class="form-control" id="description" rows="8"></textarea>
+    </div>   
     <br>
 
-      <a class="btn btn-large btn-danger" href="indexusuario.html" style="float:left;" type="submit">Cancelar</a>
-      <button class="btn btn-large btn-primary" style="float:right;" type="submit">Crear</button>
+<!--<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="800" height="400" src="https://maps.google.com/maps?hl=en&q=$("#address").val()&ie=UTF8&t=m&z=15&iwloc=B&output=embed"></iframe>
+<br>
+-->
+
+
+
+
+          <br><br>
+        <div class="row">
+        <form id="formCrearhabitacion">
+          <a class="btn btn-large btn-danger" href="apartmentshare.html" style="float:right;" type="submit">Cancelar</a>
+          <button id="buttonCrearhabitacion" type="submit" class="btn btn-default center-block">Crear habitacion</button>
+        </form>
+        </div>
+
     
+  
+<!--
+    <div class="row">
+        <form id="formCrearpiso">
+          <button id="buttonCrearpiso" type="submit" class="btn btn-default center-block">Crear piso</button>
+          <br><br>
+        </form>
+    </div>
+-->
+     </div>
+    
+
   </div>
-  </div>
-  </div>
- <!-- /container -->
-  <!-- script references -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+  
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/api.js"></script>
+	<script src="js/crearhabitacion.js"></script>
+	</body>
 </html>

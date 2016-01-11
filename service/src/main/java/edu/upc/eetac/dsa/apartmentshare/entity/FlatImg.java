@@ -1,12 +1,14 @@
 package edu.upc.eetac.dsa.apartmentshare.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.List;
 import java.util.ArrayList;
 
 /**
  * Created by Jordi on 27/12/2015.
  */
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class FlatImg {
     private String filename;
     private String imageURL;

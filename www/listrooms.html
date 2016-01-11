@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="description" content="Apartment Share  page">
+		<meta name="author" content="DSA">
+
+		<title>Apartment Share</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link href="css/navbar-fixed-top.css" rel="stylesheet">
+		<link href="css/apartmentshare.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Mis Habitaciones </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a id="aProfile" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a id="aGoToProfile">Mi Cuenta</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="aCloseSession">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+     <center>
+      <a title="ApartmentShare"><img src="imagenes/apartmentshare.png" alt="ApartmentShare" /></a>
+    </center>
+
+    <div class="container">
+    <div class="jumbotron text-center col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1">
+    	<div id="stings">
+    		
+		   
+	    	<div class="row row-margin">
+	    		<div class="col-sm-8 col-center-block">
+	    			<div id="stings-list" class="list-group">
+	    				<a class="list-group-item">
+	    					<p class="list-group-item-text">Si ves esto no se han listado habitaciones</p>
+	    					<h6 class="list-group-item-heading" align="right">Cabecera</h6>	
+	    				</a>
+	    			</div>
+	    		</div>
+	    	</div>
+	    	<div class="row">
+	    	<form id="formPrevious">
+    			<button id="buttonPrevious" type="submit" class="btn btn-default center-block">Previous</button>
+    		</form>
+        <br><br>
+         <div class="row">
+        <button id="buttonRegresar" type="button" class="btn btn-danger center-block">Atrás</button>
+        </div>
+    		</div>
+    	</div>
+    </div> <!-- /container -->
+    </div>
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/api.js"></script>
+	<script src="js/listrooms.js"></script>
+	</body>
+</html>
