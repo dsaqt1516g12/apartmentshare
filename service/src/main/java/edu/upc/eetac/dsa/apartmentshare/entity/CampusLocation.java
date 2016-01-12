@@ -26,13 +26,16 @@ public class CampusLocation {
                     @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-campus", title = "Create campus", type = MediaType.APPLICATION_FORM_URLENCODED),
                     @InjectLink(resource = CampusResource.class, method = "getCampus", style = InjectLink.Style.ABSOLUTE, rel = "self campus", title = "Campus", bindings = @Binding(name = "id", value = "${instance.id}")),
                     @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
-                    @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", bindings = @Binding(name = "id", value = "${instance.userid}")),
+                   // @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", bindings = @Binding(name = "id", value = "${instance.userid}")),
                     @InjectLink(resource = CampusResource.class, method = "getCampus", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer flats", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "false")}),
                     @InjectLink(resource = CampusResource.class, method = "getCampus", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older flats", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "true")}),
             }
     )
     private List<Link> links;
     private String id;
+
+  // private String userid;
+
     private String campusname;
     private String address;
     private float longitud;
@@ -40,6 +43,9 @@ public class CampusLocation {
 
 
 
+   // public String getUserid() {return userid;}
+
+   // public void setUserid(String userid) { this.userid = userid;}
 
     public List<Link> getLinks() {
         return links;

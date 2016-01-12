@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="description" content="Apartment Share  page">
+		<meta name="author" content="DSA">
+
+		<title>Apartment Share</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link href="css/navbar-fixed-top.css" rel="stylesheet">
+		<link href="css/apartmentshare.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Mi Cuenta</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">         
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a id="aProfile" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a id="aGoToProfile" href="#">Mi Cuenta</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="aCloseSession">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <center>
+      <a title="ApartmentShare"><img src="imagenes/apartmentshare.png" alt="ApartmentShare" /></a>
+    </center>
+
+    <div class="container">
+    <div class="jumbotron text-center ">  
+    	<div id="stings">
+    		<div class="row">
+     
+    		</div>
+	    	<div class="row row-margin">
+	    		<div class="col-sm-8 col-center-block">
+	    			<div id="stings-list" class="list-group">
+	    				<a class="list-group-item">
+	    					<p class="list-group-item-text">Si ves esto es que no funciono</p>
+	    					<h6 class="list-group-item-heading" align="right">Cabecera</h6>	
+						 <h6 Descripcion: <input type="text" id="descripcion"></h6>
+	    				</a>
+	    			</div>
+	    		</div>
+	    	</div>
+
+
+	      <div class="container">
+      	<form class="form-signin" id="form-signin">
+        	<label for="loginid" class="sr-only">Username</label>
+            <input type="text" id="loginid" class="form-control" placeholder="Nombre de Usuario" required autofocus>
+
+         	<label for="fullname" class="sr-only">fullname</label>
+            <input type="text" id="fullname" class="form-control" placeholder="Nombre completo (Nombre y apellidos)" required>
+
+	         <label for="email" class="sr-only">email</label>
+            <input type="text" id="email" class="form-control" placeholder="Correo electrónico" required>
+
+   	 		<label for="phone" class="sr-only">phone</label>
+            <input type="text" id="phone" class="form-control" placeholder="Teléfono de contacto" required>
+
+            <button class="btn btn-success" id='registrar' type="submit">Editar Cuenta</button>
+            <br>
+            <a class="btn btn-danger" href="micuenta.html"  type="submit">Atrás</a>
+      </form>
+     </div>
+		
+
+  </div>
+  </div>
+  </div>
+
+<<<<<<< HEAD:www-20160111/editarcuenta.html
+=======
+
+
+
+        <a class="btn btn-large btn-primary" href="editarcuenta.html" style="float:center;" type="submit">Editar Cuenta</a>
+        <br>
+
+        <br>
+         <div class="row">
+        <form id="formEliminarusuario">
+          <button id="buttonEliminarusuario" type="submit" class="btn btn-warning center-block">Eliminar mi Cuenta</button>
+        </form>
+        </div>
+
+        <br><br><br>
+        <div class="row">
+        <button id="buttonRegresar" type="button" class="btn btn-danger center-block">Regresar al índice</button>
+        </div>
+    	</div>
+      </div>
+    </div> <!-- /container -->
+
+>>>>>>> fbbd28597d52160f6a0af0d4ddab9ae00d492f64:www-20160112/editarcuenta.html~
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/api.js"></script>
+	<script src="js/editarcuenta.js"></script>
+	</body>
+</html>

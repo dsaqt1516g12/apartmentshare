@@ -64,7 +64,7 @@ CREATE TABLE `campus_upc` (
 
 LOCK TABLES `campus_upc` WRITE;
 /*!40000 ALTER TABLE `campus_upc` DISABLE KEYS */;
-INSERT INTO `campus_upc` VALUES ('yòI°–Â´ı\0#•lå','EETAC','Av. del Canal Olimpic, 7 08860 Castelldefels Barcelona, Espa√±a',41.27210235595703,1.99207901954651);
+INSERT INTO `campus_upc` VALUES ('1¢¢πXÂÅ8\0#•lå','EETAC2','Av. del Canal Olimpic, 7 08860 Castelldefels Barcelona, Espa√±a',41.27210235595703,1.99207901954651),('yòI°–Â´ı\0#•lå','EETAC','Av. del Canal Olimpic, 7 08860 Castelldefels Barcelona, Espa√±a',41.27210235595703,1.99207901954651),('¥àÏ.πWÂÅ8\0#•lå','EETAC2','Av. del Canal Olimpic, 7 08860 Castelldefels Barcelona, Espa√±a',41.27210235595703,1.99207901954651);
 /*!40000 ALTER TABLE `campus_upc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,4 +299,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-10 12:07:27
+-- Dump completed on 2016-01-12 19:55:26
