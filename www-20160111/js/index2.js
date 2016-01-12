@@ -40,20 +40,20 @@ function processRoomsCollection(rooms){
     getRooms(uri, function(room){
       // In this example we only log the sting
       console.log(room);
-	window.location.replace('descriptionroom2.html');
+	window.location.replace('descriptionroom2logueado.html');
     });
   });
   $(".glyphicon-pencil").click(function(e){
     e.preventDefault();
     alert("This should open a sting editor. But this is only an example.");});
 }
-
+/*
 $("#aCloseSession").click(function(e){
   e.preventDefault();
   logout(function(){
-    window.location.replace('login.html');
+    window.location.replace('index.html');
   });
-});
+});*/
 
 function listItemHTML(uri, address, description, fullname, email, phone, id){
 

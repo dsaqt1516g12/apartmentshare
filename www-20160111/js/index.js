@@ -48,13 +48,14 @@ function processRoomsCollection(rooms){
     alert("This should open a sting editor. But this is only an example.");});
 }
 
+/*
 $("#aCloseSession").click(function(e){
   e.preventDefault();
   logout(function(){
     window.location.replace('login.html');
   });
 });
-
+*/
 function listItemHTML(uri, address, description, fullname, email, phone, id, price, lastModified, creationTimestamp  ){
 
 

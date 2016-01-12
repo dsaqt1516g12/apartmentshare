@@ -83,7 +83,7 @@ function processRoomsCollection(rooms){
 $("#aCloseSession").click(function(e){
   e.preventDefault();
   logout(function(){
-    window.location.replace('login.html');
+    window.location.replace('index.html');
   });
 });
 

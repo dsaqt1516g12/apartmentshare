@@ -1,4 +1,24 @@
 $(function(){
+   getCurrentUserProfile(function(user){
+      $("#aProfile").text(user.fullname + ' ');
+      $("#aProfile").append('<span class="caret"></span>');
+   });
+
+   var authToken = JSON.parse(sessionStorage["auth-token"]);
+   //var currentFlatsUri = authToken["links"]["current-flat"].uri;
+
+  $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/apartmentshare',
+            headers: {
+          "X-Auth-Token":authToken.token
+            }
+          })
+});
+
+
+
+$(function(){
 
 var uri = JSON.parse(sessionStorage["uri-rooms2"]);
    getRooms(uri, function(flats){
@@ -6,7 +26,7 @@ var uri = JSON.parse(sessionStorage["uri-rooms2"]);
       $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 			flats.creationTimestamp, flats.price));
    });
 });
- $("#buttonRegresar").click(function(){window.location.replace('index.html')});
+ $("#buttonRegresar").click(function(){window.location.replace('indexusuario.html')});
 
    $("#formPrevious").submit(function(e){
       e.preventDefault();

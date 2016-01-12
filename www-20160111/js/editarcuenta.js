@@ -22,7 +22,7 @@ $( "#form-signin" ).submit(function( event ) {
   });
 });
 
- $("#buttonRegresar").click(function(){window.location.replace('indexusuario.html')});
+ //$("#buttonRegresar").click(function(){window.location.replace('micuenta.html')});
 
    $("#formPrevious").submit(function(e){
       e.preventDefault();
@@ -40,7 +40,7 @@ $( "#form-signin" ).submit(function( event ) {
  logout(function(){
   });
       $("#buttonEliminarusuario").blur();
-	window.location.replace('login.html');
+	window.location.replace('index.html');
     });
 
 $("#aCloseSession").click(function(e){
@@ -52,9 +52,9 @@ $("#aCloseSession").click(function(e){
 
 function listItemHTML(loginid, fullname, email, phone ){
  
-  var loginid = '<h6 class="list-group-item-heading unclickable" align="center">' +loginid+ '</h6>';
-  var fullname = '<h6 class="list-group-item-heading unclickable" align="center">' +fullname+ '</h6>';
-  var email = '<h6 class="list-group-item-heading unclickable" align="center">' +email+ '</h6>';
- var phone = '<h6 class="list-group-item-heading unclickable" align="center">' +phone+ '</h6>';
-  return loginid +  fullname +email+ phone ;
+  var loginid = '<h6 class="list-group-item-heading unclickable" align="center">' + loginid + '</h6>';
+  var fullname = '<h6 class="list-group-item-heading unclickable" align="center">' + fullname + '</h6>';
+  var email = '<h6 class="list-group-item-heading unclickable" align="center">' + email + '</h6>';
+ var phone = '<h6 class="list-group-item-heading unclickable" align="center">' + phone + '</h6>';
+  return 'Nombre de usuario:' + loginid + 'Nombre Completo:' +  fullname + 'Correo electónico:' + email + 'Teléfono de contacto:' + phone ;
 }

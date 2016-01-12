@@ -33,7 +33,7 @@ $(function(){
 $("#aCloseSession").click(function(e){
   e.preventDefault();
   logout(function(){
-    window.location.replace('login.html');
+    window.location.replace('index.html');
   });
 });
 
@@ -43,5 +43,5 @@ function listItemHTML(loginid, fullname, email, phone ){
   var fullname = '<h6 class="list-group-item-heading unclickable" align="center">' +fullname+ '</h6>';
   var email = '<h6 class="list-group-item-heading unclickable" align="center">' +email+ '</h6>';
  var phone = '<h6 class="list-group-item-heading unclickable" align="center">' +phone+ '</h6>';
-  return loginid +  fullname +email+ phone ;
+  return 'Nombre de Usuario' + loginid + 'Nombre completo' + fullname + 'Correo electrónico' + email+ 'Teléfono de contacto'+ phone ;
 }
