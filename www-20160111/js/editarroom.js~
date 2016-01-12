@@ -7,51 +7,39 @@ $(function(){
 	var uri = JSON.parse(sessionStorage["uriroom"]);
 
    getRoom(uri, function(flats){
+
+	sessionStorage["idroom"] = JSON.stringify(flats.id);
+	var id = JSON.parse(sessionStorage["idroom"]);
+	console.log(id);
+	
+	sessionStorage["idroom-flat"] = JSON.stringify(flats.flatid);
+	var idflat = JSON.parse(sessionStorage["idroom-flat"]);
+	console.log(idflat);
+
+	$('#girlorboy').val(flats.girlorboy);
+	$('#sqm').val(flats.sqm);
+	$('#smoker').val(flats.smoker);
+	$('#price').val(flats.price),
+	$('#status').val(flats.status);
+	$('#description').val(flats.description);
       $("#stings-list").empty();
-      var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
       $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 			flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price));
-      processFlatsCollection(flats);
    });
 });
 
 $("#formEditarroom").submit(function(e){
       e.preventDefault();
-      e.stopImmediatePropagation();
-      $("#buttonEditarroom").blur();
-	  	window.location.replace('editarroom.html');
-	
-    });
- $("#buttonRegresar").click(function(){window.location.replace('listrooms.html')});
+  puthabitacion($('#description').val(),  $('#girlorboy').val(), $('#sqm').val(), $('#furnished').val(), $('#status').val(), $('#price').val(), function(){
 
-   $("#formPrevious").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-     // previousStings();
-      $("#buttonVerhabitaciones").blur();
-	window.location.replace('listrooms.html');
-    });
+	 $("#buttonEditarroom").blur();
+		console.log("change");
+	  	window.location.replace('listrooms.html');
+  		}
 
 
- $("#buttonVerhabitaciones").click(function(){window.location.replace('listrooms.html')});
-
-   $("#formPrevious").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-     // previousStings();
-      $("#buttonVerhabitaciones").blur();
-
-	window.location.replace('listrooms.html');
-
- });
-
-   $("#formEliminarhabitacion").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-		EliminarHabitacion(function(){
-	window.location.replace('listrooms.html');
-  });
-
+	);
 });
+
 
 $("#aCloseSession").click(function(e){
   e.preventDefault();

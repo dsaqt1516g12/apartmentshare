@@ -11,7 +11,7 @@ public interface UserDAO {
 
     public User createUser(String loginid, String password, String fullname, String email, String phone)  throws SQLException, UserAlreadyExistsException;
 
-    public User updateProfile(String id, String email, String fullname, String phone) throws SQLException;
+    public User updateProfile(String id, String loginid, String fullname, String email,  String phone) throws SQLException;
 
     public User getUserById(String id) throws SQLException;
 

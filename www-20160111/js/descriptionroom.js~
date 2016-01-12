@@ -9,11 +9,18 @@ $(function(){
    getRoom(uri, function(flats){
       $("#stings-list").empty();
       var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
-      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 			flats.creationTimestamp, flats.id, flats.girlorboy, flats.status));
+      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 			flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price));
       processFlatsCollection(flats);
    });
 });
 
+$("#formEditarroom").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      $("#buttonEditarroom").blur();
+	  	window.location.replace('editarflat.html');
+	
+    });
  $("#buttonRegresar").click(function(){window.location.replace('listrooms.html')});
 
    $("#formPrevious").submit(function(e){

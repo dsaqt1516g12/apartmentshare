@@ -116,7 +116,6 @@ function EliminarHabitacion(complete){
 }
 
 
-
 function getCurrentUserProfile(complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	var uri = authToken["links"]["user-profile"].uri;
@@ -133,6 +132,8 @@ function getCurrentUserProfile(complete){
 		})
 		.fail(function(){});
 }
+
+
 
 function loadFlats(uri, complete){
 
@@ -304,8 +305,71 @@ function crearpiso(campusid, address , description, numpartner, smoker, pets, gi
 			var error = jqXHR.responseJSON;
 				alert(error.reason);
 
-});
+	});
 }
+
+
+function putpiso(campusid, address , description, numpartner, smoker, pets, girlorboy, sqm, furnished, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, complete){
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	campusid= '7998490EA1D011E5ABF5002318A56C8C';
+	console.log(authToken.token);
+	var id = JSON.parse(sessionStorage["idflat"]);
+	var uri = JSON.parse(sessionStorage["uri-flat"]);
+	var userid= authToken.userid;
+	console.log(uri);
+
+	var flatjson= "application/vnd.dsa.apartmentshare.flat+json";
+	
+	var data ={"id":id,"userid":userid,"campusid":campusid,"address":address,"description":description,"numpartner":numpartner,"smoker":smoker,
+	"pets":pets,"girlorboy":girlorboy,"sqm":sqm,"furnished":furnished,"numrooms":numrooms,"numbathrooms":numbathrooms,"elevator":elevator,
+	"plantnum":plantnum,"internet":internet,"estancia":estancia}
+	$.ajax({
+	type: 'PUT',
+	url: uri,
+	crossDomain : true,
+        dataType : 'raw',
+	contentType:"application/raw", 
+	data : JSON.stringify(data),
+    	headers: {
+        	"X-Auth-Token":authToken.token,
+		"Content-Type":flatjson
+    	}
+	
+    }).done(function(flat) { 
+		flat.links = linksToMap(flat.links);
+		console.log(flat);
+    	complete();
+  	}).fail(function(){});
+}
+
+function putUsuario(loginid, fullname, email, phone, complete){
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	var uri = authToken["links"]["user-profile"].uri;
+	var id= authToken.userid;
+	var usuariojson= "application/vnd.dsa.apartmentshare.user+json";
+
+	var data = {"id":id,"loginid":loginid,"fullname":fullname,"email":email,"phone":phone}
+
+		$.ajax({
+			type: 'PUT',
+			url: uri,
+			crossDomain : true,
+			dataType : 'raw',
+			contentType:"application/raw",  
+			data : JSON.stringify(data),
+ 
+		    	headers: {
+				"X-Auth-Token":authToken.token,
+				"Content-Type":usuariojson
+			
+		    	}
+	    }).done(function(user){
+			user.links = linksToMap(user.links);
+			complete(user);
+		})
+		.fail(function(){});
+}
+
 
 function crearhabitacion(description, girlorboy , sqm, furnished, status, price, complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
@@ -331,11 +395,45 @@ function crearhabitacion(description, girlorboy , sqm, furnished, status, price,
 	type: 'POST',
 	url: uri,
 	crossDomain : true,
-	dataType : 'json',
 	data: nuevahabitacion,
+	dataType : 'json',
         contentType: "application/x-www-form-urlencoded", 
     	headers: {
         	"X-Auth-Token":authToken.token
+    	}
+	
+    }).done(function(data) { 
+	console.log(data);
+    	complete();
+  	}).fail(function(){});
+}
+
+function puthabitacion(description, girlorboy , sqm, furnished, status, price, complete){
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	console.log(authToken.token);
+	var uri = JSON.parse(sessionStorage["uriroom"]);
+	console.log(uri);
+
+	var userid= authToken.userid;
+
+	//var uri = uri +'/room';
+	console.log(uri);
+	var roomjson= "application/vnd.dsa.apartmentshare.room+json";
+	var id = JSON.parse(sessionStorage["idroom"]);
+	var flatid = JSON.parse(sessionStorage["idroom-flat"]);
+
+	var data= {"id":id,"userid":userid,"flatid":flatid,"description":description,"girlorboy":girlorboy,"sqm":sqm,"furnished":furnished,"status":status,"price":price}
+
+	$.ajax({
+	type: 'PUT',
+	url: uri,
+	crossDomain : true,
+	data : JSON.stringify(data),
+ 	dataType : 'raw',
+	contentType:"application/raw", 
+    	headers: {
+        	"X-Auth-Token":authToken.token,
+		"Content-Type":roomjson
     	}
 	
     }).done(function(data) { 

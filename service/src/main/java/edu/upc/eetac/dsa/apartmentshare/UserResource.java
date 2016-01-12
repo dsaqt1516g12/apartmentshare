@@ -63,7 +63,7 @@ public class UserResource {
 
         UserDAO userDAO = new UserDAOImpl();
         try {
-            user = userDAO.updateProfile(userid,user.getEmail(), user.getFullname() , user.getPhone() );
+            user = userDAO.updateProfile(userid, user.getLoginid(), user.getFullname() , user.getEmail(), user.getPhone() );
             if(user == null)
                 throw new NotFoundException("User with id = "+id+" doesn't exist");
         } catch (SQLException e) {
@@ -71,7 +71,6 @@ public class UserResource {
         }
         return user;
     }
-
 
     @Path("/{id}")
     @GET

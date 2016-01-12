@@ -64,7 +64,7 @@ public class UserDAOImpl implements UserDAO {
         }
 
     @Override
-    public User updateProfile(String id, String email, String fullname, String phone) throws SQLException {
+    public User updateProfile(String id, String loginid, String fullname, String email,  String phone) throws SQLException {
             User user = null;
 
             Connection connection = null;
@@ -73,10 +73,12 @@ public class UserDAOImpl implements UserDAO {
                 connection = Database.getConnection();
 
                 stmt = connection.prepareStatement(UserDAOQuery.UPDATE_USER);
-                stmt.setString(1, email);
+                stmt.setString(1, loginid);
                 stmt.setString(2, fullname);
-                stmt.setString(3, phone);
-                stmt.setString(4, id);
+                stmt.setString(3, email);
+                stmt.setString(4, phone);
+                stmt.setString(5, id);
+
 
                 int rows = stmt.executeUpdate();
                 if (rows == 1)

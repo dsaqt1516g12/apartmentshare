@@ -14,18 +14,19 @@ var uri = JSON.parse(sessionStorage["uri-flat"]);
    });
 });
 
-
  $("#buttonRegresar").click(function(){window.location.replace('apartmentshare.html')});
- $("#buttonEditarpiso").click(function(){window.location.replace('crearpiso.html')});
  $("#buttonEliminarpiso").click(function(){
-  EliminarPiso(function(){
-
-    
+  EliminarPiso(function(){  
   });
-
-
 });
-   $("#formCrearhabitacion").submit(function(e){
+   $("#formEditarpiso").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      $("#buttonEditarpiso").blur();
+	  	window.location.replace('editarflat.html');
+	
+    });
+ $("#formCrearhabitacion").submit(function(e){
       e.preventDefault();
       e.stopImmediatePropagation();
       $("#buttonCrearhabitacion").blur();
