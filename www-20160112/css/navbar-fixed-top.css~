@@ -1,0 +1,30 @@
+body {
+  min-height: 2000px;
+  padding-top: 70px;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: 200px;
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+}
+
+#menu ul li {
+    background-color: #ddddde;
+}
+
+#menu ul li a {
+    color: #777;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    padding: 10px 10px 10px 20px;
+}
+#menu ul li a:hover {
+    background: #000;
+    border-left: 10px solid #888;
+    color: #ffffff;
+}

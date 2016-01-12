@@ -1,0 +1,71 @@
+$(function(){
+   getCurrentUserProfile(function(user){
+      $("#aProfile").text(user.fullname + ' ');
+      $("#aProfile").append('<span class="caret"></span>');
+   });
+
+   var authToken = JSON.parse(sessionStorage["auth-token"]);
+   var currentStingsUri = authToken["links"]["current-flat"].uri;
+   loadStings(currentStingsUri, function(flats){
+      $("#stings-list").empty();
+      processStingCollection(flats);
+   });
+});
+
+function previousStings(){
+  loadStings($('#formPrevious').attr('action'), function(flats){
+    processStingCollection(flats);
+  });
+}
+
+function processStingCollection(flat){
+  var lastIndex = flat["flat"].length - 1;
+  $.each(flat["flats"], function(i,flat){
+      flat.links=linksToMap(flat.links);
+      var edit = flat.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
+      $("#stings-list").append(listItemHTML(flat.links["self"].uri, flat.address, flat.description, edit));
+      if(i==0)
+        $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
+      if(i==lastIndex){
+        $('#formPrevious').attr('action', flat["links"].previous.uri);
+      }
+  });
+
+   $("#formPrevious").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      previousStings();
+      $("#buttonPrevious").blur();
+    });
+
+  $("a.list-group-item").click(function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var uri = $(this).attr("href");
+    getSting(uri, function(flat){
+      // In this example we only log the sting
+      console.log(flat);
+    });
+  });
+  $(".glyphicon-pencil").click(function(e){
+    e.preventDefault();
+    alert("This should open a sting editor. But this is only an example.");});
+}
+
+$("#aCloseSession").click(function(e){
+  e.preventDefault();
+  logout(function(){
+    window.location.replace('login.html');
+  });
+});
+
+
+
+
+
+function listItemHTML(uri, address, description, edit){
+  var a = '<a class="list-group-item" href="'+ uri +'">';
+  var p = '<p class="list-group-item-text unclickable">' + subject + '</p>';
+  var h = (edit) ? '<h6 class="list-group-item-heading unclickable" align="right">'+creator+' <span class="glyphicon glyphicon-pencil clickable"></span></h6>' : '<h6 class="list-group-item-heading unclickable" align="right">'+creator+'</h6>';;
+  return a + p +  h + '</a>';
+}

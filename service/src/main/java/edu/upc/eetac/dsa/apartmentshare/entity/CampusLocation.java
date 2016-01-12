@@ -33,16 +33,16 @@ public class CampusLocation {
     )
     private List<Link> links;
     private String id;
-    private String userid;
+    //private String userid;
     private String campusname;
     private String address;
     private float longitud;
     private float latitud;
 
 
-    public String getUserid() {return userid;}
+    //public String getUserid() {return userid;}
 
-    public void setUserid(String userid) { this.userid = userid;}
+   // public void setUserid(String userid) { this.userid = userid;}
 
     public List<Link> getLinks() {
         return links;
