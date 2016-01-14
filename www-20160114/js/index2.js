@@ -1,0 +1,108 @@
+
+   loadRooms(function(rooms){
+      $("#stings-list").empty();
+      processRoomsCollection(rooms);
+});
+
+
+function previousStings(){
+  loadRooms2(function(rooms){
+    processRoomsCollection(rooms);
+  });
+}
+
+
+$("#formBuscarhabitacion").submit(function(e){
+    e.preventDefault();
+  	BuscarRooms($('#campusid').val(),  $('#furnished').val(), $('#smoker').val(), $('#pets').val(), $('#numbathrooms').val(), 
+  		$('#girlorboy').val(),$('#plantnum').val(), $('#sqm').val(), $('#elevator').val(), $('#internet').val(), $('#numpartner').val(), 
+  		$('#price').val(), 
+  		function(rooms) {
+		  	$("#buttonBuscarhabitacion").blur();
+			 $("#stings-list").empty();
+      				processRoomsCollection(rooms);
+		  }
+	);
+});
+
+   $("#formPrevious").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      previousStings();
+      $("#buttonPrevious").blur();
+    });
+
+
+function processRoomsCollection(rooms){
+
+ 	var lastIndex = rooms["rooms"].length-1;
+	
+	console.log(lastIndex);
+  $.each(rooms["rooms"], function(i,rooms){
+
+      rooms.links=linksToMap(rooms.links);
+
+      $("#stings-list").append(listItemHTML(rooms.links["self"].uri, rooms.address, rooms.description, rooms.fullname, rooms.email, rooms.phone, rooms.id, rooms.price, rooms.campusname, rooms.lastModified, rooms.creationTimestamp));
+      if(i==0)
+        $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
+     if(i==lastIndex){
+      $('#formPrevious').attr('action', rooms["links"].previous.uri);}
+  });
+
+  $("a.list-group-item").click(function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var uri = $(this).attr("href");
+    getRooms(uri, function(room){
+      console.log(room);
+	window.location.replace('descriptionroom2logueado.html');
+    });
+  });
+  $(".glyphicon-pencil").click(function(e){
+    e.preventDefault();
+    alert("This should open a sting editor. But this is only an example.");});
+}
+
+
+
+$("#aCloseSession").click(function(e){
+  e.preventDefault();
+  logout(function(){
+    window.location.replace('index.html');
+  });
+});
+
+$("#aGoToProfile").click(function(e){
+  e.preventDefault();
+    window.location.replace('micuenta.html');
+});
+
+function listItemHTML(uri, address, description, fullname, email, phone, id, price, campusname, lastModified, creationTimestamp  ){
+
+
+lastModifieldformat = lastModifield;
+var lastModifield = new Date( lastModifieldformat );
+creationTimestampformat= creationTimestamp;
+var creationTimestamp = new Date( creationTimestampformat );
+
+ var a = '<a class="list-group-item" href="'+ uri +'/'+ id + '">';
+
+ var description = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Descripción : '+  description +'</h6>';;
+ var address = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Direccíon: '+  address +'</h6>';;
+var campusname = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Cerda de campus UPC: '+  campusname +'</h6>';;
+
+ var fullname = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Nombre completo del arrendador: '+  fullname +'</h6>';;
+	
+ var email = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Email: '+  email +'</h6>';;
+
+
+ var phone = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Telefono: '+  phone +'</h6>';;
+
+ var price = '<h6 class="list-group-item-heading unclickable" color="red" align="center">'+ 'Precio: '+  price +'</h6>';;
+
+ var lastModifield = '<h6 class="list-group-item-heading unclickable" align="right">'+  lastModifield +'</h6>';;
+var creationTimestamp = '<h6 class="list-group-item-heading unclickable" align="right">'+  creationTimestamp +'</h6>';;
+
+
+  return  a + description + address + campusname + fullname + email + phone + price +  creationTimestamp + '</a>' ;
+}
