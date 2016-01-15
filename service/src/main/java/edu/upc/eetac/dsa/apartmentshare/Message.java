@@ -135,6 +135,18 @@ public class Message {
         Connection connection = null;
         PreparedStatement stmt = null;
         Connection conn = null;
+        UserDAO userDAO = new UserDAOImpl();
+        User user =null;
+
+        try {
+            user = userDAO.getUserById(fromuser);
+            if (user==null)
+                throw new NotFoundException("User with ID "+fromuser+" doesn't exist");
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+
+
         try {
             conn = Database.getConnection();
             stmt = conn.prepareStatement(UserDAOQuery.READ_MSGS);
