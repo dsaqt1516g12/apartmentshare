@@ -22,8 +22,6 @@ public class CampusResource {
     private SecurityContext securityContext;
     @POST
     @RolesAllowed("administrator")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(ApartmentshareMediaType.APARTMENTSHARE_AUTH_TOKEN)
     public Response createCampus(@FormParam("campusname") String campusname, @FormParam("address") String address,@FormParam("longitud") float longitud,@FormParam("latitud") float latitud, @Context UriInfo uriInfo) throws URISyntaxException {
         if(campusname==null || address == null)
             throw new BadRequestException("campusname and address are mandatory");

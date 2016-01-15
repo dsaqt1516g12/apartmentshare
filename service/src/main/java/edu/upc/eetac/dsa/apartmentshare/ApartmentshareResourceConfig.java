@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.apartmentshare;
 
+import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.linking.DeclarativeLinkingFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -14,6 +15,7 @@ import java.util.ResourceBundle;
 public class ApartmentshareResourceConfig extends ResourceConfig {
 
     public ApartmentshareResourceConfig() {
+        register(JacksonFeature.class);
         register(RolesAllowedDynamicFeature.class);
         register(DeclarativeLinkingFeature.class);
         packages("edu.upc.eetac.dsa.apartmentshare");

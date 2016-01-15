@@ -57,6 +57,17 @@ public class RoomResource {
         String URL = String.valueOf(app.getProperties().get("imgBaseURL")).toString();
         RoomCollection roomCollection = null;
         RoomDAO roomDAO = new RoomDAOImpl();
+
+        FlatDAO flatDAO = new FlatDAOImpl();
+        Flat flat =null;
+        try {
+            flat = flatDAO.getFlatById(flatid);
+            if (flat == null)
+                throw new NotFoundException("Flat with id = " + flatid + " doesn't exist");
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+
         try {
             if (before && timestamp == 0) timestamp = System.currentTimeMillis();
             roomCollection = roomDAO.getRooms(flatid,securityContext.getUserPrincipal().getName(),timestamp, before,URL);
@@ -68,7 +79,6 @@ public class RoomResource {
 
     @Path("/{roomid}")
     @GET
-    @Consumes(ApartmentshareMediaType.APARTMENTSHARE_ROOM)
     @Produces(ApartmentshareMediaType.APARTMENTSHARE_ROOM)
     public Response updateRoom(@PathParam("flatid") String flatid,@PathParam("roomid") String id, @Context Request request) {
         // Create cache-control
@@ -125,6 +135,7 @@ public class RoomResource {
     public Room updateRoom(@PathParam("roomid") String id, Room room) {
         FlatDAO flatDAO = new FlatDAOImpl();
         Flat flat =null;
+
         if(room == null)
             throw new BadRequestException("entity is null");
         if(!id.equals(room.getId()))
@@ -153,9 +164,20 @@ public class RoomResource {
     }
     @Path("/{roomid}")
     @DELETE
-    public void deleteRoom(@PathParam("roomid") String id) {
+    public void deleteRoom(@PathParam("flatid") String flatid,@PathParam("roomid") String id) {
         String userid = securityContext.getUserPrincipal().getName();
         RoomDAO roomDAO = new RoomDAOImpl();
+
+        FlatDAO flatDAO = new FlatDAOImpl();
+        Flat flat =null;
+        try {
+            flat = flatDAO.getFlatById(flatid);
+            if (flat == null)
+                throw new NotFoundException("Flat with id = " + flatid + " doesn't exist");
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+
         try {
             String ownerid = roomDAO.getRoomById(id).getUserid();
             if(!userid.equals(ownerid))

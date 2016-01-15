@@ -72,7 +72,6 @@ public class FlatResource {
 
     @Path("/{id}")
     @GET
-    @Consumes(ApartmentshareMediaType.APARTMENTSHARE_FLAT)
     @Produces(ApartmentshareMediaType.APARTMENTSHARE_FLAT)
     public Response updateFlat(@PathParam("id") String id, @Context Request request) {
         // Create cache-control

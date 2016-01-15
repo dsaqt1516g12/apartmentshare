@@ -32,7 +32,7 @@ public class ListRoomImageResource {
     private Application app;
 
     @GET
-    @Produces(ApartmentshareMediaType.APARTMENTSHARE_ROOM_IMG)
+    @Produces(ApartmentshareMediaType.APARTMENTSHARE_ROOM_IMG_COLLECTION)
     public RoomImgCollection getImages(@PathParam("id") String roomid, @Context UriInfo uriInfo) throws URISyntaxException {
         RoomImgCollection images = new RoomImgCollection();
         RoomDAO roomDAO = new RoomDAOImpl();

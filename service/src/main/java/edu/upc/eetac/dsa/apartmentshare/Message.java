@@ -90,7 +90,7 @@ public class Message {
         return Response.created(uri).type(ApartmentshareMediaType.APARTMENTSHARE_MESSAGE).entity(msg).build();
     }
     @GET
-    @Produces(ApartmentshareMediaType.APARTMENTSHARE_MESSAGE)
+    @Produces(ApartmentshareMediaType.APARTMENTSHARE_MESSAGE_COLLECTION)
     public MessagesCollection getMessages(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
         MessagesCollection allmsg = new MessagesCollection();
         String userid = securityContext.getUserPrincipal().getName();
