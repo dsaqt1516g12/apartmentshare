@@ -60,6 +60,10 @@ CREATE TABLE campus_upc (
 	longitud FLOAT (17,14) NOT NULL,
 
 	latitud FLOAT (17,14) NOT NULL,
+	
+	creation_timestamp DATETIME not null default current_timestamp,
+			
+	last_modified TIMESTAMP NOT NULL,
 
     	PRIMARY KEY (id)
 

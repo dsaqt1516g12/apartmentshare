@@ -30,5 +30,13 @@
   {
     "path": "(?i)rooms/([0-9a-f]{32})?/img",
     "methods": ["GET"]
+  },
+  {
+    "path": "(?i)campus/([0-9a-f]{32})?",
+    "methods": ["GET"]
+  },
+  {
+    "path": "campus",
+    "methods": ["GET"]
   }
 ]

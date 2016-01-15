@@ -107,7 +107,7 @@ public class RoomImageResource {
         roomImg.setImageURL(app.getProperties().get("imgBaseURL") + roomImg.getFilename());
 
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + roomImg.getId());
-        return Response.created(uri).type(ApartmentshareMediaType.APARTMENTSHARE_ROOM_IMG).entity(roomImg).build();
+        return Response.created(uri ).type(ApartmentshareMediaType.APARTMENTSHARE_ROOM_IMG).entity(roomImg).build();
     }
 
 

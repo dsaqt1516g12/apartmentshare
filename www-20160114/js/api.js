@@ -1,5 +1,5 @@
-var BASE_URI="http://127.0.0.1:8080/apartmentshare"
-//var BASE_URI="http://147.83.7.207:8888/apartmentshare"
+//var BASE_URI="http://127.0.0.1:8080/apartmentshare"
+var BASE_URI="http://147.83.7.207:8888/apartmentshare"
 
 function linksToMap(links){
 	var map = {};

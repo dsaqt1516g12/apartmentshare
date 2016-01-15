@@ -13,6 +13,7 @@ public interface CampusDAO {
     public CampusLocation createCampus(String id,String campusname, String address,float longitud,float latitud) throws SQLException;
     public CampusLocation getCampusById(String id) throws SQLException;
     public CampusLocationCollection getCampus(long timestamp, boolean before) throws SQLException;
+    public CampusLocation updateCampus(String id, String campusname, String address,float longitud,float latitud) throws SQLException;
     public boolean deleteCampus(String id) throws SQLException;
 
 }

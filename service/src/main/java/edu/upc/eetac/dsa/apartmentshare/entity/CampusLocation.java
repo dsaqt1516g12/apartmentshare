@@ -23,12 +23,12 @@ public class CampusLocation {
             {
                     @InjectLink(resource = ApartmentshareRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Apartmentsahre Root API"),
                     @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-campus", title = "Current campus"),
-                    @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-campus", title = "Create campus", type = MediaType.APPLICATION_FORM_URLENCODED),
-                    @InjectLink(resource = CampusResource.class, method = "getCampus", style = InjectLink.Style.ABSOLUTE, rel = "self campus", title = "Campus", bindings = @Binding(name = "id", value = "${instance.id}")),
+                   @InjectLink(resource = CampusResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-campus", title = "Create campus", type = MediaType.APPLICATION_FORM_URLENCODED),
+                  // @InjectLink(resource = CampusResource.class, method = "getCampus", style = InjectLink.Style.ABSOLUTE, rel = "self campus", title = "Campus"),
                     @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
                    // @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", bindings = @Binding(name = "id", value = "${instance.userid}")),
                     @InjectLink(resource = CampusResource.class, method = "getCampus", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer flats", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "false")}),
-                    @InjectLink(resource = CampusResource.class, method = "getCampus", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older flats", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "true")}),
+                   // @InjectLink(resource = CampusResource.class, method = "getCampus", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older flats", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "true")}),
             }
     )
     private List<Link> links;
@@ -40,8 +40,8 @@ public class CampusLocation {
     private String address;
     private float longitud;
     private float latitud;
-
-
+    private long creationTimestamp;
+    private long lastModified;
 
    // public String getUserid() {return userid;}
 
@@ -93,5 +93,21 @@ public class CampusLocation {
 
     public void setLatitud(float latitud) {
         this.latitud = latitud;
+    }
+
+    public long getCreationTimestamp() {
+        return creationTimestamp;
+    }
+
+    public void setCreationTimestamp(long creationTimestamp) {
+        this.creationTimestamp = creationTimestamp;
+    }
+
+    public long getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(long lastModified) {
+        this.lastModified = lastModified;
     }
 }
