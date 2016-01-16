@@ -5,7 +5,7 @@
 });
 
 function previousStings(){
-  loadRooms2(function(rooms){
+  loadRooms2($('#formPrevious').attr('action'), function(rooms){
     processRoomsCollection(rooms);
   });
 }

@@ -4,6 +4,7 @@
       processRoomsCollection(rooms);
 });
 
+
 function previousStings(){
   loadRooms2(function(rooms){
     processRoomsCollection(rooms);
@@ -24,6 +25,13 @@ $("#formBuscarhabitacion").submit(function(e){
 	);
 });
 
+   $("#formPrevious").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      previousStings();
+      $("#buttonPrevious").blur();
+    });
+
 
 function processRoomsCollection(rooms){
 
@@ -41,20 +49,13 @@ function processRoomsCollection(rooms){
       $('#formPrevious').attr('action', rooms["links"].previous.uri);}
   });
 
-   $("#formPrevious").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      previousStings();
-      $("#buttonPrevious").blur();
-    });
-
   $("a.list-group-item").click(function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
     var uri = $(this).attr("href");
     getRooms(uri, function(room){
       console.log(room);
-	window.location.replace('descriptionroom2.html');
+	window.location.replace('descriptionroom2logueado.html');
     });
   });
   $(".glyphicon-pencil").click(function(e){
@@ -62,6 +63,19 @@ function processRoomsCollection(rooms){
     alert("This should open a sting editor. But this is only an example.");});
 }
 
+
+
+$("#aCloseSession").click(function(e){
+  e.preventDefault();
+  logout(function(){
+    window.location.replace('index.html');
+  });
+});
+
+$("#aGoToProfile").click(function(e){
+  e.preventDefault();
+    window.location.replace('micuenta.html');
+});
 
 function listItemHTML(uri, address, description, fullname, email, phone, id, price, campusname, lastModified, creationTimestamp  ){
 

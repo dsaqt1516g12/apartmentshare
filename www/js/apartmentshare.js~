@@ -7,13 +7,7 @@ $(function(){
    var authToken = JSON.parse(sessionStorage["auth-token"]);
    var currentFlatsUri = authToken["links"]["current-flat"].uri;
 
-	$.ajax({
-			    	type: 'GET',
-			   		url: 'http://localhost:8080/apartmentshare/flat',
-			    	headers: {
-					"X-Auth-Token":authToken.token
-			    	}
-			    })
+
 
    loadFlats(currentFlatsUri, function(flats){
       $("#stings-list").empty();
@@ -44,7 +38,7 @@ function processFlatsCollection(flats){
 
       flats.links=linksToMap(flats.links);
       var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
-      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, flats.creationTimestamp, flats.id, edit));
+      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, flats.creationTimestamp, flats.id, edit, flats.numpartner));
       if(i==0)
         $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
      if(i==lastIndex){
@@ -97,11 +91,18 @@ $("#aGoToProfile").click(function(e){
     window.location.replace('micuenta.html');
 });
 
-function listItemHTML(uri, address, description,lastModifield, creationTimestamp, id, edit){
+function listItemHTML(uri, address, description,lastModifield, creationTimestamp, id, edit, numpartner){
+
+
+lastModifieldformat = lastModifield;
+var lastModifield = new Date( lastModifieldformat );
+creationTimestampformat= creationTimestamp;
+var creationTimestamp = new Date( creationTimestampformat );
+
   var a = '<a class="list-group-item" href="'+ uri +'/'+ id + '">';
-  var p = '<p class="list-group-item-text unclickable">' +description+ '</p>';
-  var m = '<m class="list-group-item-text unclickable">' +address+ '</m>';
-  var l = (edit) ? '<h6 class="list-group-item-heading unclickable" align="right">'+  creationTimestamp +' <span class="glyphicon glyphicon-pencil clickable"></span></h6>' : '<h6 class="list-group-item-heading unclickable" align="right">'+ creationTimestamp +'</h6>';;
-  var h = (edit) ? '<h6 class="list-group-item-heading unclickable" align="right">'+  lastModifield +' <span class="glyphicon glyphicon-pencil clickable"></span></h6>' : '<h6 class="list-group-item-heading unclickable" align="right">'+ lastModifield +'</h6>';;
-  return a + p + m + l +h + '</a>';
+  var p = '<p class="list-group-item-text unclickable">' + 'Descripción del piso: '+ description+ '</p>';
+  var m = '<m class="list-group-item-text unclickable">' +  'Direcion del piso: '+ address+ '</m>';
+  var creationTimestamp = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Fecha de creacón : ' + creationTimestamp +'</h6>';;
+  var lastModifield = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Ultima modificacion: '+   lastModifield +'</h6>';;
+  return a + p + m  + creationTimestamp + lastModifield + '</a>';
 }

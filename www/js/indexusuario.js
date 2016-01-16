@@ -23,12 +23,32 @@ $("#aCloseSession").click(function(e){
   });
 });
 
-function listItemHTML(uri, address, description,lastModifield, creationTimestamp, id, edit){
-  
-  var a = '<a class="list-group-item" href="'+ uri +'/'+ id +'">';
-  var p = '<p class="list-group-item-text unclickable">' +description+ '</p>';
-  var m = '<m class="list-group-item-text unclickable">' +address+ '</m>';
-  var l = (edit) ? '<h6 class="list-group-item-heading unclickable" align="right">'+  creationTimestamp +' <span class="glyphicon glyphicon-pencil clickable"></span></h6>' : '<h6 class="list-group-item-heading unclickable" align="right">'+ creationTimestamp +'</h6>';;
-  var h = (edit) ? '<h6 class="list-group-item-heading unclickable" align="right">'+  lastModifield +' <span class="glyphicon glyphicon-pencil clickable"></span></h6>' : '<h6 class="list-group-item-heading unclickable" align="right">'+ lastModifield +'</h6>';;
-  return a + p + m + l +h + '</a>';
+
+function listItemHTML(uri, address, description, fullname, email, phone, id, price, lastModified, creationTimestamp  ){
+
+
+lastModifieldformat = lastModifield;
+var lastModifield = new Date( lastModifieldformat );
+creationTimestampformat= creationTimestamp;
+var creationTimestamp = new Date( creationTimestampformat );
+
+ var a = '<a class="list-group-item" href="'+ uri +'/'+ id + '">';
+
+ var description = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Descripción : '+  description +'</h6>';;
+ var address = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Direccíon: '+  address +'</h6>';;
+
+ var fullname = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Nombre complero de Arrendador: '+  fullname +'</h6>';;
+	
+ var email = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Email: '+  email +'</h6>';;
+
+
+ var phone = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Telefono: '+  phone +'</h6>';;
+
+ var price = '<h6 class="list-group-item-heading unclickable" color="red" align="center">'+ 'Precio: '+  price +'</h6>';;
+
+ var lastModifield = '<h6 class="list-group-item-heading unclickable" align="right">'+  lastModifield +'</h6>';;
+var creationTimestamp = '<h6 class="list-group-item-heading unclickable" align="right">'+  creationTimestamp +'</h6>';;
+
+
+  return  a + description + address + fullname + email + phone + price +  creationTimestamp + '</a>' ;
 }

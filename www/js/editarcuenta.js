@@ -1,12 +1,25 @@
 $(function(){
    getCurrentUserProfile(function(user){
+
 	$("#stings-list").empty();
       $("#stings-list").append(listItemHTML(user.loginid, user.fullname, user.email, user.phone));
       $("#aProfile").text(user.fullname + ' ');
+	$('#loginid').val(user.loginid);
+	$('#fullname').val(user.fullname);
+	$('#email').val(user.email);
+	 $('#phone').val(user.phone)
       $("#aProfile").append('<span class="caret"></span>');
 	   
    });
+});
 
+
+$( "#form-signin" ).submit(function( event ) {
+  event.preventDefault(); 
+  putUsuario($('#loginid').val(), $('#fullname').val(), $('#email').val(), $('#phone').val(), function(){
+  	console.log("change");
+  	window.location.replace('micuenta.html');
+  });
 });
 
  $("#buttonRegresar").click(function(){window.location.replace('indexusuario.html')});
@@ -16,7 +29,7 @@ $(function(){
       e.stopImmediatePropagation();
      // previousStings();
       $("#buttonVerhabitaciones").blur();
-	window.location.replace('listrooms.html');
+	window.location.replace('micuenta.html');
     });
 
    $("#formEliminarusuario").submit(function(e){
@@ -43,5 +56,5 @@ function listItemHTML(loginid, fullname, email, phone ){
   var fullname = '<h6 class="list-group-item-heading unclickable" align="center">' +fullname+ '</h6>';
   var email = '<h6 class="list-group-item-heading unclickable" align="center">' +email+ '</h6>';
  var phone = '<h6 class="list-group-item-heading unclickable" align="center">' +phone+ '</h6>';
-  return 'Nombre de Usuario' + loginid + 'Nombre completo' + fullname + 'Correo electrónico' + email+ 'Teléfono de contacto'+ phone ;
+  return loginid +  fullname +email+ phone ;
 }

@@ -10,7 +10,7 @@
     <title>Apartment Share</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
     <link href="css/apartmentshare.css" rel="stylesheet">
 
     <STYLE TYPE="text/css">
@@ -25,25 +25,41 @@
 
 
     <!-- Fixed navbar -->
-<div class="navbar navbar-default">
-  <div class="container-fluid">
-    
-    <div class="navbar-collapse collapse" id="navbar">
-    <ul class="nav navbar-nav navbar-left">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand"> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-left">
                 <li><a id="Quiensomos" href="quiensomos.html">Acerca de nosotros</a></li>
             </ul>
-          <form class="navbar-form navbar-right" id="navbar-form navbar-right">
-
-
-            <a class="btn btn-success" href="login.html" type="submit">Entra en ApartmentShare</a>
-
-            <a class="btn btn-warning" href="registro.html" type="submit">Regístrate</a>
 
             
-          </form>
-   </div>
-  </div>
-</div>
+        
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a id="aProfile" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a id="aGoToProfile" href="micuenta.html">Mi Cuenta</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="aCloseSession">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
 
 
 
@@ -74,11 +90,14 @@ Los creadores de ApartmentShare somos tres estudiantes del Campus EETAC UPC, ins
 <br></br>
 Debido al escaso tiempo y a nuestra inexperiencia, fue necesario hacer una repartición equitativa de la carga de trabajo que ApartmentShare supuso, apoyándonos y ayudándonos en todo lo necesario y resolviendo todas nuestras dudas con la guía de nuestros profesores para así solventar todas las dificultades que se nos presentaron. 
 <br></br>
-De este modo, la repartición quedó de la siguiente manera:
+
 </FONT></p>
 
-
-
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 <h2>Contacta con nosotros</h2>
 
 <p align="center"><FONT  align="right" SIZE=2  align="center"> 
@@ -128,8 +147,7 @@ Rubén Molina
     <br></br>
     <br></br>
 
-        <a class="btn btn-small btn-default" href="index.html"  type="submit">Volver al índice</a>
-     
+      <a class="btn btn-small btn-default" href="indexusuario.html"  type="submit">Volver al índice</a>
     </div>
   </div>
 </div>  
@@ -139,7 +157,5 @@ Rubén Molina
     <script src="js/api.js"></script>
     <script src="js/indexusuario.js"></script>
     <script src="js/index.js"></script>
-
-   
   </body>
 </html>
