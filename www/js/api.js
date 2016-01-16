@@ -1,5 +1,6 @@
 
 var BASE_URI="http://147.83.7.207:8888/apartmentshare"
+var BASE_URI_IMG="http://147.83.7.207:88/img/"
 
 function linksToMap(links){
 	var map = {};
@@ -286,6 +287,8 @@ function getRooms(uri, complete){
 		    	
 		    }).done(function(rooms){
 			rooms.links = linksToMap(rooms.links);
+
+			$("#foto").val(rooms.imageURL + " ... foto");
 			complete(rooms);
 		})
 		.fail(function(){});

@@ -51,7 +51,7 @@ $("#formEditarroom").submit(function(e){
 $("#aCloseSession").click(function(e){
   e.preventDefault();
   logout(function(){
-    window.location.replace('index.html');
+    window.location.replace('login.html');
   });
 });
 

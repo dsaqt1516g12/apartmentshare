@@ -5,11 +5,10 @@ var uri = JSON.parse(sessionStorage["uri-rooms2"]);
       $("#stings-list").empty();
       $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 
         flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price, flats.status, flats.fullname, flats.furnished,
-        flats.phone, flats.email, flats.numpartner, flats.smoker, flats.pets, flats.numrooms, flats.numbathrooms, flats.elevator, flats.plantnum,
-        flats.internet, flats.fianza, flats.estancia, flats.campusname, flats.campusaddress, flats.flatdescription));
+        flats.phone, flats.email, flats.numpartner, flats.smoker, flats.pets, flats.numrooms, flats.numbathrooms, flats.elevator, flats.plantnum, flats.internet, flats.fianza, flats.estancia, flats.campusname, flats.campusaddress, flats.filename, flats.filename));
    });
 });
- 
+
  $("#buttonRegresar").click(function(){window.location.replace('index.html')});
 
    $("#formPrevious").submit(function(e){
@@ -43,7 +42,7 @@ $("#aGoToProfile").click(function(e){
     window.location.replace('perfil.html');
 });
 
-function listItemHTML(uri, address, description,lastModified, creationTimestamp, id, girlorboy, sqm, price, status, fullname, furnished, phone, email, numpartner, smoker, pets, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, campusname, campusaddress, flatdescription, flatsqm){
+function listItemHTML(uri, address, description,lastModified, creationTimestamp, id, girlorboy, sqm, price, status, fullname, furnished, phone, email, numpartner, smoker, pets, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, campusname, campusaddress, filename){
 
 if( status == 1){
 status = 'Disponible';
@@ -136,7 +135,6 @@ var creationTimestamp = new Date( creationTimestampformat );
   var estancia= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Estancia del piso: '+  estancia + ' meses' + '</h6>';;
   var campusname= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Nombre del Campus: '+  campusname  + '</h6>';;
   var campusaddress= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Dirección del Campus: '+  campusaddress  + '</h6>';;
-  var flatdescription= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Descripcion del piso: '+  flatdescription  + '</h6>';;
   var flatsqm= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Descripcion del piso: '+  flatsqm  + '</h6>';;
 
   var infouser = '<p class="list-group-item-text unclickable">' + ' Información del anunciante' + '</p>';
@@ -144,14 +142,17 @@ var creationTimestamp = new Date( creationTimestampformat );
   var email = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Correo electrónico: '+ email +'</h6>';;
   var phone = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Teléfono: '+ phone +'</h6>';;
 
+
   var creado = '<h6 class="list-group-item-heading unclickable" align="right">'+  'Fecha de creación: ' +'</h6>';;
   var l = '<h6 class="list-group-item-heading unclickable" align="right">'+  creationTimestamp +'</h6>';;
   var modificado = '<h6 class="list-group-item-heading unclickable" align="right">'+  'Última modificación: '+'</h6>';;
   var h = '<h6 class="list-group-item-heading unclickable" align="right">'+  lastModified +'</h6>';;
 
+var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:88/img/'+ filename +'>';;
+
 
   return infohab + description + g + sqm + furnished + price+ status +
-  infopiso+ numpartner+smoker + pets + numrooms + numbathrooms + elevator+ plantnum + internet + fianza + estancia + campusname + campusaddress + flatdescription
+  infopiso+ numpartner+smoker + pets + numrooms + numbathrooms + elevator+ plantnum + internet + fianza + estancia + campusname + campusaddress 
   +infouser + fullname + email +phone+ creado
-  +l +modificado +h ;
+  +l +modificado +h + filename ;
 }

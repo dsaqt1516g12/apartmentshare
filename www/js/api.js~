@@ -1,5 +1,5 @@
-var BASE_URI="http://127.0.0.1:8080/apartmentshare"
-//var BASE_URI="http://147.83.7.207:8888/apartmentshare"
+
+var BASE_URI="http://147.83.7.207:8888/apartmentshare"
 
 function linksToMap(links){
 	var map = {};
@@ -152,7 +152,7 @@ function loadFlats(uri, complete){
 function loadRooms( complete){
 	$.ajax({
 		    	type: 'GET',
-		   		url: 'http://localhost:8080/apartmentshare/rooms',
+		   		url: 'http://147.83.7.207:8888/apartmentshare/rooms',
 		    	
 		    }).done(function(rooms){
 			rooms.links = linksToMap(rooms.links);
@@ -162,7 +162,7 @@ function loadRooms( complete){
 
 }
 function loadRooms2(complete){
-	uri = 'http://localhost:8080/apartmentshare/rooms?timestamp=1451412754000&before=true;
+	uri = 'http://147.83.7.207:8888/apartmentshare/rooms?timestamp=1451412754000&before=true';
 	$.get(uri)
 		.done(function(rooms){
 			stings.links = linksToMap(rooms.links);
@@ -174,7 +174,7 @@ function loadRooms2(complete){
 function createuser(loginid, password, fullname, email, phone, complete){
 	loadAPI(function(){
 		var api = JSON.parse(sessionStorage.api);
-		var uri = "http://0.0.0.0:8080/apartmentshare/users";
+		var uri = "http://147.83.7.207:8888/apartmentshare/users";
 		//var uri = api.createuser.uri;
 		$.post(uri,
 			{
@@ -286,6 +286,8 @@ function getRooms(uri, complete){
 		    	
 		    }).done(function(rooms){
 			rooms.links = linksToMap(rooms.links);
+
+			$("#foto").val(roooms.imageURL + " ... foto");
 			complete(rooms);
 		})
 		.fail(function(){});
@@ -316,7 +318,7 @@ function BuscarRooms(campusid, furnished, smoker, pets, numbathrooms, girlorboy,
 			dataType : 'json',
 			data: busqueda,
         		contentType: "application/x-www-form-urlencoded", 
-		   	url: 'http://localhost:8080/apartmentshare/rooms',
+		   	url: 'http://147.83.7.207:8888/apartmentshare/rooms',
 		    }).done(function(rooms){
 			complete(rooms);
 		})

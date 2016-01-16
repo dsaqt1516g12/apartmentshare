@@ -34,7 +34,7 @@ function processRoomsCollection(rooms){
 
       rooms.links=linksToMap(rooms.links);
 
-      $("#stings-list").append(listItemHTML(rooms.links["self"].uri, rooms.address, rooms.description, rooms.fullname, rooms.email, rooms.phone, rooms.id, rooms.price, rooms.campusname, rooms.lastModified, rooms.creationTimestamp));
+      $("#stings-list").append(listItemHTML(rooms.links["self"].uri, rooms.address, rooms.description, rooms.fullname, rooms.email, rooms.phone, rooms.id, rooms.price, rooms.campusname, rooms.imageURL, rooms.lastModified, rooms.creationTimestamp));
       if(i==0)
         $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
      if(i==lastIndex){
@@ -63,7 +63,7 @@ function processRoomsCollection(rooms){
 }
 
 
-function listItemHTML(uri, address, description, fullname, email, phone, id, price, campusname, lastModified, creationTimestamp  ){
+function listItemHTML(uri, address, description, fullname, email, phone, id, price, campusname, imageURL, lastModified, creationTimestamp  ){
 
 
 lastModifieldformat = lastModifield;
@@ -84,11 +84,13 @@ var campusname = '<h6 class="list-group-item-heading unclickable" align="center"
 
  var phone = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Telefono: '+  phone +'</h6>';;
 
+var imageURL = '<img  style=width:300px;height:228px; src='+ imageURL +'>';;
+
  var price = '<h6 class="list-group-item-heading unclickable" color="red" align="center">'+ 'Precio: '+  price +'</h6>';;
 
  var lastModifield = '<h6 class="list-group-item-heading unclickable" align="right">'+  lastModifield +'</h6>';;
 var creationTimestamp = '<h6 class="list-group-item-heading unclickable" align="right">'+  creationTimestamp +'</h6>';;
 
 
-  return  a + description + address + campusname + fullname + email + phone + price +  creationTimestamp + '</a>' ;
+  return  a + description + address + campusname + fullname + email + phone + imageURL+ price +  creationTimestamp + '</a>' ;
 }
