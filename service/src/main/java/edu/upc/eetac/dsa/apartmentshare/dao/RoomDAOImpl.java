@@ -337,6 +337,8 @@ public class RoomDAOImpl implements RoomDAO {
             searchquery=searchquery+" and f.numpartner>=? " ;
         if(roomgirlorboy!=0)
             searchquery=searchquery+" and r.girlorboy=? " ;
+        if(campusname!=null)
+            searchquery=searchquery+" and c.id=unhex(?) " ;
 
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -370,7 +372,10 @@ public class RoomDAOImpl implements RoomDAO {
                 searchqueryorder = searchqueryorder + 1;
                 stmt.setInt(searchqueryorder, roomgirlorboy);
             }
-
+            if(campusname!=null) {
+                searchqueryorder = searchqueryorder + 1;
+                stmt.setString(searchqueryorder, campusname);
+            }
 
             ResultSet rs = stmt.executeQuery();
 
