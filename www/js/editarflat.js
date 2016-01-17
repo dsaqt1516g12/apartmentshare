@@ -11,10 +11,8 @@ $("#formEditarpiso").submit(function(e){
   		$('#pets').val(),$('#girlorboy').val(), $('#sqm').val(), $('#furnished').val(), $('#numrooms').val(), $('#numbathrooms').val(), 
   		$('#elevator').val(), $('#plantnum').val(), $('#internet').val(), $('#fianza').val(), $('#estancia').val(), 
   		function() {
-		  	$("#descriptionflat").blur();
-			console.log("change");
-
-		  	window.location.replace('apartmentshare.html');
+		  	window.location.replace('descriptionflat.html');
+			window.location.reload();
 		  }
 	);
 });

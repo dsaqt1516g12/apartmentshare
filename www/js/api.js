@@ -165,7 +165,7 @@ function loadRooms2(complete){
 	uri = 'http://147.83.7.207:8888/apartmentshare/rooms?timestamp=1451412754000&before=true';
 	$.get(uri)
 		.done(function(rooms){
-			stings.links = linksToMap(rooms.links);
+			rooms.links = linksToMap(rooms.links);
 			complete(rooms);
 		})
 		.fail(function(){});
@@ -174,7 +174,7 @@ function loadRooms3(complete){
 	uri = 'http://147.83.7.207:8888/apartmentshare/rooms?timestamp=1451412754000&before=true';
 	$.get(uri)
 		.done(function(rooms){
-			stings.links = linksToMap(rooms.links);
+			rooms.links = linksToMap(rooms.links);
 			complete(rooms);
 		})
 		.fail(function(){});

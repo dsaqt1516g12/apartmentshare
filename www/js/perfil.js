@@ -23,11 +23,15 @@ $(function(){
       e.preventDefault();
       e.stopImmediatePropagation();
   EliminarUsuario(function(){
+
   });
+
  logout(function(){
-  });
+ });
       $("#buttonEliminarusuario").blur();
-	window.location.replace('login.html');
+	window.location.reload();
+	window.location.replace('login.html');	
+
     });
 
 $("#aCloseSession").click(function(e){

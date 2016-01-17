@@ -32,7 +32,7 @@ $("#formEditarroom").submit(function(e){
   puthabitacion($('#description').val(),  $('#girlorboy').val(), $('#sqm').val(), $('#furnished').val(), $('#status').val(), $('#price').val(), function(){
 
 	 $("#buttonEditarroom").blur();
-	  	window.location.replace('descriptionroom.html');
+		window.location.reload();
   		}
 
 

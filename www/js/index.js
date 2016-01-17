@@ -82,17 +82,13 @@ function previousStings(){
 
 
 $("#formBuscarhabitacion").submit(function(e){
-  var minprice = $('#maxprice').val();
+  var minprice = $('#minprice').val();
   var maxprice = $('#maxprice').val();
 
-  if (isNaN($('#maxprice').val())==true || isNaN($('#maxprice').val())==true){
-        alert("Debes introducir números enteros en el precio mínimo y máximo");
-    }
-  
-  if ( maxprice< minprice){
+  if ( maxprice < minprice){
      alert("El precio máximo no puede ser inferior al precio mínimo");
   }
-  
+  else if(maxprice => minprice){ 
     e.preventDefault();
     BuscarRooms($('#campusname').val(), $('#smoker').val(), $('#pets').val(),  
       $('#girlorboy').val(), $('#numpartner').val(), 
@@ -101,8 +97,11 @@ $("#formBuscarhabitacion").submit(function(e){
         $("#buttonBuscarhabitacion").blur();
        $("#stings-list").empty();
               processRoomsCollection(rooms);
-      }
+
+	  
+	}
   );
+}
 });
 
 function processRoomsCollection(rooms){

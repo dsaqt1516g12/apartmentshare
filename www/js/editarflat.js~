@@ -12,9 +12,7 @@ $("#formEditarpiso").submit(function(e){
   		$('#elevator').val(), $('#plantnum').val(), $('#internet').val(), $('#fianza').val(), $('#estancia').val(), 
   		function() {
 		  	$("#descriptionflat").blur();
-			console.log("change");
-
-		  	window.location.replace('apartmentshare.html');
+			window.location.reload();
 		  }
 	);
 });
@@ -58,7 +56,7 @@ var uri = JSON.parse(sessionStorage["uri-flat"]);
 
 
       $("#stings-list").empty();
-      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 			flats.creationTimestamp, flats.numpartner, flats.smoker));
+      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, flats.creationTimestamp, flats.numpartner, flats.smoker));
    });
 });
 
@@ -80,8 +78,14 @@ function listItemHTML(uri, address, description,lastModifield, creationTimestamp
 if( smoker == 1){
 smoker= 'Si';
 }
-else if( smoker == 0){
+else if( smoker == 2){
 smoker = 'No';
+}
+else if (smoker == 0){
+	smoker='Indiferente'
+}
+if( numpartner == 5){
+numpartner= '5 o más';
 }
 
 lastModifieldformat = lastModifield;
@@ -102,3 +106,6 @@ var creationTimestamp = new Date( creationTimestampformat );
   var lastModifield = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Ultima modificacion: '+   lastModifield +'</h6>';;
   return p + m + numpartner +smoker + creationTimestamp + lastModifield;
 }
+
+
+

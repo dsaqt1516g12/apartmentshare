@@ -75,11 +75,6 @@ function initialize(Lat,Lng,name,address) {
       processRoomsCollection(rooms);
 });
 
-   $("#formPrevious").submit(function(){
-      previousStings();
-      $("#buttonPrevious").blur();
-    });
-
 
 function previousStings(){
   loadRooms3(function(rooms){
@@ -89,27 +84,29 @@ function previousStings(){
 
 
 $("#formBuscarhabitacion").submit(function(e){
-	var minprice = $('#maxprice').val();
-	var maxprice = $('#maxprice').val();
+  var minprice = $('#minprice').val();
+  var maxprice = $('#maxprice').val();
 
-	if (isNaN($('#maxprice').val())==true || isNaN($('#maxprice').val())==true){
-        alert("Debes introducir números enteros en el precio mínimo y máximo");
-    }
-	
-	if ( maxprice< minprice){
-		 alert("El precio máximo no puede ser inferior al precio mínimo");
-	}
-	
+  //if (isNaN($('#maxprice').val())==true || isNaN($('#maxprice').val())==true){
+      //  alert("Debes introducir números enteros en el precio mínimo y máximo");
+    //} 
+  if ( maxprice < minprice){
+     alert("El precio máximo no puede ser inferior al precio mínimo");
+  }
+  else if(maxprice => minprice){ 
     e.preventDefault();
-  	BuscarRooms($('#campusname').val(), $('#smoker').val(), $('#pets').val(),  
-  		$('#girlorboy').val(), $('#numpartner').val(), 
-  		$('#maxprice').val(), $('#minprice').val(), 
-  		function(rooms) {
-		  	$("#buttonBuscarhabitacion").blur();
-			 $("#stings-list").empty();
-      				processRoomsCollection(rooms);
-		  }
-	);
+    BuscarRooms($('#campusname').val(), $('#smoker').val(), $('#pets').val(),  
+      $('#girlorboy').val(), $('#numpartner').val(), 
+      $('#maxprice').val(), $('#minprice').val(), 
+      function(rooms) {
+        $("#buttonBuscarhabitacion").blur();
+       $("#stings-list").empty();
+              processRoomsCollection(rooms);
+
+	  
+	}
+  );
+}
 });
 
 function processRoomsCollection(rooms){
@@ -127,6 +124,13 @@ function processRoomsCollection(rooms){
      if(i==lastIndex){
       $('#formPrevious').attr('action', rooms["links"].previous.uri);}
   });
+
+   $("#formPrevious").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      previousStings();
+      $("#buttonPrevious").blur();
+    });
 
   $("a.list-group-item").click(function(e){
     e.preventDefault();

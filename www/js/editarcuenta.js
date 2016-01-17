@@ -17,8 +17,7 @@ $(function(){
 $( "#form-signin" ).submit(function( event ) {
   event.preventDefault(); 
   putUsuario($('#loginid').val(), $('#fullname').val(), $('#email').val(), $('#phone').val(), function(){
-  	console.log("change");
-  	window.location.replace('micuenta.html');
+  	window.location.reload();
   });
 });
 
