@@ -89,6 +89,14 @@ function previousStings(){
 
 
 $("#formBuscarhabitacion").submit(function(e){
+	alert($('#campusid').val());
+	alert($('#smoker').val());
+	alert($('#pets').val());
+	alert($('#girlorboy').val());
+	alert($('#numpartner').val());
+	alert($('#maxprice').val());
+	alert($('#minprice').val());
+
 	if (isNaN($('#maxprice').val()) || isNaN($('#maxprice').val())){
         alert("Debes introducir números enteros en el precio mínimo y máximo");
     }
