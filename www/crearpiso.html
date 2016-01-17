@@ -93,85 +93,89 @@
     <h2>Crea el piso a partir del cual realizar el anuncio</h2>
 
     <br>
-    <div class="form-group">
-        <label for="campusid">Seleccione el Campus UPC más cercano a tu piso</label>
-       <!-- <select style="width:20% !important" name="campusid" class="form-control" id="campusid">
-                      <option value="0713E26AB95611E5AE7CA4DB305B7F0E">Campus FIB, Barcelona </option>
-                      <option value="2431ADDEB95111E5AE7CA4DB305B7F0E">Campus EPSEM, Manresa</option>
-                      <option value="29AC8985B95311E5AE7CA4DB305B7F0E">Campus ETSAB,</option>
-                      <option value="351E5933B95511E5AE7CA4DB305B7F0E">Campus ETSEIB, Barcelona</option>   
-                      <option value="352F85C0B95711E5AE7CA4DB305B7F0E">Campus EEI, Igualada</option>
-                      <option value="4D6228A9B95611E5AE7CA4DB305B7F0E">Campus FME, Barcelona</option>
-                      <option value="6A7D3E31B95711E5AE7CA4DB305B7F0E">Campus EUETIB, Barcelona</option>
-                      <option value="6D31B1FFB95311E5AE7CA4DB305B7F0E">Campus ETSAV, Sant Cugat del Vallès</option>
-                      <option value="747A6B55B95111E5AE7CA4DB305B7F0E">Campus EET, Terrassa</option>
-                      <option value="7998490EA1D011E5ABF5002318A56C8C">Campus EETAC, Castelldefels</option>
-                      <option value="7F9D90DAB95611E5AE7CA4DB305B7F0E">Campus FNB, Barcelona</option>
-                      <option value="8299B89FB95411E5AE7CA4DB305B7F0E">Campus ETSEIAT, Terrassa</option>
-                      <option value="87268CFDB94C11E5AE7CA4DB305B7F0E">Campus EPSEB, Barcelona</option>
-                      <option value="93D66A78B95511E5AE7CA4DB305B7F0E">Campus ETSETB, Barcelona</option>
-                      <option value="AB44AAE6B95311E5AE7CA4DB305B7F0E">Campus ETSECCPB, Barcelona</option>
-                      <option value="BF1F73E8B95111E5AE7CA4DB305B7F0E">Campus EPSEVG, Vilanova i la Geltrú</option>
-                      <option value="C192880EB95611E5AE7CA4DB305B7F0E">Campus CFIS, Barcelona</option>
-                      <option value="CFC60493B95511E5AE7CA4DB305B7F0E">Campus FOOT, Terrassa</option>
-                      <option value="F2CDAA45B95211E5AE7CA4DB305B7F0E">Campus ESAB, Castelldefels</option>
-                      <option value="FBF97602B95611E5AE7CA4DB305B7F0E">Campus CITM, Terrassa</option>
-               >                                      
-        </select>-->
-		
-			<select style="width:20% !important" name="campusid" class="form-control" id='campusid' onchange="getCampusByID(this.value)"></select>
-		  <br>
-		<!-- Aquí dibuja el maps en base a la latitud y longitud de los campus -->
-		  <div id="map_campus"></div>
+	<div class="form-group">
+	<table>
+	
+	<tr>
+		<td width="50%">
+			<label for="campusid">Seleccione el Campus UPC más cercano a tu piso</label>
+		</td>
+		<td width="50%">
+		<label for="myaddress">Dirección completa del piso</label>
+		</td>
+	</tr>
+	<tr>
+		<td width="50%">
+			<select style='width:90%'  name="campusid" class="form-control" id='campusid' onchange="getCampusByID(this.value)"></select><br>
+		</td>
+		<td width="50%">
+			<input style='width:90%' class='form-control' name ='myaddress' id='myaddress' type="text"><br>
+		</td>
+	</tr>
+	<tr>
+		<td width="50%">
+		 <div id="map_campus"></div>
+		</td>
+		<td width="50%">
+			<address> </address>
+		</td>
+	</tr>
+	</table>
 		  <br>
     </div>
 	
-
-
-    <div class="form-group">
-        <label for="myaddress">Dirección completa del piso</label>
-        <!--<input name="address" class="form-control" id="address" type="text">-->
-		<!-- Aquí dibuja el mapa en función de la dirección que pongamos entre el campos address -->
-		<input class="form-control" name ='myaddress' id='myaddress' type="text"><br>
-		<!--<button type="button" class="btn btn-info" id="set_address">Ubicar dirección</button>-->
-		<address> </address>
-    </div> 
-
-    <div class="form-group ">
-        <label for="fumadores">¿Se admiten fumadores?</label>
-        <select style="width:10% !important" name="fumadores" class="form-control" id="smoker">
-                      <option selected="selected" value="0">Indiferente</option>
-                      <option value="1">Si</option>
-                      <option value="2">No</option>                   
-        </select>
-   </div>
-
-   <div class="form-group ">
-        <label for="mascotas">¿Se admiten mascotas?</label>
-        <select style="width:10% !important" name="mascotas" class="form-control" id="pets">
-                      <option selected="selected" value="0">Indiferente</option>
-                      <option value="1">Si</option>
-                      <option value="2">No</option>                   
-        </select>
-   </div>
-
-   <div class="form-group">
-        <label for="amueblado">¿El piso está amueblado?</label>
-        <select style="width:10% !important" name="amueblado" class="form-control" id="furnished">
-                      <option value="1">Si</option>
-                      <option value="2">No</option>                   
-        </select>
-   </div>
-
-    <div class="form-group">
+	<table>
+	<tr>
+		<td  width="25%">    
+			<div class="form-group ">
+			<label for="fumadores">¿Se admiten fumadores?</label>
+			<select style="width:90% !important" name="fumadores" class="form-control" id="smoker">
+						  <option selected="selected" value="0">Indiferente</option>
+						  <option value="1">Si</option>
+						  <option value="2">No</option>                   
+			</select>
+			</div>
+		</td>
+		<td width="25%">
+			<div class="form-group ">
+			<label for="mascotas">¿Se admiten mascotas?</label>
+			<select style="width:90% !important" name="mascotas" class="form-control" id="pets">
+							  <option selected="selected" value="0">Indiferente</option>
+							  <option value="1">Si</option>
+							  <option value="2">No</option>                   
+			</select>
+			</div>
+		</td width="25%">
+		
+		<td>
+		 <div class="form-group">
+				<label for="amueblado">¿El piso está amueblado?</label>
+				<select style="width:90% !important" name="amueblado" class="form-control" id="furnished">
+							  <option value="1">Si</option>
+							  <option value="2">No</option>                   
+				</select>
+		   </div>
+		</td>
+		
+		<td width="25%">
+		    <div class="form-group">
         <label for="numrooms">Número de habitaciones</label>
-        <input  style="width:20% !important"  name="numrooms" class="form-control" id="numrooms" type="text">
-    </div>
-
-
-    <div class="form-group">
+		<select style="width:90% !important" name="numrooms" class="form-control" id="numrooms">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>   
+                      <option value="5">5</option>                    
+        </select>
+		</div>
+		
+		</td>
+</tr>
+<tr>
+	<td width="25%">
+	    <div class="form-group">
         <label for="bano">Numero de cuartos de baño del piso</label>
-        <select style="width:10% !important" name="bano" class="form-control" id="numbathrooms">
+        <select style="width:90% !important" name="bano" class="form-control" id="numbathrooms">
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -179,20 +183,25 @@
                       <option value="5">5</option>                    
         </select>
     </div>
+	</td>
 
-     <div class="form-group">
+	<td width="25%">
+	     <div class="form-group">
        <label for="sexo">Restricción de sexo</label>
-       <select style="width:30% !important" name="sexo" class="form-control" id="girlorboy" required="">
-       
-                      <option value="2">Solo se admiten hombres</option>
-                      <option value="1">Solo se admiten mujeres</option>
-                      <option selected="selected" value="0">Indiferente</option>               
+       <select style="width:90% !important" name="sexo" class="form-control" id="girlorboy" required="">
+					<option selected="selected" value="0">Indiferente</option> 
+                      <option value="2">Sólo se admiten hombres</option>
+                      <option value="1">Sólo se admiten mujeres</option>
+                                    
       </select>
-    </div>
-    <div class="form-group">
+		</div>
+	</td>
+
+	<td width="25%">
+	   <div class="form-group">
         <label for="planta">Piso situado en una planta</label>
-        <select style="width:20% !important" name="estancia" class="form-control" id="plantnum">
-                      <option value="0">Bajos/Entresuelo/Edificio sin plantas</option>
+        <select style="width:90% !important" name="estancia" class="form-control" id="plantnum">
+                      <option value="0">Bajos/Entresuelo/Ninguna</option>
                       <option value="1">1ª planta</option>
                       <option value="2">2ª planta</option>
                       <option value="3">3ª planta</option>   
@@ -206,30 +215,39 @@
                                          
         </select>
     </div>
+	</td>
 
-    <div class="form-group">
-        <label for="metros">Número de metros cuadrados del piso</label>
-        <input  style="width:20% !important"  name="metros" class="form-control" id="sqm" type="text">
+	<td width="25%">
+		    <div class="form-group">
+        <label for="metros">Metros cuadrados del piso</label>
+        <input  style="width:90% !important"  name="metros" class="form-control" id="sqm" type="text">
     </div>
+	</td>
+</tr>
+<tr>
 
-    <div class="form-group">
+	<td width="25%">
+	    <div class="form-group">
         <label for="ascensor">¿Tiene acceso a un ascensor?</label>
-        <select style="width:10% !important" name="ascensor" class="form-control" id="elevator">
+        <select style="width:90% !important" name="ascensor" class="form-control" id="elevator">
                       <option value="1">Si</option>
                       <option value="0">No</option>                   
         </select>
-   </div> 
-   <div class="form-group">
+		</div> 
+	</td>
+	<td width="25%">
+		   <div class="form-group">
         <label for="internet">¿Tiene acceso a Internet?</label>
-        <select style="width:10% !important" name="internet" class="form-control" id="internet">
+        <select style="width:90% !important" name="internet" class="form-control" id="internet">
                       <option value="1">Si</option>
                       <option value="0">No</option>                   
         </select>
-   </div>
-   <div class="form-group">
-        <label for="numpartner">Numero de personas que ya viven en el piso</label>
-        <select style="width:20% !important" name="numpartner" class="form-control" id="numpartner">
-                      <option value="0">0 personas</option>
+		</div>
+	</td>
+	<td width="25%">
+		   <div class="form-group">
+        <label for="numpartner">Personas que compartirán piso</label>
+        <select style="width:90% !important" name="numpartner" class="form-control" id="numpartner">
                       <option value="1">1 persona</option>
                       <option value="2">2 personas</option>
                       <option value="3">3 personas</option>   
@@ -238,11 +256,12 @@
                       
                                        
         </select>
-    </div>
-
- <div class="form-group">
-        <label for="estancia">Tiempo de estancia del piso</label>
-        <select style="width:20% !important" name="estancia" class="form-control" id="estancia">
+		</div>
+	</td>
+	<td width="25%">
+		 <div class="form-group">
+        <label for="estancia">Tiempo de estancia mínima</label>
+        <select style="width:90% !important" name="estancia" class="form-control" id="estancia">
                       <option value="1">1 mes</option>
                       <option value="2">2 meses</option>
                       <option value="3">3 meses</option>
@@ -256,14 +275,19 @@
                       <option value="11">11 meses</option> 
                       <option value="12">1 año o más</option>                       
         </select>
-    </div>
-     <div class="form-group">
+		</div>
+	</td>
+</tr>
+<tr>
+	<td width="25%">
+		     <div class="form-group">
         <label for="fianza">Indique la fianza que se debe depositar (en €)</label>
-        <input style="width:10% !important" name="fianza" class="form-control" id="fianza" type="text">
-    </div>
+        <input style="width:90% !important" name="fianza" class="form-control" id="fianza" type="text">
+		</div>
 
-
-
+	</td>
+</tr>
+</table>
 
 
 
