@@ -16,6 +16,30 @@
     body{
       background: url(5.gif) no-repeat center;
       }
+	  
+	  #map_campus {
+		width: 520px;
+		height: 410px;
+		background-color: #CCC;
+	  }
+	  #secondmap {
+		width: 500px;
+		height: 400px;
+		background-color: #CCC;
+	  }
+		  #map_wrapper {
+		height: 400px;
+		}
+
+		#map_canvas {
+			width: 100%;
+			height: 100%;
+		}
+
+		#travel_selector {
+			margin-top: 10px;
+			margin-left: 10px;
+		}
     </STYLE>
 
   </head>
@@ -49,7 +73,7 @@
                 <li role="separator" class="divider"></li>
                 <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a id="aCloseSession">Cerrar SesiÃ³n</a></li>
+                <li><a id="aCloseSession">Cerrar Sesión</a></li>
               </ul>
             </li>
           </ul>
@@ -68,143 +92,106 @@
   
   <div class="jumbotron text-center col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1">
     <h2>Buscar habitaciones</h2>
-    <p class="lead">IndÃ­canos tus preferencias y nosotros buscamos lo mejor para ti.</p>
+    <p class="lead">Indícanos tus preferencias y nosotros buscamos lo mejor para ti.</p>
    
 
-      <div class="form-group col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-3">
+      <div class="form-group col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2">
          
     <div class="form-group">
-        <label for="campusid">Seleccione el Campus UPC</label>
-        <select style="width:65% !important" name="campusid" class="form-control" id="campusid">
-                      <option value="0713E26AB95611E5AE7CA4DB305B7F0E">Campus FIB, Barcelona </option>
-                      <option value="2431ADDEB95111E5AE7CA4DB305B7F0E">Campus EPSEM, Manresa</option>
-                      <option value="29AC8985B95311E5AE7CA4DB305B7F0E">Campus ETSAB,</option>
-                      <option value="351E5933B95511E5AE7CA4DB305B7F0E">Campus ETSEIB, Barcelona</option>   
-                      <option value="352F85C0B95711E5AE7CA4DB305B7F0E">Campus EEI, Igualada</option>
-                      <option value="4D6228A9B95611E5AE7CA4DB305B7F0E">Campus FME, Barcelona</option>
-                      <option value="6A7D3E31B95711E5AE7CA4DB305B7F0E">Campus EUETIB, Barcelona</option>
-                      <option value="6D31B1FFB95311E5AE7CA4DB305B7F0E">Campus ETSAV, Sant Cugat del VallÃ¨s</option>
-                      <option value="747A6B55B95111E5AE7CA4DB305B7F0E">Campus EET, Terrassa</option>
-                      <option value="7998490EA1D011E5ABF5002318A56C8C">Campus EETAC, Castelldefels</option>
-                      <option value="7F9D90DAB95611E5AE7CA4DB305B7F0E">Campus FNB, Barcelona</option>
-                      <option value="8299B89FB95411E5AE7CA4DB305B7F0E">Campus ETSEIAT, Terrassa</option>
-                      <option value="87268CFDB94C11E5AE7CA4DB305B7F0E">Campus EPSEB, Barcelona</option>
-                      <option value="93D66A78B95511E5AE7CA4DB305B7F0E">Campus ETSETB, Barcelona</option>
-                      <option value="AB44AAE6B95311E5AE7CA4DB305B7F0E">Campus ETSECCPB, Barcelona</option>
-                      <option value="BF1F73E8B95111E5AE7CA4DB305B7F0E">Campus EPSEVG, Vilanova i la GeltrÃº</option>
-                      <option value="C192880EB95611E5AE7CA4DB305B7F0E">Campus CFIS, Barcelona</option>
-                      <option value="CFC60493B95511E5AE7CA4DB305B7F0E">Campus FOOT, Terrassa</option>
-                      <option value="F2CDAA45B95211E5AE7CA4DB305B7F0E">Campus ESAB, Castelldefels</option>
-                      <option value="FBF97602B95611E5AE7CA4DB305B7F0E">Campus CITM, Terrassa</option>
-               >                                      
-        </select>
+	
+
+        <label for="campusid">Seleccione el Campus UPC más cercano a tu lugar de interés</label>
+ 
+		<select style="width:90% !important" name="campusid" class="form-control" id='campusid' onchange="getCampusByID(this.value)"></select>
+		  <br>
+		<!-- Aquí dibuja el maps en base a la latitud y longitud de los campus -->
+		  <div id="map_campus"></div>
+		  <br>
+		
     </div>
-	  <div class="form-group">
-        <label for="furnished">Â¿HabitaciÃ³n amueblada?</label>
+	  <!--<div class="form-group">
+        <label for="furnished">¿Habitación amueblada?</label>
         <select style="width:20% !important" name="furnished" class="form-control" id="furnished">
                       <option value='0'>Indiferente</option>
                       <option value="1">Si</option>
                       <option value="2">No</option>                   
         </select>
-   </div>
+   </div>-->
 
-    <div class="form-group ">
-        <label for="fumadores">Â¿Donde se permitan fumadores?</label>
-        <select style="width:20% !important" name="fumadores" class="form-control" id="smoker">
-                      <option value="0">Indiferente</option>
-                      <option value="1">Si</option>
-                      <option value="2">No</option>                   
-        </select>
-   </div>
+   <table>
+   <tr>
+		<td style="width:33%">
+								<div class="form-group ">
+					<label for="fumadores">¿Fumadores?</label>
+					<select style="width:100% !important" name="fumadores" class="form-control" id="smoker">
+								  <option value="0">Indiferente</option>
+								  <option value="1">Si</option>
+								  <option value="2">No</option>                   
+					</select>
+			   </div>
+		</td>
+		<td style="width:33%">
+								   <div class="form-group ">
+						<label for="mascotas">¿Mascotas?</label>
+						<select style="width:100% !important" name="mascotas" class="form-control" id="pets">
+									  <option value="0">Indiferente</option>
+									  <option value="1">Si</option>
+									  <option value="2">No</option>                   
+						</select>
+				   </div>
+		</td>
+		<td style="width:33%">
+							   <div class="form-group">
+				   <label for="sexo">Habitación para</label>
+				   <select style="width:100% !important" name="sexo" class="form-control" id="girlorboy" required="">
+								   <option value="0">Chicos o chicas indistintamente</option>
+								  <option value="2">Sólo Chicos</option>
+								  <option value="1">Sólo Chicas</option>
+											
+				  </select>
+				</div>
+		</td>
+   </tr>
+   
+      <tr>
+	  		<td style="width:33%">
+								   <div class="form-group">
+					<label for="estancia">Personas que compartiréis</label>
+					<select style="width:100% !important" name="estancia" class="form-control" id="numpartner">
+								  <option value="1">1 persona</option>
+								  <option value="2">2 personas</option>
+								  <option value="3">3 personas</option>   
+								  <option value="4">4 personas</option>
+								  <option value="5">5 o más personas</option>   
+								 
+												   
+					</select>
+				</div>
+		</td>
+				<td style="width:33%">
+										<div class="form-group">
+					<label for="price">Precio máximo</label>
+					<input  style="width:100% !important"  name="maxprice" class="form-control" id="maxprice" type="text">
+				</div>
+		</td>
+				<td style="width:33%">
 
-   <div class="form-group ">
-        <label for="mascotas">Â¿Donde se permitan mascotas?</label>
-        <select style="width:20% !important" name="mascotas" class="form-control" id="pets">
-                      <option value="0">Indiferente</option>
-                      <option value="1">Si</option>
-                      <option value="2">No</option>                   
-        </select>
-   </div>
+						  <div class="form-group">
+						<label for="price">Precio mínimo</label>
+						<input  style="width:100% !important"  name="minprice" class="form-control" id="minprice" type="text">
+					</div>
+		</td>
+   
+   </tr>
+   
+   </table>
+   
+   
 
-    <div class="form-group">
-        <label for="bano">Â¿Numero de cuartos de baÃ±o del piso?</label>
-        <select style="width:20% !important" name="bano" class="form-control" id="numbathrooms">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>   
-                      <option value="5">5</option>                    
-        </select>
-    </div>
 
-     <div class="form-group">
-       <label for="sexo">Buscas habitaciÃ³n donde haya</label>
-       <select style="width:30% !important" name="sexo" class="form-control" id="girlorboy" required="">
-                       <option value="0">Chicos o chicas indistintamente</option>
-                      <option value="2">Chicos</option>
-                      <option value="1">Chicas</option>
-                                
-      </select>
-    </div>
-    <div class="form-group">
-        <label for="estancia">Â¿Piso situado en una planta?</label>
-        <select style="width:58% !important" name="estancia" class="form-control" id="plantnum">
-                      <option value="0">Bajos/Entresuelo/Edificio sin plantas</option>
-                      <option value="1">1Âª planta</option>
-                      <option value="2">2Âª planta</option>
-                      <option value="3">3Âª planta</option>   
-                      <option value="4">4Âª planta</option>
-                      <option value="5">5Âª planta</option>   
-                      <option value="6">6Âª planta</option>
-                      <option value="7">7Âª planta</option>   
-                      <option value="8">8Âª planta</option>
-                      <option value="9">9Âª planta</option>
-                      <option value="10">10Âª planta</option> 
-                                         
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label for="metros">Â¿NÃºmero de metros cuadrados del piso?</label>
-        <input  style="width:20% !important"  name="metros" class="form-control" id="sqm" type="text">
-    </div>
-
-    <div class="form-group">
-        <label for="ascensor">Â¿Con ascensor?</label>
-        <select style="width:20% !important" name="ascensor" class="form-control" id="elevator">
-                      <option value="1">Si</option>
-                      <option value="0">No</option>                   
-        </select>
-   </div> 
-   <div class="form-group">
-        <label for="internet">Â¿Con Internet?</label>
-        <select style="width:20% !important" name="internet" class="form-control" id="internet">
-                      <option value="1">Si</option>
-                      <option value="0">No</option>                   
-        </select>
-   </div>
-   <div class="form-group">
-        <label for="estancia">Â¿Numero de personas que vivan en el piso?</label>
-        <select style="width:20% !important" name="estancia" class="form-control" id="numpartner">
-                      <option value="0">0 personas</option>
-                      <option value="1">1 persona</option>
-                      <option value="2">2 personas</option>
-                      <option value="3">3 personas</option>   
-                      <option value="4">4 personas</option>
-                      <option value="5">5 o mÃ¡s personas</option>   
-                     
-                                       
-        </select>
-    </div>
-
-		  <div class="form-group">
-        <label for="price">Precio</label>
-        <input  style="width:20% !important"  name="price" class="form-control" id="price" type="text">
-    </div>
-
-		          
+    
         <form id="formBuscarhabitacion">
-          <button id="buttonBuscarhabitacion" type="submit" class="btn btn-default center-block">Buscar habitaciÃ³n</button>
+          <button id="buttonBuscarhabitacion" type="submit" class="btn btn-default center-block">Buscar habitación</button>
         </form>
     
   </div>
@@ -212,16 +199,16 @@
    </div>
 
 
-  <div class="jumbotron text-center col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1">
- <h2>Ãšltimas habitaciones anunciadas</h2>
+  <div class="jumbotron text-center col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+ <h2>Últimas habitaciones anunciadas</h2>
     <div class="container">
       <div id="stings">
 
         <div class="row row-margin">
-          <div class="col-sm-8 col-center-block">
-            <div id="stings-list" class="list-group">
+          <div class="col-sm-8 col-center-block col-sm-offset-1 col-md-offset-2">
+            <div id="stings-list" class="list-group col-center-block">
               <a class="list-group-item">
-                <p class="list-group-item-text">Muchos aÃ±os despuÃ©s</p>
+                <p class="list-group-item-text">Muchos años después</p>
                 <h6 class="list-group-item-heading" align="right">Cabecera</h6> 
               </a>
             </div>
@@ -238,15 +225,24 @@
       </div>
     </div> <!-- /container -->
     <div id="templatemo_footer_panel">
-    Copyright Â© 2016 <a href="indexusuario.html">Proyecto ApartmentShare</a> | <a href="http://eetac.upc.edu/ca/" target="_parent">Escuela de IngenierÃ­a de Telecomunicaciones y Aeroespacial de Casteldefels</a> by <a href="http://www.upc.edu/?set_language=es" target="_blank">Universidad PolitÃ©cnica de CataluÃ±a</a>
+    Copyright © 2016 <a href="indexusuario.html">Proyecto ApartmentShare</a> | <a href="http://eetac.upc.edu/ca/" target="_parent">Escuela de Ingeniería de Telecomunicaciones y Aeroespacial de Casteldefels</a> by <a href="http://www.upc.edu/?set_language=es" target="_blank">Universidad Politécnica de Cataluña</a>
       </div>
 
        <div align=center><a href='https://atenea.upc.edu/moodle/login/index.php'>Campus Virtual UPC</a>
     </div>
     </div>
 
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+ <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		  <!-- Google maps Javascript plugins -->
+	  <script src="https://maps.googleapis.com/maps/api/js"></script>	
+	        <!-- Include all compiled plugins (below), or include individual files as needed -->
+	 <script src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"></script>
+	       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	  	  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
     <script src="js/api.js"></script>
     <script src="js/descriptionroom2logueado.js"></script>
     <script src="js/index2.js"></script>

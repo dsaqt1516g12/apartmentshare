@@ -1,3 +1,74 @@
+var API_BASE_URL = "http://147.83.7.207:8888/apartmentshare";
+
+//Función que ejecuta al cargar, escoger esta para crear piso y para el filtro donde se selecciona el campus.
+window.onload = getCampus;
+
+
+//google.maps.event.addDomListener(window, 'load', initialize);
+function getCampus() {
+			//var url = API_BASE_URL +'/campus';
+			$("#campusid").text('');
+			$("<option selected value='base'>Selecciona un Campus</option>").appendTo($('#campusid'));
+			$.ajax({
+				url : 'http://147.83.7.207:8888/apartmentshare/campus',
+				type : 'GET',
+				crossDomain : true,
+				dataType : 'json',
+				contentType : 'application/json',
+			}).done(
+					function(data, status, jqxhr) {
+						var campus = data;
+						$.each(campus, function(i, v) {
+							var campus = v;
+							$.each(campus, function(i, v) {
+								var campuss = v;
+								if(campuss.campusname!=undefined || campuss.campusname!=null){
+									$("<option value='" + campuss.id + "'>"+ campuss.campusname +', '+campuss.address +"</option>").appendTo($('#campusid'));	
+								}
+										
+							});	
+						});
+					}).fail(function() {
+				$("#result").text("No List Campus.");
+			});
+			$("</select>").appendTo($('#campusid'));
+
+}
+
+
+function getCampusByID(todo_id) {
+	var url = API_BASE_URL + '/campus/' + todo_id;
+	$.ajax({
+		url : url,
+		type : 'GET',
+		crossDomain : true,
+		dataType : 'json',
+		contentType : 'application/json',
+	}).done(function(data, status, jqxhr) {
+		var campus = data;
+		initialize(campus.latitud,campus.longitud,campus.campusname,campus.address);
+	}).fail(function() {
+		$('<div class="alert alert-danger"> <strong>No existe</strong> un campus con ese ID</div>').appendTo($("#result"));
+	});
+
+}
+
+function initialize(Lat,Lng,name,address) {
+		var mapCanvas = document.getElementById('map_campus');
+		var mapOptions = {
+		  center: new google.maps.LatLng(Lat, Lng),
+		  zoom: 15,
+		  mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+
+		var map = new google.maps.Map(mapCanvas, mapOptions);
+		var marker = new google.maps.Marker({
+		position: new google.maps.LatLng(Lat, Lng),
+		map: map,
+		title: name +', ' + address
+		});
+}
+
 
    loadRooms(function(rooms){
       $("#stings-list").empty();
@@ -18,10 +89,18 @@ function previousStings(){
 
 
 $("#formBuscarhabitacion").submit(function(e){
+	if (isNaN($('#maxprice').val()) || isNaN($('#maxprice').val())){
+        alert("Debes introducir números enteros en el precio mínimo y máximo");
+    }
+	
+	if (isNaN($('#maxprice').val())<isNaN($('#maxprice').val())){
+		 alert("El precio máximo no puede ser inferior al precio mínimo");
+	}
+	
     e.preventDefault();
-  	BuscarRooms($('#campusid').val(),  $('#furnished').val(), $('#smoker').val(), $('#pets').val(), $('#numbathrooms').val(), 
-  		$('#girlorboy').val(),$('#plantnum').val(), $('#sqm').val(), $('#elevator').val(), $('#internet').val(), $('#numpartner').val(), 
-  		$('#price').val(), 
+  	BuscarRooms($('#campusid').val(), $('#smoker').val(), $('#pets').val(),  
+  		$('#girlorboy').val(), $('#numpartner').val(), 
+  		$('#maxprice').val(), $('#minprice').val(), 
   		function(rooms) {
 		  	$("#buttonBuscarhabitacion").blur();
 			 $("#stings-list").empty();
@@ -84,8 +163,8 @@ var creationTimestamp = new Date( creationTimestampformat );
 
  var a = '<a class="list-group-item" href="'+ uri +'/'+ id + '">';
 
- var description = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'DescripciÃ³n : '+  description +'</h6>';;
- var address = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'DireccÃ­on: '+  address +'</h6>';;
+ var description = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Descripción : '+  description +'</h6>';;
+ var address = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Direccíon: '+  address +'</h6>';;
 var campusname = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Cerda de campus UPC: '+  campusname +'</h6>';;
 
  var fullname = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Nombre completo del arrendador: '+  fullname +'</h6>';;
