@@ -1,3 +1,5 @@
+var uri = JSON.parse(sessionStorage["uri-rooms2"]);
+
 window.onload = getRoom(uri);
 
 
