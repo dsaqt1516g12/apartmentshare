@@ -16,8 +16,28 @@
     body{
       background: url(5.gif) no-repeat center;
       }
-    </STYLE>
+	  	  #secondmap {
+		width: 500px;
+		height: 400px;
+		background-color: #CCC;
+	  }
+		  #map_wrapper {
+		height: 400px;
+		}
 
+		#map_canvas {
+			width: 100%;
+			height: 100%;
+		}
+
+		#travel_selector {
+			margin-top: 10px;
+			margin-left: 10px;
+		}
+    </STYLE>
+	<meta name="viewport" content="width=device-width">
+	<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+	  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=set_to_true_or_false"></script> 
   </head>
 
   <body>
@@ -49,7 +69,7 @@
                 <li role="separator" class="divider"></li>
                 <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a id="aCloseSession">Cerrar SesiÃ³n</a></li>
+                <li><a id="aCloseSession">Cerrar Sesión</a></li>
               </ul>
             </li>
           </ul>
@@ -69,7 +89,7 @@
 	    		<div class="col-sm-8 col-center-block">
 	    			<div id="stings-list" class="list-group">
 	    				<a class="list-group-item">
-	    					<p class="list-group-item-text">Si ves esto no se ha listado la habitaciÃ³n</p>
+	    					<p class="list-group-item-text">Si ves esto no se ha listado la habitación</p>
 	    					<h6 class="list-group-item-heading" align="right">Cabecera</h6>	
 	    				</a>
 	    			</div>
@@ -79,7 +99,24 @@
 
 	    </div>
 
+			<div id="map_wrapper">
+				<div id="map_canvas" class="mapping"></div>
+			</div>
 
+			<div id="travel_selector">
+				<label for="text">Escoger el modo de viajar:</label>
+				<select id="travelType" onchange="calcRoute(this.value)">
+					<option selected value='base'>Selecciona un método de viajar</option>
+					<option value="WALKING">Caminando</option>
+					<option value="BICYCLING">Bicicleta</option>
+					<option value="DRIVING">Coche</option>
+					<option value="TRANSIT">Transporte público</option>
+				</select></p>
+			</div>
+		
+		
+		
+		
 	<div class="form-group">
         <label for="text">Enviar un mensaje a este usuario</label>
        		 <textarea name="text" class="form-control" id="text" rows="8"></textarea>
@@ -97,14 +134,21 @@
 	 <br>
   	</div>
         <div class="row">
-        <button id="buttonRegresar" type="button" class="btn btn-danger center-block">AtrÃ¡s</button>
+        <button id="buttonRegresar" type="button" class="btn btn-danger center-block">Atrás</button>
         </div>
     	</div>
     </div> <!-- /container -->
     </div>
 
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	  <!-- Google maps Javascript plugins -->
+	  <script src="https://maps.googleapis.com/maps/api/js"></script>	
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	 <script src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"></script>
     <script src="js/api.js"></script>
 	<script src="js/descriptionroom2logueado.js"></script>
 	</body>
