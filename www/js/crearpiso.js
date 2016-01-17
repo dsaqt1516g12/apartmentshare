@@ -6,6 +6,7 @@ window.onload = getCampus();
 
 //google.maps.event.addDomListener(window, 'load', initialize);
 function getCampus() {
+			var API_BASE_URL = "http:/147.83.7.207:8888/apartmentshare";
 			var url = API_BASE_URL +'/campus';
 			$("#campusid").text('');
 			$("<option selected value='base'>Selecciona un Campus</option>").appendTo($('#campusid'));
