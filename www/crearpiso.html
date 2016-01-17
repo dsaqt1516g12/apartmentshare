@@ -14,7 +14,33 @@
     <style type="text/css">
       html, body { height: 100%; margin: 0; padding: 0; }
       #map { height: 100%; }
+	  	   #map_campus {
+		width: 500px;
+		height: 400px;
+		background-color: #CCC;
+	  }
+	  #secondmap {
+		width: 500px;
+		height: 400px;
+		background-color: #CCC;
+	  }
+		  #map_wrapper {
+		height: 400px;
+		}
+
+		#map_canvas {
+			width: 100%;
+			height: 100%;
+		}
+
+		#travel_selector {
+			margin-top: 10px;
+			margin-left: 10px;
+		}
     </style>
+		<meta name="viewport" content="width=device-width">
+	<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+
   </head>
 
   <body>
@@ -66,10 +92,10 @@
   <div class="jumbotron text-left">
     <h2>Crea el piso a partir del cual realizar el anuncio</h2>
 
-    
+    <br>
     <div class="form-group">
-        <label for="campusid">Seleccione el Campus UPC</label>
-        <select style="width:20% !important" name="campusid" class="form-control" id="campusid">
+        <label for="campusid">Seleccione el Campus UPC más cercano a tu piso</label>
+       <!-- <select style="width:20% !important" name="campusid" class="form-control" id="campusid">
                       <option value="0713E26AB95611E5AE7CA4DB305B7F0E">Campus FIB, Barcelona </option>
                       <option value="2431ADDEB95111E5AE7CA4DB305B7F0E">Campus EPSEM, Manresa</option>
                       <option value="29AC8985B95311E5AE7CA4DB305B7F0E">Campus ETSAB,</option>
@@ -91,18 +117,30 @@
                       <option value="F2CDAA45B95211E5AE7CA4DB305B7F0E">Campus ESAB, Castelldefels</option>
                       <option value="FBF97602B95611E5AE7CA4DB305B7F0E">Campus CITM, Terrassa</option>
                >                                      
-        </select>
+        </select>-->
+		
+			<select style="width:20% !important" name="campusid" class="form-control" id='campusid' onchange="getCampusByID(this.value)"></select>
+		  <br>
+		<!-- Aquí dibuja el maps en base a la latitud y longitud de los campus -->
+		  <div id="map_campus"></div>
+		  <br>
     </div>
+	
+
 
     <div class="form-group">
-        <label for="address">Dirección completa del piso</label>
-        <input name="address" class="form-control" id="address" type="text">
+        <label for="myaddress">Dirección completa del piso</label>
+        <!--<input name="address" class="form-control" id="address" type="text">-->
+		<!-- Aquí dibuja el mapa en función de la dirección que pongamos entre el campos address -->
+		<input class="form-control" name ='myaddress' id='myaddress' type="text"><br>
+		<!--<button type="button" class="btn btn-info" id="set_address">Ubicar dirección</button>-->
+		<address> </address>
     </div> 
 
     <div class="form-group ">
         <label for="fumadores">¿Se admiten fumadores?</label>
         <select style="width:10% !important" name="fumadores" class="form-control" id="smoker">
-                      <option value="0">Si</option>
+                      <option selected="selected" value="0">Indiferente</option>
                       <option value="1">Si</option>
                       <option value="2">No</option>                   
         </select>
@@ -111,7 +149,7 @@
    <div class="form-group ">
         <label for="mascotas">¿Se admiten mascotas?</label>
         <select style="width:10% !important" name="mascotas" class="form-control" id="pets">
-                      <option value="0">Indiferente</option>
+                      <option selected="selected" value="0">Indiferente</option>
                       <option value="1">Si</option>
                       <option value="2">No</option>                   
         </select>
@@ -148,7 +186,7 @@
        
                       <option value="2">Solo se admiten hombres</option>
                       <option value="1">Solo se admiten mujeres</option>
-                      <option value="0">Indiferente</option>               
+                      <option selected="selected" value="0">Indiferente</option>               
       </select>
     </div>
     <div class="form-group">
@@ -232,10 +270,8 @@
 
  <!--       forma para añadir archivos, en prueba
     <form name="imagen" method="post" id="imagenes" enctype="multipart/form-data">
-
       <label for="foto">Añade imagenes del piso (si hay más de una, selecciónalas todas a la vez)</label>
       <input type="file" name="foto" id="foto" multiple="true">
-
     </form>
 -->
     <div class="form-group">
@@ -269,6 +305,15 @@
   
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		  <!-- Google maps Javascript plugins -->
+	  <script src="https://maps.googleapis.com/maps/api/js"></script>	
+	        <!-- Include all compiled plugins (below), or include individual files as needed -->
+	 <script src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"></script>
+	       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	  	  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
     <script src="js/api.js"></script>
   <script src="js/crearpiso.js"></script>
   </body>
