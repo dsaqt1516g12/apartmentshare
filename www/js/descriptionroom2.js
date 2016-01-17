@@ -163,7 +163,6 @@ var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:8
 function getRoom(todo_id) {
 	$("#result2").text('');
 	$("#result_code").text('');
-	alert("entro al get room");
 		
 	$.ajax({
 		url : todo_id,
@@ -185,7 +184,6 @@ function getRoom(todo_id) {
 		geocoder.geocode( { 'address': address}, function(results, status) {
 		  if (status == google.maps.GeocoderStatus.OK)
 		  {
-			alert(room.campusname);
 				initialize_distance(room.address,results[0].geometry.location.lat(),results[0].geometry.location.lng(),room.campusname,room.latitud,room.longitud);
 		  }
 		});
