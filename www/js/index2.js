@@ -7,7 +7,7 @@ window.onload = getCampus;
 //google.maps.event.addDomListener(window, 'load', initialize);
 function getCampus() {
 			//var url = API_BASE_URL +'/campus';
-			$("#campusid").text('');
+			$("#campusname").text('');
 			$("<option selected value='base'>Selecciona un Campus</option>").appendTo($('#campusid'));
 			$.ajax({
 				url : 'http://147.83.7.207:8888/apartmentshare/campus',
@@ -23,7 +23,7 @@ function getCampus() {
 							$.each(campus, function(i, v) {
 								var campuss = v;
 								if(campuss.campusname!=undefined || campuss.campusname!=null){
-									$("<option value='" + campuss.id + "'>"+ campuss.campusname +', '+campuss.address +"</option>").appendTo($('#campusid'));	
+									$("<option value='" + campuss.id + "'>"+ campuss.campusname +', '+campuss.address +"</option>").appendTo($('#campusname'));	
 								}
 										
 							});	
@@ -31,7 +31,7 @@ function getCampus() {
 					}).fail(function() {
 				$("#result").text("No List Campus.");
 			});
-			$("</select>").appendTo($('#campusid'));
+			$("</select>").appendTo($('#campusname'));
 
 }
 
