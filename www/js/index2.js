@@ -8,7 +8,7 @@ window.onload = getCampus;
 function getCampus() {
 			//var url = API_BASE_URL +'/campus';
 			$("#campusname").text('');
-			$("<option selected value='base'>Selecciona un Campus</option>").appendTo($('#campusid'));
+			$("<option selected value='base'>Selecciona un Campus</option>").appendTo($('#campusname'));
 			$.ajax({
 				url : 'http://147.83.7.207:8888/apartmentshare/campus',
 				type : 'GET',
