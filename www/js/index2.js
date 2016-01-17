@@ -101,7 +101,7 @@ $("#formBuscarhabitacion").submit(function(e){
 	}
 	
     e.preventDefault();
-  	BuscarRooms($('#campusid').val(), $('#smoker').val(), $('#pets').val(),  
+  	BuscarRooms($('#campusname').val(), $('#smoker').val(), $('#pets').val(),  
   		$('#girlorboy').val(), $('#numpartner').val(), 
   		$('#maxprice').val(), $('#minprice').val(), 
   		function(rooms) {
