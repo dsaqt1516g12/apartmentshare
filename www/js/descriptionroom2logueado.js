@@ -207,8 +207,6 @@ function getRoom(todo_id) {
 		geocoder.geocode( { 'address': address}, function(results, status) {
 		  if (status == google.maps.GeocoderStatus.OK)
 		  {
-				alert(room.campusname);
-				alert(results[0].geometry.location.lat());
 				initialize_distance(room.address,results[0].geometry.location.lat(),results[0].geometry.location.lng(),room.campusname,room.latitud,room.longitud);
 		  }
 		});
