@@ -6,7 +6,7 @@ window.onload = getCampus();
 
 //google.maps.event.addDomListener(window, 'load', initialize);
 function getCampus() {
-			var url = my_API_BASE_URL +'/campus';
+			var url = API_BASE_URL +'/campus';
 			$("#campusid").text('');
 			$("<option selected value='base'>Selecciona un Campus</option>").appendTo($('#campusid'));
 			$.ajax({
