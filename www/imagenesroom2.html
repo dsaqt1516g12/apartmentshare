@@ -9,7 +9,7 @@
 
     <title>Apartment Share</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
     <link href="css/apartmentshare.css" rel="stylesheet">
 
    
@@ -17,36 +17,35 @@
 
   <body>
     <!-- Fixed navbar -->
-  <div class="navbar navbar-default">
-  <div class="container-fluid">
-    
-    <div class="navbar-collapse collapse" id="navbar">
+  <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand"> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
             <ul class="nav navbar-nav navbar-left">
                 <li><a id="Quiensomos" href="quiensomos.html">Acerca de nosotros</a></li>
+                <li><a id="index" href="index.html">Volver al índice</a></li>
             </ul>
-
-          <form class="navbar-form navbar-right" id="navbar-form navbar-right">
-
-           
-           <!-- <div class="form-group">
-              <input type="text" id="inputLoginid" class="form-control"  placeholder="Login ID" required autofocus>
-            </div>
-
-            <div class="form-group">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña" required>
-            </div>
-            <button class="btn btn-success" type="submit">Entrar</button>
-            -->
-
+        
+          <ul class="nav navbar-nav navbar-right">
+                   
             <a class="btn btn-success" href="login.html" type="submit">Entra en ApartmentShare</a>
 
             <a class="btn btn-warning" href="registro.html" type="submit">Regístrate</a>
-
-            
-          </form>
-   </div>
-  </div>
-</div>
+    
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
  
 
     <div class="container">

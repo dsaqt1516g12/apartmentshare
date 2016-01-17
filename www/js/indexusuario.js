@@ -7,13 +7,13 @@ $(function(){
    var authToken = JSON.parse(sessionStorage["auth-token"]);
    //var currentFlatsUri = authToken["links"]["current-flat"].uri;
 
-	$.ajax({
-			    	type: 'GET',
-			   		url: 'http://localhost:8080/apartmentshare',
-			    	headers: {
-					"X-Auth-Token":authToken.token
-			    	}
-			    })
+  $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/apartmentshare',
+            headers: {
+          "X-Auth-Token":authToken.token
+            }
+          })
 });
 
 $("#aCloseSession").click(function(e){

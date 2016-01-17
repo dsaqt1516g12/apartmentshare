@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+	 <style>
+	   #map {
+		width: 500px;
+		height: 400px;
+		background-color: #CCC;
+	  }
+	  #secondmap {
+		width: 500px;
+		height: 400px;
+		background-color: #CCC;
+	  }
+		  #map_wrapper {
+		height: 400px;
+		}
+
+		#map_canvas {
+			width: 100%;
+			height: 100%;
+		}
+
+		#travel_selector {
+			margin-top: 10px;
+			margin-left: 10px;
+		}
+    </style>
+      <meta charset="utf-8">
+      <title>API Test</title>
+
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+
+	<meta name="viewport" content="width=device-width">
+	<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+	  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=set_to_true_or_false"></script> 
+	  
+    </head>
+    <body>
+    <br>
+    <div id="result_code"></div>
+          <h1>Campus</h1>
+
+          <form class="form-inline" role="form">
+              <div class="form-group">
+               <!--  <label for="title">Título</label>-->
+                  
+                 <!--  <label for="title">Autor</label>-->
+                  <!-- <label for="title">Dificultad</label>
+                  <input class="form-control" id="difficulty" type="text"><br>
+                  <label for="title">Ingredientes</label>
+                  <input class="form-control" id="ingredients" type="text"><br>
+                  <label for="title">Preparación</label>
+                  <input class="form-control" id="preparation" type="text"><br>
+                  <label for="title">Fecha de Creación</label>
+                  <input class="form-control" id="creationDate" type="text"><br> -->
+
+              </div>
+             </form>
+			 
+
+
+		<!--  <button type="button" class="btn btn-info" id="button_get_campus">Listar todos los campus</button> -->
+			
+	
+
+          <br>
+          <br>
+			<select id='result2' onchange="getCampusByID(this.value)"></select>
+			
+		   <br>
+          <br>
+		<!-- Aquí dibuja el maps en base a la latitud y longitud de los campus -->
+		  <div id="map"></div>
+		  <br>
+
+			<!--<input type="text" id="example" />
+			<p id="example-output">Nothing yet</p>-->
+		  
+		  
+		  <br>
+		  <!-- Aquí dibuja el mapa en función de la dirección que pongamos entre el campos address -->
+		  <input class="form-control" id="myaddress" type="text"><br>
+		   <!--<button type="button" class="btn btn-info" id="set_address">Ubicar dirección</button>-->
+		    <address> </address>
+          <br>
+		  
+		  
+		    <br>
+          <br>
+		  
+		  
+          <div class="panel panel-primary">
+              <div class="panel-heading" >Mensajes de respuesta</div>
+
+			  
+			 
+              <div class="panel-body" id="result"></div>
+			  
+			   <div class="panel-body" id="result2"></div>
+			 
+          </div>
+
+          <br>
+
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	  <!-- Google maps Javascript plugins -->
+	  <script src="https://maps.googleapis.com/maps/api/js"></script>	
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	 <script src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"></script>
+
+      <!-- Event and AJAX functions -->
+      <!--<script type="text/javascript" src="todo.js"></script>-->
+          <script type="text/javascript" src="js/weblinking.js"></script>
+          <script type="text/javascript" src="js/roomfilter.js"></script>
+
+    </body>
+  </html>

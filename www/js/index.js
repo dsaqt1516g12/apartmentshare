@@ -1,3 +1,73 @@
+var API_BASE_URL = "http://147.83.7.207:8888/apartmentshare";
+
+//Función que ejecuta al cargar, escoger esta para crear piso y para el filtro donde se selecciona el campus.
+window.onload = getCampus;
+
+
+//google.maps.event.addDomListener(window, 'load', initialize);
+function getCampus() {
+      //var url = API_BASE_URL +'/campus';
+      $("#campusname").text('');
+      $("<option selected value='base'>Selecciona un Campus</option>").appendTo($('#campusname'));
+      $.ajax({
+        url : 'http://147.83.7.207:8888/apartmentshare/campus',
+        type : 'GET',
+        crossDomain : true,
+        dataType : 'json',
+        contentType : 'application/json',
+      }).done(
+          function(data, status, jqxhr) {
+            var campus = data;
+            $.each(campus, function(i, v) {
+              var campus = v;
+              $.each(campus, function(i, v) {
+                var campuss = v;
+                if(campuss.campusname!=undefined || campuss.campusname!=null){
+                  $("<option value='" + campuss.id + "'>"+ campuss.campusname +', '+campuss.address +"</option>").appendTo($('#campusname')); 
+                }
+                    
+              }); 
+            });
+          }).fail(function() {
+        $("#result").text("No List Campus.");
+      });
+      $("</select>").appendTo($('#campusname'));
+
+}
+
+
+function getCampusByID(todo_id) {
+  var url = API_BASE_URL + '/campus/' + todo_id;
+  $.ajax({
+    url : url,
+    type : 'GET',
+    crossDomain : true,
+    dataType : 'json',
+    contentType : 'application/json',
+  }).done(function(data, status, jqxhr) {
+    var campus = data;
+    initialize(campus.latitud,campus.longitud,campus.campusname,campus.address);
+  }).fail(function() {
+    $('<div class="alert alert-danger"> <strong>No existe</strong> un campus con ese ID</div>').appendTo($("#result"));
+  });
+
+}
+
+function initialize(Lat,Lng,name,address) {
+    var mapCanvas = document.getElementById('map_campus');
+    var mapOptions = {
+      center: new google.maps.LatLng(Lat, Lng),
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(Lat, Lng),
+    map: map,
+    title: name +', ' + address
+    });
+}
 
    loadRooms(function(rooms){
       $("#stings-list").empty();
@@ -12,14 +82,27 @@ function previousStings(){
 
 
 $("#formBuscarhabitacion").submit(function(e){
+  var minprice = $('#maxprice').val();
+  var maxprice = $('#maxprice').val();
+
+  if (isNaN($('#maxprice').val())==true || isNaN($('#maxprice').val())==true){
+        alert("Debes introducir números enteros en el precio mínimo y máximo");
+    }
+  
+  if ( maxprice< minprice){
+     alert("El precio máximo no puede ser inferior al precio mínimo");
+  }
+  
     e.preventDefault();
-  	BuscarRooms($('#campusid').val(),  $('#smoker').val(), $('#pets').val(), $('#girlorboy').val(), $('#numpartner').val(), $('#pricemin').val(), $('#pricemax').val(), 
-  		function(rooms) {
-		  	$("#buttonBuscarhabitacion").blur();
-			 $("#stings-list").empty();
-      				processRoomsCollection(rooms);
-		  }
-	);
+    BuscarRooms($('#campusname').val(), $('#smoker').val(), $('#pets').val(),  
+      $('#girlorboy').val(), $('#numpartner').val(), 
+      $('#maxprice').val(), $('#minprice').val(), 
+      function(rooms) {
+        $("#buttonBuscarhabitacion").blur();
+       $("#stings-list").empty();
+              processRoomsCollection(rooms);
+      }
+  );
 });
 
 function processRoomsCollection(rooms){
