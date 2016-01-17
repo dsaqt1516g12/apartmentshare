@@ -97,11 +97,11 @@ $("#formBuscarhabitacion").submit(function(e){
 	alert($('#maxprice').val());
 	alert($('#minprice').val());
 
-	if (isNaN($('#maxprice').val()) || isNaN($('#maxprice').val())){
+	if (isNaN($('#maxprice').val())==true || isNaN($('#maxprice').val())==true){
         alert("Debes introducir números enteros en el precio mínimo y máximo");
     }
 	
-	if (isNaN($('#maxprice').val())<isNaN($('#maxprice').val())){
+	if ($('#maxprice').val() < $('#maxprice').val()){
 		 alert("El precio máximo no puede ser inferior al precio mínimo");
 	}
 	
