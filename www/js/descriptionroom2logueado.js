@@ -1,4 +1,3 @@
-var API_BASE_URL = "http://147.83.7.207:8888/apartmentshare";
 
 var uri = JSON.parse(sessionStorage["uri-rooms2"]);
 
@@ -184,7 +183,6 @@ var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:8
 
 
 function getRoom(todo_id) {
-	var url = 'http://147.83.7.207:8888/apartmentshare/rooms/' + todo_id;
 	$("#result2").text('');
 	$("#result_code").text('');
 		
