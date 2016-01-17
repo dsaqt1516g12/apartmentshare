@@ -321,16 +321,16 @@ function getfotos(uri, complete){
 }
 
 
-function BuscarRooms(campusid, smoker, pets, girlorboy, numpartner, pricemin, pricemax, complete){
+function BuscarRooms(campusname, smoker, pets, girlorboy, numpartner, maxprice, minprice, complete){
 
 	var busqueda = new Object();
-			busqueda.campusid= campusid;
+			busqueda.campusname= campusname;
 			busqueda.smoker= smoker;
 			busqueda.pets=pets;
 			busqueda.girlorboy= girlorboy;
 			busqueda.numpartner= numpartner;
-			busqueda.pricemin= pricemin;
-			busqueda.pricemin= pricemax;
+			busqueda.maxprice= maxprice;
+			busqueda.minprice= minprice;
 			console.log(busqueda);
 
 	$.ajax({	
@@ -342,6 +342,7 @@ function BuscarRooms(campusid, smoker, pets, girlorboy, numpartner, pricemin, pr
 		   	url: 'http://147.83.7.207:8888/apartmentshare/rooms',
 		    }).done(function(rooms){
 			complete(rooms);
+			
 		})
 		.fail(function(){});
 
