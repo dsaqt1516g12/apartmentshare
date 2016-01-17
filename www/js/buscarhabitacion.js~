@@ -8,7 +8,6 @@ function previousStings(){
     processRoomsCollection(rooms);
   });
 }
-
    $("#formBuscarhabitacion").submit(function(e){
       e.preventDefault();
       e.stopImmediatePropagation();

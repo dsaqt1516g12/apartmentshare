@@ -13,9 +13,7 @@ function previousStings(){
 
 $("#formBuscarhabitacion").submit(function(e){
     e.preventDefault();
-  	BuscarRooms($('#campusid').val(),  $('#furnished').val(), $('#smoker').val(), $('#pets').val(), $('#numbathrooms').val(), 
-  		$('#girlorboy').val(),$('#plantnum').val(), $('#sqm').val(), $('#elevator').val(), $('#internet').val(), $('#numpartner').val(), 
-  		$('#price').val(), 
+  	BuscarRooms($('#campusid').val(),  $('#smoker').val(), $('#pets').val(), $('#girlorboy').val(), $('#numpartner').val(), $('#pricemin').val(), $('#pricemax').val(), 
   		function(rooms) {
 		  	$("#buttonBuscarhabitacion").blur();
 			 $("#stings-list").empty();
@@ -23,7 +21,6 @@ $("#formBuscarhabitacion").submit(function(e){
 		  }
 	);
 });
-
 
 function processRoomsCollection(rooms){
 

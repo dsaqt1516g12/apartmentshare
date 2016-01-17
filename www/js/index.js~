@@ -83,6 +83,7 @@ var campusname = '<h6 class="list-group-item-heading unclickable" align="center"
 
 
  var phone = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Telefono: '+  phone +'</h6>';;
+
 var imageURL = '<img  style=width:300px;height:228px; src='+ imageURL +'>';;
 
  var price = '<h6 class="list-group-item-heading unclickable" color="red" align="center">'+ 'Precio: '+  price +'</h6>';;

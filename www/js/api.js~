@@ -321,24 +321,16 @@ function getfotos(uri, complete){
 }
 
 
-
-
-
-function BuscarRooms(campusid, furnished, smoker, pets, numbathrooms, girlorboy, plantnum, sqm, elevator, internet, numpartner, price, complete){
+function BuscarRooms(campusid, smoker, pets, girlorboy, numpartner, pricemin, pricemax, complete){
 
 	var busqueda = new Object();
 			busqueda.campusid= campusid;
-			busqueda.furnished= furnished;
 			busqueda.smoker= smoker;
 			busqueda.pets=pets;
-			busqueda.numbathrooms= numbathrooms;
 			busqueda.girlorboy= girlorboy;
-			busqueda.plantnum= plantnum;
-			busqueda.sqm= sqm;
-			busqueda.elevator= elevator;
-			busqueda.internet=internet;
 			busqueda.numpartner= numpartner;
-			busqueda.price= price;
+			busqueda.pricemin= pricemin;
+			busqueda.pricemin= pricemax;
 			console.log(busqueda);
 
 	$.ajax({	
