@@ -8,7 +8,7 @@ $(function(){
    getRoom(uri, function(flats){
       $("#stings-list").empty();
       $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 
-        flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price, flats.status, flats.fullname, flats.furnished));
+        flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price, flats.status, flats.fullname, flats.furnished, flats.filename));
    });
 });
 
@@ -69,10 +69,10 @@ $("#aCloseSession").click(function(e){
 
 $("#aGoToProfile").click(function(e){
   e.preventDefault();
-    window.location.replace('perfil.html');
+    window.location.replace('micuenta.html');
 });
 
-function listItemHTML(uri, address, description,lastModified, creationTimestamp, id, girlorboy, sqm, price, status, fullname, furnished){
+function listItemHTML(uri, address, description,lastModified, creationTimestamp, id, girlorboy, sqm, price, status, fullname, furnished, filename){
 
 if( status == 1){
 status = 'Disponible';
@@ -121,14 +121,15 @@ var creationTimestamp = new Date( creationTimestampformat );
   var furnished = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Habitación amueblada: ' +  furnished +'</h6>';;
   var price= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Precio mensual: '+  price +'  (€)'+'</h6>';;
   var status= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Estado: '+  status +'</h6>';;
-
+var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:88/img/'+ filename +'>';;
 
   var creado = '<h6 class="list-group-item-heading unclickable" align="right">'+  'Fecha de creación: ' +'</h6>';;
+
   var l = '<h6 class="list-group-item-heading unclickable" align="right">'+  creationTimestamp +'</h6>';;
   var modificado = '<h6 class="list-group-item-heading unclickable" align="right">'+  'Última modificación: '+'</h6>';;
   var h = '<h6 class="list-group-item-heading unclickable" align="right">'+  lastModified +'</h6>';;
 
 
-  return infohab + description + g + sqm + furnished + price+ status 
+  return infohab + description + g + sqm + furnished + price+ status +filename
   + creado +l +modificado +h ;
 }

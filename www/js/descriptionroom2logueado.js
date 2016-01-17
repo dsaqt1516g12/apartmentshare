@@ -16,6 +16,7 @@ $(function(){
           })
 });
 
+
 var uri = JSON.parse(sessionStorage["uri-rooms2"]);
    getRooms(uri, function(flats){
       $("#stings-list").empty();

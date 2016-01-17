@@ -38,7 +38,7 @@ function processFlatsCollection(flats){
 
       flats.links=linksToMap(flats.links);
       var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
-      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, flats.creationTimestamp, flats.id, flats.numpartner));
+      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, flats.creationTimestamp, flats.id, flats.numpartner,  flats.filename));
       if(i==0)
         $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
      if(i==lastIndex){
@@ -91,7 +91,7 @@ $("#aGoToProfile").click(function(e){
     window.location.replace('micuenta.html');
 });
 
-function listItemHTML(uri, address, description,lastModifield, creationTimestamp, id, numpartner){
+function listItemHTML(uri, address, description,lastModifield, creationTimestamp, id, numpartner, filename){
 
 
 lastModifieldformat = lastModifield;
@@ -102,7 +102,8 @@ var creationTimestamp = new Date( creationTimestampformat );
   var a = '<a class="list-group-item" href="'+ uri +'/'+ id + '">';
   var p = '<p class="list-group-item-text unclickable">' + 'Descripción del piso: '+ description+ '</p>';
   var m = '<m class="list-group-item-text unclickable">' +  'Direcion del piso: '+ address+ '</m>';
+	var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:88/img/'+ filename +'>';;
   var creationTimestamp = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Fecha de creacón : ' + creationTimestamp +'</h6>';;
   var lastModifield = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Ultima modificacion: '+   lastModifield +'</h6>';;
-  return a + p + m  + creationTimestamp + lastModifield + '</a>';
+  return a + p + m  + filename+  creationTimestamp + lastModifield + '</a>';
 }

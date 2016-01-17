@@ -73,6 +73,11 @@
         <button id="buttonRegresar" type="button" class="btn btn-danger center-block">Atrás</button>
         </div>
     	</div>
+
+		<a class="btn btn-large btn-primary" href="imagenesroom2.html" style="float:center;" type="submit">Editar Cuenta</a>
+        <br>
+
+
     </div> <!-- /container -->
     </div>
 

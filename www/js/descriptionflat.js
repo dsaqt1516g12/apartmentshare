@@ -12,7 +12,7 @@ var uri = JSON.parse(sessionStorage["uri-flat"]);
       var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
       $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 
         flats.creationTimestamp, flats.numpartner, flats.smoker, flats.pets, flats.girlorboy, flats.sqm, flats.numrooms,
-        flats.furnished, flats.numbathrooms, flats.elevator, flats.plantnum, flats.internet, flats.fianza, flats.estancia, flats.campusid));
+        flats.furnished, flats.numbathrooms, flats.elevator, flats.plantnum, flats.internet, flats.fianza, flats.estancia, flats.campusid, flats.filename));
    });
 });
 
@@ -63,7 +63,7 @@ $("#aGoToProfile").click(function(e){
   e.preventDefault();
     window.location.replace('micuenta.html');
 });
-function listItemHTML(uri, address, description,lastModifield, creationTimestamp, numpartner, smoker, pets, girlorboy, sqm, numrooms, furnished, numbathrooms, elevator, plantnum, internet, fianza, estancia, campusid){
+function listItemHTML(uri, address, description,lastModifield, creationTimestamp, numpartner, smoker, pets, girlorboy, sqm, numrooms, furnished, numbathrooms, elevator, plantnum, internet, fianza, estancia, campusid, filename){
 
 if( smoker == 1){
 smoker= 'Si';
@@ -211,12 +211,12 @@ var internet = '<h6 class="list-group-item-heading unclickable" align="center">'
 var fianza = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Fianza a depositar requerida: '+  fianza + ' €'+'</h6>';;
 var estancia = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Estancia del piso: '+  estancia + ' meses'+'</h6>';;
 
-
+var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:88/img/'+ filename +'>';;
 
  var creationTimestamp = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Fecha de creacón : ' + creationTimestamp +'</h6>';;
   var lastModifield = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Ultima modificacion: '+   lastModifield +'</h6>';;
   
 
   return ti +p + m + campusid +  numpartner + sqm + numrooms + numbathrooms + smoker + girlorboy + furnished + elevator + plantnum + pets + internet 
-  + fianza + estancia + creationTimestamp + lastModifield;
+  + fianza + estancia + filename+ creationTimestamp + lastModifield;
 }

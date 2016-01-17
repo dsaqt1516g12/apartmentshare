@@ -34,7 +34,7 @@ function processRoomsCollection(rooms){
 
       rooms.links=linksToMap(rooms.links);
       var edit = rooms.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
-      $("#stings-list").append(listItemHTML(rooms.links["self"].uri, rooms.address, rooms.description, rooms.lastModified, rooms.creationTimestamp, rooms.id, edit, rooms.girlorboy, rooms.sqm, rooms.price));
+      $("#stings-list").append(listItemHTML(rooms.links["self"].uri, rooms.address, rooms.description, rooms.lastModified, rooms.creationTimestamp, rooms.id, edit, rooms.girlorboy, rooms.sqm, rooms.price, rooms.filename, rooms.imageURL));
       if(i==0)
         $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
      if(i==lastIndex){
@@ -93,7 +93,7 @@ $("#aGoToProfile").click(function(e){
     window.location.replace('micuenta.html');
 });
 
-function listItemHTML(uri, address, description,lastModifield, creationTimestamp, id, girlorboy, sqm, price){
+function listItemHTML(uri, address, description,lastModifield, creationTimestamp, id, girlorboy, sqm, price, filename, imageURL){
 
 lastModifieldformat = lastModifield;
 var lastModifield = new Date( lastModifieldformat );
@@ -114,7 +114,8 @@ girlorboy = 'Sólo chicos';
   var g = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Sexo de compañero :' +  girlorboy +'</h6>';;
   var sqm= '<h6 class="list-group-item-heading unclickable" align="center">'+  'Metros cuatradados de la habitación:' +sqm + ' m²'+ '</h6>';;
   var price= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Precio: '+  price +'  (€)'+'</h6>';;
+var imageURL = '<img  style=width:300px;height:228px; src=http://147.83.7.207:88/img/'+imageURL+'>';;
   var l = '<h6 class="list-group-item-heading unclickable" align="right">'+  creationTimestamp +'</h6>';;
   var h = '<h6 class="list-group-item-heading unclickable" align="right">'+  lastModifield +'</h6>';;
-  return a + p + g + sqm + price+ l +h + '</a>';
+  return a + p + g + sqm + price+  imageURL+ l +h + '</a>';
 }

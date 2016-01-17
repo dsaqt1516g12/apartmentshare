@@ -170,12 +170,20 @@ function loadRooms2(complete){
 		})
 		.fail(function(){});
 }
+function loadRooms3(complete){
+	uri = 'http://147.83.7.207:8888/apartmentshare/rooms?timestamp=1451412754000&before=true';
+	$.get(uri)
+		.done(function(rooms){
+			stings.links = linksToMap(rooms.links);
+			complete(rooms);
+		})
+		.fail(function(){});
+}
 
 function createuser(loginid, password, fullname, email, phone, complete){
 	loadAPI(function(){
 		var api = JSON.parse(sessionStorage.api);
 		var uri = "http://147.83.7.207:8888/apartmentshare/users";
-		//var uri = api.createuser.uri;
 		$.post(uri,
 			{
 				loginid: loginid,
@@ -246,10 +254,11 @@ var formData = new FormData($('formuploadajax')[0]);
 	type: 'POST',
 	uri: uri,
 	crossDomain : true,
-	dataType : 'form-data',
 	data: formData,
         contentType: "application/form-data", 
     	headers: {
+
+		 'Access-Control-Allow-Origin': '*',
         	"X-Auth-Token":authToken.token
     	}
 	
@@ -269,7 +278,7 @@ function getBase64Image(imgElem) {
     canvas.width = imgElem.clientWidth;
     canvas.height = imgElem.clientHeight;
     var ctx = canvas.getContext("2d");
-    ctx.drawImage(imgElem, 0, 0);
+   // ctx.drawImage(imgElem, 0, 0);
     var dataURL = canvas.toDataURL("image/png");
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
@@ -287,12 +296,32 @@ function getRooms(uri, complete){
 		    }).done(function(rooms){
 			rooms.links = linksToMap(rooms.links);
 
-			$("#foto").val(roooms.imageURL + " ... foto");
+			$("#foto").val(rooms.imageURL + " ... foto");
 			complete(rooms);
 		})
 		.fail(function(){});
 
 }
+
+function getfotos(uri, complete){
+
+	sessionStorage["uri-rooms2"] = JSON.stringify(uri);
+
+	uri=uri+'/img';
+
+	$.ajax({
+		    	type: 'GET',
+		   		url: uri,
+		    	
+		    }).done(function(fotos){
+			complete(fotos);		
+		})
+		.fail(function(){});
+
+}
+
+
+
 
 
 function BuscarRooms(campusid, furnished, smoker, pets, numbathrooms, girlorboy, plantnum, sqm, elevator, internet, numpartner, price, complete){
@@ -382,7 +411,7 @@ function getRoom(uri, complete){
 function createuser(loginid, password, fullname, email, phone, complete){
 	loadAPI(function(){
 		var api = JSON.parse(sessionStorage.api);
-		var uri = "http://0.0.0.0:8080/apartmentshare/users";
+		var uri = "http://147.83.7.207:8888/apartmentshare/users";
 		//var uri = api.createuser.uri;
 		$.post(uri,
 			{

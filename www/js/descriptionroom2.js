@@ -11,13 +11,8 @@ var uri = JSON.parse(sessionStorage["uri-rooms2"]);
 
  $("#buttonRegresar").click(function(){window.location.replace('index.html')});
 
-   $("#formPrevious").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-     // previousStings();
-      $("#buttonVerhabitaciones").blur();
-  window.location.replace('index.html');
-    });
+
+
 
 $("#formEnviarmensaje").submit(function(e){
     e.preventDefault();

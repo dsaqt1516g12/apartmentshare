@@ -4,9 +4,14 @@
       processRoomsCollection(rooms);
 });
 
+   $("#formPrevious").submit(function(){
+      previousStings();
+      $("#buttonPrevious").blur();
+    });
+
 
 function previousStings(){
-  loadRooms2(function(rooms){
+  loadRooms3(function(rooms){
     processRoomsCollection(rooms);
   });
 }
@@ -24,14 +29,6 @@ $("#formBuscarhabitacion").submit(function(e){
 		  }
 	);
 });
-
-   $("#formPrevious").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      previousStings();
-      $("#buttonPrevious").blur();
-    });
-
 
 function processRoomsCollection(rooms){
 
