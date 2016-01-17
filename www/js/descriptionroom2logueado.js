@@ -62,7 +62,7 @@ $("#aCloseSession").click(function(e){
 });
 $("#aGoToProfile").click(function(e){
   e.preventDefault();
-    window.location.replace('perfil.html');
+    window.location.replace('micuenta.html');
 });
 
 function listItemHTML(uri, address, description,lastModified, creationTimestamp, id, girlorboy, sqm, price, status, fullname, furnished, phone, email, numpartner, smoker, pets, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, campusname, campusaddress, filename){

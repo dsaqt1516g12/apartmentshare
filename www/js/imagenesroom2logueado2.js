@@ -26,7 +26,7 @@ var uri = JSON.parse(sessionStorage["uri-rooms2"]);
 	}; 
    });
 });
- $("#buttonRegresar").click(function(){window.location.replace('descriptionroomlogueado2.html')});
+ $("#buttonRegresar").click(function(){window.location.replace('descriptionroom2logueado.html')});
 
 $("#aCloseSession").click(function(e){
   e.preventDefault();
