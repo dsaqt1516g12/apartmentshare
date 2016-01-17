@@ -189,7 +189,7 @@ function getRoom(todo_id) {
 	$("#result_code").text('');
 		
 	$.ajax({
-		url : url,
+		url : 'http://147.83.7.207:8888/apartmentshare/rooms/' + todo_id,
 		type : 'GET',
 		crossDomain : true,
 		dataType : 'json',
