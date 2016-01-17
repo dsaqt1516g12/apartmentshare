@@ -1,16 +1,16 @@
-var my_API_BASE_URL = "http:/147.83.7.207:8888/apartmentshare";
+var API_BASE_URL = "http:/147.83.7.207:8888/apartmentshare";
 
 //Función que ejecuta al cargar, escoger esta para crear piso y para el filtro donde se selecciona el campus.
-window.onload = getCampus;
+window.onload = getCampus();
 
 
 //google.maps.event.addDomListener(window, 'load', initialize);
 function getCampus() {
-			var myurl = my_API_BASE_URL +'/campus';
+			var url = my_API_BASE_URL +'/campus';
 			$("#campusid").text('');
 			$("<option selected value='base'>Selecciona un Campus</option>").appendTo($('#campusid'));
 			$.ajax({
-				url : myurl,
+				url : url,
 				type : 'GET',
 				crossDomain : true,
 				dataType : 'json',
