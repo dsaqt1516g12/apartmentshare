@@ -89,19 +89,14 @@ function previousStings(){
 
 
 $("#formBuscarhabitacion").submit(function(e){
-	alert($('#campusid').val());
-	alert($('#smoker').val());
-	alert($('#pets').val());
-	alert($('#girlorboy').val());
-	alert($('#numpartner').val());
-	alert($('#maxprice').val());
-	alert($('#minprice').val());
+	var minprice = $('#maxprice').val();
+	var maxprice = $('#maxprice').val();
 
 	if (isNaN($('#maxprice').val())==true || isNaN($('#maxprice').val())==true){
         alert("Debes introducir números enteros en el precio mínimo y máximo");
     }
 	
-	if ($('#maxprice').val() < $('#maxprice').val()){
+	if ( maxprice< minprice){
 		 alert("El precio máximo no puede ser inferior al precio mínimo");
 	}
 	
