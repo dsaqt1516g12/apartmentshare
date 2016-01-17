@@ -68,6 +68,23 @@
 	    			</div>
 	    		</div>
 
+				
+							<div id="map_wrapper">
+				<div id="map_canvas" class="mapping"></div>
+			</div>
+
+			<div id="travel_selector">
+				<label for="text">Escoger el modo de viajar:</label>
+				<select id="travelType" onchange="calcRoute(this.value)">
+					<option selected value='WALKING'>Selecciona un método de viajar</option>
+					<option value="WALKING">Caminando</option>
+					<option value="BICYCLING">Bicicleta</option>
+					<option value="DRIVING">Coche</option>
+					<option value="TRANSIT">Transporte público</option>
+				</select></p>
+			</div>
+				
+				
         <br><br><br>
         <div class="row">
         <button id="buttonRegresar" type="button" class="btn btn-danger center-block">Atrás</button>
