@@ -200,7 +200,9 @@ if ( document.getElementById("file").files.length != 0){
 	$.ajax({
 		url : 'http://147.83.7.207:8888/apartmentshare/flat/'+flatid+'/img',
 		type : 'POST',
-		headers: { 'X-Auth-Token': token},
+		headers: { 
+		'X-Auth-Token': authToken.token,
+		'Content-Type': "application/vnd.dsa.apartmentshare.flat.img+json"},
 		crossDomain : true,
 		dataType : 'json',
 		contentType : false,
