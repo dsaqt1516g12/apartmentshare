@@ -96,7 +96,7 @@ if ( document.getElementById("fileRoom").files.length != 0){
 	var response = $.parseJSON(jqxhr.responseText);
 	
 		if ( document.getElementById("fileRoom2").files.length != 0){
-			UploadImg2(mytoken,myuri,roomid);
+			UploadImgRoom2(mytoken,myuri,roomid);
 		}
 		else
 		{
@@ -146,7 +146,7 @@ if ( document.getElementById("fileRoom2").files.length != 0){
 	var response = $.parseJSON(jqxhr.responseText);
 	
 		if ( document.getElementById("fileRoom3").files.length != 0){
-			UploadImg3(mytoken,myuri,roomid);
+			UploadImgRoom3(mytoken,myuri,roomid);
 		}
 		else
 		{
