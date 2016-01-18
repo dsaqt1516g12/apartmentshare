@@ -228,7 +228,7 @@ if ( document.getElementById("file").files.length != 0){
 
 	});
 }
-
+alert("STOP");
 }
 
 //PREVIEW DE LAS TRES IMÁGENES
