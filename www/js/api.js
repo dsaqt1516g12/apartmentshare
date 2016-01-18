@@ -353,7 +353,7 @@ function getfotos(uri, complete){
 
 }
 
-function getfotosflat(uri, complete){
+function getfotosflat(mytoken,uri, complete){
 
 	sessionStorage["uri-flat"] = JSON.stringify(uri);
 
@@ -363,7 +363,7 @@ function getfotosflat(uri, complete){
 		    	type: 'GET',
 		   		url: uri,
 				headers: {
-				"X-Auth-Token":authToken.token
+				"X-Auth-Token":mytoken
 		    	},
 		    	
 		    }).done(function(fotos){

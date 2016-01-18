@@ -18,7 +18,7 @@ $(function(){
 
 $(function(){
 var uri = JSON.parse(sessionStorage["uri-flat"]);
-    getfotosflat(uri, function(flats){
+    getfotosflat(authToken,uri, function(flats){
 
 	for(var it = 0; it< flats.images.length ; it++){
 		console.log("imagen "+it+" valor:"+flats.images[it].imageURL); 
