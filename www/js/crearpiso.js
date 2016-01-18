@@ -189,7 +189,8 @@ $("#result").text('');
 
 
 function UploadImg(token,flatid) {
-
+	alert(token);
+	alert(flatid);
 	var data
 	data = new FormData();
 	data.append( 'image', $( '#file' )[0].files[0] );
