@@ -175,7 +175,7 @@ $("#result").text('');
   		function() {
 		  	$("#buttonCrearpiso").blur();
 			console.log("change");
-
+			console.log(
 		  	window.location.replace('apartmentshare.html');
 		  }
 	);
@@ -183,44 +183,72 @@ $("#result").text('');
 });
 
 
+//////////////////////////////********************* SUBIR IMÁGENES ****************************//////////////////////////////////
 
-
-
-
-/*
-$("#formCrearpiso").click(function(e){
-  
-  e.preventDefault();
-  $("#result").text('');
-  
-  if($('#campusid').val() == "" || $('#address').val()=="" || $('#smoker').val()=="" || $('#numrooms').val()=="" || $('#pets').val()=="" || $('#numbathrooms').val()=="" || $('#girlorboy').val()==""
-    || $('#furnished').val()=="" || $('#plantnum').val()=="" || $('#elevator').val()=="" || $('#internet').val()==""|| $('#sqm').val()=="" || $('#estancia').val()==""
-    || $('#numpartner').val()=="" || $('#fianza').val()=="" || $('#description').val()=="") {
-    console.log ("hola");
-    $('<div class="alert alert-info">Rellena todos los campos</div>').appendTo($("#result"));
-  
-  }
-  else if (isNaN($('#sqm').val())){
-        $('<div class="alert alert-success"> <strong>Error!</strong> Debes poner un numero entero en los metros cuadrados del piso</div>').appendTo($("#result"));
-    }
- else if (isNaN($('#fianza').val())){
-        $('<div class="alert alert-success"> <strong>Error!</strong> Debes poner un numero entero para la fianza</div>').appendTo($("#result"));
-    }
-  
-    else{
-  
-    FormCrearpiso(Game);
-  }
+// SUBIR IMáGENES
+$( 'form' ).submit(function ( e ) {
+e.preventDefault();
+     UploadImg();
+	        UploadImg2();
+			      UploadImg3();
 });
-function FormCrearpiso(){
-    crearpiso($('#campusid').val(),  $('#address').val(), $('#description').val(), $('#numpartner').val(), $('#smoker').val(), 
-      $('#pets').val(),$('#girlorboy').val(), $('#sqm').val(), $('#furnished').val(), $('#numrooms').val(), $('#numbathrooms').val(), 
-      $('#elevator').val(), $('#plantnum').val(), $('#internet').val(), $('#fianza').val(), $('#estancia').val(), 
-      function() {
-        $("#buttonCrearpiso").blur();
-      console.log("change");
-        window.location.replace('apartmentshare.html');
-      }
-  );
+
+function UploadImg() {
+
+	var data
+	data = new FormData();
+	data.append( 'image', $( '#file' )[0].files[0] );
+if ( document.getElementById("file").files.length != 0){
+	
+
+	$.ajax({
+		url : 'http://147.83.7.207:8888/apartmentshare/flat/CCB51153BC9411E5B0D800155D077819/img',
+		type : 'POST',
+		headers: { 'X-Auth-Token': 'CDA37F41BD4A11E5B0D800155D077819'},
+		crossDomain : true,
+		dataType : 'json',
+		contentType : false,
+		processData : false,
+		data : data,
+		statusCode: {
+			200: function() {$('<div class="alert alert-success"> <strong>Ok!</strong></div>').appendTo($("#result_code"));},
+			202: function() {$('<div class="alert alert-success"> <strong>Accepted!</strong> </div>').appendTo($("#result_code"));},
+			400: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Bad Request </div>').appendTo($("#result_code"));},
+			404: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Recipient not found </div>').appendTo($("#result_code"));},
+			409: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Conflict </div>').appendTo($("#result_code"));},
+			401: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> No estas autorizado </div>').appendTo($("#result_code"));},
+			500: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Error interno </div>').appendTo($("#result_code"));}
+		}
+
+	}).done(function(data, status, jqxhr) {
+	var response = $.parseJSON(jqxhr.responseText);
+	
+
+		console.log(response.imageURL);
+
+	}).fail(function(jqXHR, textStatus) {
+	console.log(textStatus);
+
+	});
+}
+
+}
+
+//PREVIEW DE LAS TRES IMÁGENES
+
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#file").change(function(){
+    readURL(this);
 });
-*/
