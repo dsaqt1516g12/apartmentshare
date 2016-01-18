@@ -85,9 +85,6 @@ $("#formBuscarhabitacion").submit(function(e){
   var minprice = $('#minprice').val();
   var maxprice = $('#maxprice').val();
 
-  //if (isNaN($('#maxprice').val())==true || isNaN($('#maxprice').val())==true){
-      //  alert("Debes introducir números enteros en el precio mínimo y máximo");
-    //} 
   if ( maxprice < minprice){
      alert("El precio máximo no puede ser inferior al precio mínimo");
   }

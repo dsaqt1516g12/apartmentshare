@@ -88,7 +88,7 @@ $("#formBuscarhabitacion").submit(function(e){
   if ( maxprice < minprice){
      alert("El precio máximo no puede ser inferior al precio mínimo");
   }
-  else if(maxprice => minprice){ 
+  else if(maxprice <= minprice){ 
     e.preventDefault();
     BuscarRooms($('#campusname').val(), $('#smoker').val(), $('#pets').val(),  
       $('#girlorboy').val(), $('#numpartner').val(), 
