@@ -176,7 +176,7 @@ $("#result").text('');
 		  	$("#buttonCrearpiso").blur();
 			console.log("change");
 			
-		  	//window.location.replace('apartmentshare.html');
+		  	
 		  }
 	);
 }
@@ -189,8 +189,7 @@ $("#result").text('');
 
 
 function UploadImg(mytoken,flatid) {
-	alert(mytoken);
-	alert(flatid);
+
 	var data
 	data = new FormData();
 	data.append( 'image', $( '#file' )[0].files[0] );
@@ -221,15 +220,15 @@ if ( document.getElementById("file").files.length != 0){
 	var response = $.parseJSON(jqxhr.responseText);
 	
 
-		alert(response.imageURL);
+		
 
 	}).fail(function(jqXHR, textStatus) {
-	alert(textStatus);
+	
 	console.log(textStatus);
 
 	});
 }
-alert("STOP");
+window.location.replace('apartmentshare.html');
 }
 
 //PREVIEW DE LAS TRES IMÁGENES
