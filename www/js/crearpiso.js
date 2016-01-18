@@ -186,15 +186,11 @@ $("#result").text('');
 //////////////////////////////********************* SUBIR IMÁGENES ****************************//////////////////////////////////
 
 // SUBIR IMáGENES
-$( 'form' ).submit(function ( e ) {
-e.preventDefault();
-     UploadImg();
-	        UploadImg2();
-			      UploadImg3();
-});
 
-function UploadImg() {
 
+function UploadImg(token,flatid) {
+	alert(token);
+	alert(flatid);
 	var data
 	data = new FormData();
 	data.append( 'image', $( '#file' )[0].files[0] );
@@ -202,9 +198,9 @@ if ( document.getElementById("file").files.length != 0){
 	
 
 	$.ajax({
-		url : 'http://147.83.7.207:8888/apartmentshare/flat/CCB51153BC9411E5B0D800155D077819/img',
+		url : 'http://147.83.7.207:8888/apartmentshare/flat/' +flatid+'/img',
 		type : 'POST',
-		headers: { 'X-Auth-Token': 'CDA37F41BD4A11E5B0D800155D077819'},
+		headers: { 'X-Auth-Token': token},
 		crossDomain : true,
 		dataType : 'json',
 		contentType : false,

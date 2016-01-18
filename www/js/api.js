@@ -509,6 +509,8 @@ function crearpiso(campusid, address , description, numpartner, smoker, pets, gi
     }).done(function(flat) { 
 		flat.links = linksToMap(flat.links);
 		console.log(flat);
+		UploadImg(authToken.token,flat.id);
+		
     	complete();
   	}).fail(function(jqXHR, textStatus, errorThrown){	
 			var error = jqXHR.responseJSON;
