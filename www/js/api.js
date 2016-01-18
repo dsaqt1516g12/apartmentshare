@@ -378,7 +378,7 @@ function getfotosroom(uri, complete){
 	alert("URI "+uri);
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	console.log(authToken.token);
-	sessionStorage["uri-room"] = JSON.stringify(uri);
+	sessionStorage["uriroom"] = JSON.stringify(uri);
 	alert("token "+authToken.token);
 	uri=uri+'/img';
 

@@ -17,8 +17,8 @@ $(function(){
 });
 
 $(function(){
-var uri = JSON.parse(sessionStorage["uri-room"]);
-//var authToken = JSON.parse(sessionStorage["auth-token"]);
+var uri = JSON.parse(sessionStorage["uriroom"]);
+var authToken = JSON.parse(sessionStorage["auth-token"]);
     getfotosroom(uri, function(flats){
 
 	for(var it = 0; it< flats.images.length ; it++){
