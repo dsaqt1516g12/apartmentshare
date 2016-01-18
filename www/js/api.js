@@ -237,6 +237,39 @@ function enviarMensaje(text, complete){
 	});
 }
 
+function enviarMessage(text, complete){
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	console.log(authToken.token);
+	var nuevoMensaje = new Object();
+	nuevoMensaje.text=text;
+	console.log(nuevoMessage);
+
+	var uri = JSON.parse(sessionStorage["uri-rooms2"]);
+	console.log(uri);
+	uri=uri +'/message';
+
+	$.ajax({
+	type: 'POST',
+	url: uri,
+	crossDomain : true,
+	dataType : 'json',
+	data: nuevoMessage,
+        contentType: "application/x-www-form-urlencoded", 
+    	headers: {
+        	"X-Auth-Token":authToken.token
+    	}
+	
+    }).done(function(flat) { 
+		flat.links = linksToMap(flat.links);
+		console.log(flat);
+    	complete();
+  	}).fail(function(jqXHR, textStatus, errorThrown){	
+			var error = jqXHR.responseJSON;
+				alert(error.reason);
+
+	});
+}
+
 function enviarImagen( complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	console.log(authToken.token);

@@ -88,7 +88,7 @@ girlorboy = 'Sólo chicos';
 if( furnished == 1){
 furnished = 'Si';
 }
-else if( furnished == 2){
+else if( furnished == 0){
 furnished = 'No';
 }
 
@@ -119,7 +119,11 @@ if ( internet == 1){
 }
   else if ( internet == 0){
     internet = 'No';
+} else if (internet == 2){
+  internet = 'No';
 }
+
+
 
 if (estancia == 12){
   estancia = '12 o más ';

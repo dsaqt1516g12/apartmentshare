@@ -16,9 +16,27 @@ $(function(){
 
 $( "#form-signin" ).submit(function( event ) {
   event.preventDefault(); 
-  putUsuario($('#loginid').val(), $('#fullname').val(), $('#email').val(), $('#phone').val(), function(){
-  	window.location.reload();
-  });
+
+
+  //filtro para correcto ingreso del email en actualizar usuario
+
+  if (document.getElementById("email").value.indexOf('@') == -1) 
+  { 
+        $('<div class="alert alert-danger"> <strong>Error!</strong> Escriba un campo de emáil válido (¿Olvidó escribir "@"?)</div>').appendTo($("#result"));
+     
+  }
+  else if (document.getElementById("email").value.indexOf('.') == -1) 
+  {
+    $('<div class="alert alert-danger"> <strong>Error!</strong> Escriba un campo de emáil válido (¿Olvidó escribir el punto?)</div>').appendTo($("#result"));
+    
+  }
+  else{
+
+    putUsuario($('#loginid').val(), $('#fullname').val(), $('#email').val(), $('#phone').val(), function(){
+    console.log("change");
+    window.location.replace('micuenta.html');
+   });
+  }
 });
 
  $("#buttonRegresar").click(function(){window.location.replace('indexusuario.html')});
