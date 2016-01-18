@@ -220,9 +220,10 @@ if ( document.getElementById("file").files.length != 0){
 	var response = $.parseJSON(jqxhr.responseText);
 	
 
-		console.log(response.imageURL);
+		alert(response.imageURL);
 
 	}).fail(function(jqXHR, textStatus) {
+	alert(textStatus);
 	console.log(textStatus);
 
 	});
