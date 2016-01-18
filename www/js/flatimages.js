@@ -18,8 +18,8 @@ $(function(){
 
 $(function(){
 var uri = JSON.parse(sessionStorage["uri-flat"]);
-var authToken = JSON.parse(sessionStorage["auth-token"]);
-    getfotosflat(authToken,uri, function(flats){
+//var authToken = JSON.parse(sessionStorage["auth-token"]);
+    getfotosflat(uri, function(flats){
 
 	for(var it = 0; it< flats.images.length ; it++){
 		console.log("imagen "+it+" valor:"+flats.images[it].imageURL); 
