@@ -201,8 +201,7 @@ if ( document.getElementById("file").files.length != 0){
 		url : 'http://147.83.7.207:8888/apartmentshare/flat/'+flatid+'/img',
 		type : 'POST',
 		headers: { 
-		'X-Auth-Token': mytoken,
-		'Content-Type': "application/vnd.dsa.apartmentshare.flat.img+json"},
+		'X-Auth-Token': mytoken},
 		crossDomain : true,
 		dataType : 'json',
 		contentType : false,
