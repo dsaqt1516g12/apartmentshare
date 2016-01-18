@@ -375,11 +375,11 @@ function getfotosflat(uri, complete){
 }
 
 function getfotosroom(uri, complete){
-	alert("URI "+uri);
+	
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	console.log(authToken.token);
 	sessionStorage["uriroom"] = JSON.stringify(uri);
-	alert("token "+authToken.token);
+	
 	uri=uri+'/img';
 
 	$.ajax({
