@@ -171,7 +171,7 @@ function loadRooms2(complete){
 		.fail(function(){});
 }
 function loadRooms3(complete){
-	uri = 'http://147.83.7.207:8888/apartmentshare/rooms?timestamp=1453052138708&before=true';
+	uri = 'http://147.83.7.207:8888/apartmentshare/rooms?timestamp=1451412754000&before=true';
 	$.get(uri)
 		.done(function(rooms){
 			rooms.links = linksToMap(rooms.links);
@@ -221,6 +221,39 @@ function enviarMensaje(text, complete){
 	crossDomain : true,
 	dataType : 'json',
 	data: nuevoMensaje,
+        contentType: "application/x-www-form-urlencoded", 
+    	headers: {
+        	"X-Auth-Token":authToken.token
+    	}
+	
+    }).done(function(flat) { 
+		flat.links = linksToMap(flat.links);
+		console.log(flat);
+    	complete();
+  	}).fail(function(jqXHR, textStatus, errorThrown){	
+			var error = jqXHR.responseJSON;
+				alert(error.reason);
+
+	});
+}
+
+function enviarMessage(text, complete){
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	console.log(authToken.token);
+	var nuevoMensaje = new Object();
+	nuevoMensaje.text=text;
+	console.log(nuevoMessage);
+
+	var uri = JSON.parse(sessionStorage["uri-rooms2"]);
+	console.log(uri);
+	uri=uri +'/message';
+
+	$.ajax({
+	type: 'POST',
+	url: uri,
+	crossDomain : true,
+	dataType : 'json',
+	data: nuevoMessage,
         contentType: "application/x-www-form-urlencoded", 
     	headers: {
         	"X-Auth-Token":authToken.token
@@ -323,6 +356,9 @@ function getfotos(uri, complete){
 
 function BuscarRooms(campusname, smoker, pets, girlorboy, numpartner, maxprice, minprice, complete){
 
+	var base ='base';
+	if(campusname!=base){
+	if (maxprice >= minprice){
 	var busqueda = new Object();
 			busqueda.campusname= campusname;
 			busqueda.smoker= smoker;
@@ -344,7 +380,15 @@ function BuscarRooms(campusname, smoker, pets, girlorboy, numpartner, maxprice, 
 			complete(rooms);
 			
 		})
+	
 		.fail(function(){});
+
+	}
+	else
+	alert("No puede ser un numero menos el precio maximo");
+	}
+	else
+	alert("Tienes que elegir un Campus de la UPC");
 
 }
 function loadRoomsList(uri, complete){

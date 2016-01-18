@@ -356,6 +356,9 @@ function getfotos(uri, complete){
 
 function BuscarRooms(campusname, smoker, pets, girlorboy, numpartner, maxprice, minprice, complete){
 
+	var base ='base';
+	if(campusname!=base){
+	if (maxprice >= minprice){
 	var busqueda = new Object();
 			busqueda.campusname= campusname;
 			busqueda.smoker= smoker;
@@ -377,7 +380,15 @@ function BuscarRooms(campusname, smoker, pets, girlorboy, numpartner, maxprice, 
 			complete(rooms);
 			
 		})
+	
 		.fail(function(){});
+
+	}
+	else
+	alert("No puede ser un numero menos el precio maximo");
+	}
+	else
+	alert("Tienes que elegir un Campus de la UPC");
 
 }
 function loadRoomsList(uri, complete){
