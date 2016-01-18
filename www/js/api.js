@@ -470,6 +470,24 @@ function getFlat(uri, complete){
 		});
 }
 
+function getMessage(uri, complete){
+	$.get(uri)
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	console.log(authToken.token);
+	$.ajax({
+		    	type: 'GET',
+		   		url: uri,
+		    	headers: {
+				"X-Auth-Token":authToken.token
+		    	}
+		    }).done(function(flat){
+			flat.links = linksToMap(flat.links);
+			complete(flat);
+		})
+		.fail(function(data){
+		});
+}
+
 function getRoom(uri, complete){
 	$.get(uri)
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
