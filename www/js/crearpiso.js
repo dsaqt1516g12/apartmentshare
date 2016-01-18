@@ -219,7 +219,105 @@ if ( document.getElementById("file").files.length != 0){
 	}).done(function(data, status, jqxhr) {
 	var response = $.parseJSON(jqxhr.responseText);
 	
+		if ( document.getElementById("file2").files.length != 0){
+			UploadImg2(mytoken,flatid);
+		}
+		else
+		{
+			window.location.replace('apartmentshare.html');
+		}
+		
+		
 
+	}).fail(function(jqXHR, textStatus) {
+	
+	console.log(textStatus);
+
+	});
+}
+
+}
+
+function UploadImg2(mytoken,flatid) {
+
+	var data2
+	data2 = new FormData();
+	data2.append( 'image', $( '#file2' )[0].files[0] );
+if ( document.getElementById("file2").files.length != 0){
+	
+
+	$.ajax({
+		url : 'http://147.83.7.207:8888/apartmentshare/flat/'+flatid+'/img',
+		type : 'POST',
+		headers: { 
+		'X-Auth-Token': mytoken},
+		crossDomain : true,
+		dataType : 'json',
+		contentType : false,
+		processData : false,
+		data : data2,
+		statusCode: {
+			200: function() {$('<div class="alert alert-success"> <strong>Ok!</strong></div>').appendTo($("#result_code"));},
+			202: function() {$('<div class="alert alert-success"> <strong>Accepted!</strong> </div>').appendTo($("#result_code"));},
+			400: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Bad Request </div>').appendTo($("#result_code"));},
+			404: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Recipient not found </div>').appendTo($("#result_code"));},
+			409: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Conflict </div>').appendTo($("#result_code"));},
+			401: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> No estas autorizado </div>').appendTo($("#result_code"));},
+			500: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Error interno </div>').appendTo($("#result_code"));}
+		}
+
+	}).done(function(data2, status, jqxhr) {
+	var response = $.parseJSON(jqxhr.responseText);
+	
+		if ( document.getElementById("file3").files.length != 0){
+			UploadImg3(mytoken,flatid);
+		}
+		else
+		{
+			window.location.replace('apartmentshare.html');
+		}
+
+	}).fail(function(jqXHR, textStatus) {
+	
+	console.log(textStatus);
+
+	});
+}
+
+}
+
+function UploadImg3(mytoken,flatid) {
+
+	var data3
+	data3 = new FormData();
+	data3.append( 'image', $( '#file3' )[0].files[0] );
+if ( document.getElementById("file3").files.length != 0){
+	
+
+	$.ajax({
+		url : 'http://147.83.7.207:8888/apartmentshare/flat/'+flatid+'/img',
+		type : 'POST',
+		headers: { 
+		'X-Auth-Token': mytoken},
+		crossDomain : true,
+		dataType : 'json',
+		contentType : false,
+		processData : false,
+		data : data3,
+		statusCode: {
+			200: function() {$('<div class="alert alert-success"> <strong>Ok!</strong></div>').appendTo($("#result_code"));},
+			202: function() {$('<div class="alert alert-success"> <strong>Accepted!</strong> </div>').appendTo($("#result_code"));},
+			400: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Bad Request </div>').appendTo($("#result_code"));},
+			404: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Recipient not found </div>').appendTo($("#result_code"));},
+			409: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Conflict </div>').appendTo($("#result_code"));},
+			401: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> No estas autorizado </div>').appendTo($("#result_code"));},
+			500: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Error interno </div>').appendTo($("#result_code"));}
+		}
+
+	}).done(function(data3, status, jqxhr) {
+	var response = $.parseJSON(jqxhr.responseText);
+	
+		
 		window.location.replace('apartmentshare.html');
 
 	}).fail(function(jqXHR, textStatus) {
@@ -230,6 +328,7 @@ if ( document.getElementById("file").files.length != 0){
 }
 
 }
+
 
 //PREVIEW DE LAS TRES IMÁGENES
 
@@ -249,3 +348,39 @@ function readURL(input) {
 $("#file").change(function(){
     readURL(this);
 });
+
+function readURL2(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah2').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#file2").change(function(){
+    readURL2(this);
+});
+
+function readURL3(input) {
+
+    if (input.files && input.files[0]) {
+	
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah3').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#file3").change(function(){
+    readURL3(this);
+});
+
