@@ -176,7 +176,7 @@ $("#result").text('');
 		  	$("#buttonCrearpiso").blur();
 			console.log("change");
 			
-		  	window.location.replace('apartmentshare.html');
+		  	//window.location.replace('apartmentshare.html');
 		  }
 	);
 }
