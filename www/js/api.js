@@ -353,6 +353,23 @@ function getfotos(uri, complete){
 
 }
 
+function getfotosflat(uri, complete){
+
+	sessionStorage["uri-flat"] = JSON.stringify(uri);
+
+	uri=uri+'/img';
+
+	$.ajax({
+		    	type: 'GET',
+		   		url: uri,
+		    	
+		    }).done(function(fotos){
+			complete(fotos);		
+		})
+		.fail(function(){});
+
+}
+
 
 function BuscarRooms(campusname, smoker, pets, girlorboy, numpartner, maxprice, minprice, complete){
 

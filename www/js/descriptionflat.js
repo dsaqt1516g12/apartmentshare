@@ -48,6 +48,14 @@ var uri = JSON.parse(sessionStorage["uri-flat"]);
       $("#buttonVerhabitaciones").blur();
 	window.location.replace('listrooms.html');
     });
+	
+	  $("#formgetfotosflat").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+     // previousStings();
+      $("#buttongetfotosflat").blur();
+	window.location.replace('flatimages.html');
+    });
 
 
 
