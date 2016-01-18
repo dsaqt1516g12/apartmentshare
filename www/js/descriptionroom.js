@@ -30,6 +30,15 @@ $("#formuploadajax").on("submit", function(e){
 	window.location.replace('listrooms.html');
     });
 
+	   $("#formgetfotosroom").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+     // previousStings();
+      $("#buttonetfotosroom").blur();
+	window.location.replace('roomimages.html');
+    });
+	
+	
 $("#formEditarroom").submit(function(e){
       e.preventDefault();
       e.stopImmediatePropagation();

@@ -374,6 +374,26 @@ function getfotosflat(uri, complete){
 
 }
 
+function getfotosroom(uri, complete){
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	console.log(authToken.token);
+	sessionStorage["uri-room"] = JSON.stringify(uri);
+
+	uri=uri+'/img';
+
+	$.ajax({
+		    	type: 'GET',
+		   		url: uri,
+				headers: {
+				"X-Auth-Token":authToken.token
+		    	}
+		    	
+		    }).done(function(fotos){
+			complete(fotos);		
+		})
+		.fail(function(){});
+
+}
 
 function BuscarRooms(campusname, smoker, pets, girlorboy, numpartner, maxprice, minprice, complete){
 
