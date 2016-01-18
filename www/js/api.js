@@ -356,14 +356,14 @@ function getfotos(uri, complete){
 function getfotosflat(mytoken,uri, complete){
 
 	sessionStorage["uri-flat"] = JSON.stringify(uri);
-	alert("Mi token: "+mytoken);
+	alert("Mi token: "+authToken.token);
 	uri=uri+'/img';
 
 	$.ajax({
 		    	type: 'GET',
 		   		url: uri,
 				headers: {
-				"X-Auth-Token":mytoken
+				"X-Auth-Token":authToken.token
 		    	}
 		    	
 		    }).done(function(fotos){
