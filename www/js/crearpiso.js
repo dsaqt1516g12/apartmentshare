@@ -220,7 +220,7 @@ if ( document.getElementById("file").files.length != 0){
 	var response = $.parseJSON(jqxhr.responseText);
 	
 
-		
+		window.location.replace('apartmentshare.html');
 
 	}).fail(function(jqXHR, textStatus) {
 	
@@ -228,7 +228,7 @@ if ( document.getElementById("file").files.length != 0){
 
 	});
 }
-window.location.replace('apartmentshare.html');
+
 }
 
 //PREVIEW DE LAS TRES IMÁGENES
