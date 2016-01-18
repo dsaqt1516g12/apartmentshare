@@ -2,22 +2,24 @@ var uri = JSON.parse(sessionStorage["uri-rooms2"]);
 
 window.onload = getRoom(uri);
 
-
-$(function(){
-
-var uri = JSON.parse(sessionStorage["uri-rooms2"]);
-    getRooms(uri, function(flats){
+   getRooms(uri, function(flats){
       $("#stings-list").empty();
-      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 
+        $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 
         flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price, flats.status, flats.fullname, flats.furnished,
-        flats.phone, flats.email, flats.numpartner, flats.smoker, flats.pets, flats.numrooms, flats.numbathrooms, flats.elevator, flats.plantnum, flats.internet, flats.fianza, flats.estancia, flats.campusname, flats.campusaddress, flats.filename, flats.filename));
+        flats.phone, flats.email, flats.numpartner, flats.smoker, flats.pets, flats.numrooms, flats.numbathrooms, flats.elevator, flats.plantnum,
+        flats.internet, flats.fianza, flats.estancia, flats.campusname, flats.campusaddress, flats.filename));
    });
-});
+
 
  $("#buttonRegresar").click(function(){window.location.replace('index.html')});
 
-
-
+   $("#formPrevious").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+     // previousStings();
+      $("#buttonVerhabitaciones").blur();
+  window.location.replace('indexusuario.html');
+    });
 
 $("#formEnviarmensaje").submit(function(e){
     e.preventDefault();
@@ -25,8 +27,8 @@ $("#formEnviarmensaje").submit(function(e){
       function() {
         $("#buttonEnviarmensaje").blur();
       console.log("change");
-      opener.location.reload('descriptionroom2.html');
-        window.location.replace('descriptionroom2.html');
+      opener.location.reload('descriptionroom2logueado.html');
+        window.location.replace('descriptionroom2logueado.html');
       }
   );
 });
@@ -39,7 +41,7 @@ $("#aCloseSession").click(function(e){
 });
 $("#aGoToProfile").click(function(e){
   e.preventDefault();
-    window.location.replace('perfil.html');
+    window.location.replace('micuenta.html');
 });
 
 function listItemHTML(uri, address, description,lastModified, creationTimestamp, id, girlorboy, sqm, price, status, fullname, furnished, phone, email, numpartner, smoker, pets, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, campusname, campusaddress, filename){
@@ -135,13 +137,13 @@ var creationTimestamp = new Date( creationTimestampformat );
   var estancia= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Estancia del piso: '+  estancia + ' meses' + '</h6>';;
   var campusname= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Nombre del Campus: '+  campusname  + '</h6>';;
   var campusaddress= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Dirección del Campus: '+  campusaddress  + '</h6>';;
+  var flatdescription= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Descripcion del piso: '+  flatdescription  + '</h6>';;
   var flatsqm= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Descripcion del piso: '+  flatsqm  + '</h6>';;
 
   var infouser = '<p class="list-group-item-text unclickable">' + ' Información del anunciante' + '</p>';
   var fullname = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Nombre del anunciante: '+  fullname +'</h6>';;
   var email = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Correo electrónico: '+ email +'</h6>';;
   var phone = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Teléfono: '+ phone +'</h6>';;
-
 
   var creado = '<h6 class="list-group-item-heading unclickable" align="right">'+  'Fecha de creación: ' +'</h6>';;
   var l = '<h6 class="list-group-item-heading unclickable" align="right">'+  creationTimestamp +'</h6>';;
@@ -152,46 +154,46 @@ var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:8
 
 
   return infohab + description + g + sqm + furnished + price+ status +
-  infopiso+ numpartner+smoker + pets + numrooms + numbathrooms + elevator+ plantnum + internet + fianza + estancia + campusname + campusaddress 
+  infopiso+ numpartner+smoker + pets + numrooms + numbathrooms + elevator+ plantnum + internet + fianza + estancia + campusname + campusaddress + flatdescription
   +infouser + fullname + email +phone+ creado
-  +l +modificado +h + filename ;
+  +l +modificado +h+ filename ;
 }
 
 
 
-
 function getRoom(todo_id) {
-	$("#result2").text('');
-	$("#result_code").text('');
-		
-	$.ajax({
-		url : todo_id,
-		type : 'GET',
-		crossDomain : true,
-		dataType : 'json',
-		contentType : 'application/json',
-		statusCode: {
-			200: function() {$('<div class="alert alert-success"> <strong>Ok!</strong></div>').appendTo($("#result_code"));},
-			202: function() {$('<div class="alert alert-success"> <strong>Accepted!</strong> </div>').appendTo($("#result_code"));},
-			400: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Bad Request </div>').appendTo($("#result_code"));},
-			404: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Recipient not found </div>').appendTo($("#result_code"));},
-			409: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Conflict </div>').appendTo($("#result_code"));}
-		}
-	}).done(function(data, status, jqxhr) {
-		var room = data;
-		var geocoder = new google.maps.Geocoder();
-		var address =room.address;
-		geocoder.geocode( { 'address': address}, function(results, status) {
-		  if (status == google.maps.GeocoderStatus.OK)
-		  {
-				initialize_distance(room.address,results[0].geometry.location.lat(),results[0].geometry.location.lng(),room.campusname,room.latitud,room.longitud);
-		  }
-		});
-				
-		
+  $("#result2").text('');
+  $("#result_code").text('');
+
+    
+  $.ajax({
+    url : todo_id,
+    type : 'GET',
+    crossDomain : true,
+    dataType : 'json',
+    contentType : 'application/json',
+    statusCode: {
+      200: function() {$('<div class="alert alert-success"> <strong>Ok!</strong></div>').appendTo($("#result_code"));},
+      202: function() {$('<div class="alert alert-success"> <strong>Accepted!</strong> </div>').appendTo($("#result_code"));},
+      400: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Bad Request </div>').appendTo($("#result_code"));},
+      404: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Recipient not found </div>').appendTo($("#result_code"));},
+      409: function() {$('<div class="alert alert-danger"> <strong>Oh!</strong> Conflict </div>').appendTo($("#result_code"));}
+    }
+  }).done(function(data, status, jqxhr) {
+    var room = data;
+    var geocoder = new google.maps.Geocoder();
+    var address =room.address;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK)
+      {
+        initialize_distance(room.address,results[0].geometry.location.lat(),results[0].geometry.location.lng(),room.campusname,room.latitud,room.longitud);
+      }
+    });
+        
+    
 }).fail(function() {
-		$('<div class="alert alert-danger"> <strong>No existe</strong> una receta con ese titulo</div>').appendTo($("#result2"));
-	});
+    $('<div class="alert alert-danger"> <strong>No existe</strong> una receta con ese titulo</div>').appendTo($("#result2"));
+  });
 
 }
 
@@ -228,8 +230,8 @@ function initialize_distance(origin_name,origin_latitud,origin_longitud,destinat
 
 // Calculate our route between the markers & set/change the mode of travel
 function calcRoute(type) {
-	//getRoom($('#getRoomId').val());
-	var selectedMode =type;
+  //getRoom($('#getRoomId').val());
+  var selectedMode =type;
     var request = {
         // London Eye
         origin: new google.maps.LatLng(markers[0][1], markers[0][2]),

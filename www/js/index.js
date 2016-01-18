@@ -96,9 +96,7 @@ $("#formBuscarhabitacion").submit(function(e){
       function(rooms) {
         $("#buttonBuscarhabitacion").blur();
        $("#stings-list").empty();
-              processRoomsCollection(rooms);
-
-	  
+              processRoomsCollection(rooms);  
 	}
   );
 }
