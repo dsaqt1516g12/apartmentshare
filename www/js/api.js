@@ -616,6 +616,9 @@ function crearhabitacion(description, girlorboy , sqm, furnished, status, price,
 	
     }).done(function(data) { 
 	console.log(data);
+	
+		UploadImgRoom(authToken.token,uri,data.id);
+	
     	complete();
   	}).fail(function(){});
 }
