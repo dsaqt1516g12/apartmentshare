@@ -362,6 +362,9 @@ function getfotosflat(uri, complete){
 	$.ajax({
 		    	type: 'GET',
 		   		url: uri,
+				headers: {
+				"X-Auth-Token":authToken.token
+		    	},
 		    	
 		    }).done(function(fotos){
 			complete(fotos);		
