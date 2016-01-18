@@ -357,7 +357,6 @@ function getfotosflat(uri, complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	console.log(authToken.token);
 	sessionStorage["uri-flat"] = JSON.stringify(uri);
-	alert("Mi token: "+mytoken);
 	alert("Mi token2: "+authToken);
 		alert("Mi token3: "+authToken.token);
 	uri=uri+'/img';
@@ -366,7 +365,7 @@ function getfotosflat(uri, complete){
 		    	type: 'GET',
 		   		url: uri,
 				headers: {
-				"X-Auth-Token":mytoken
+				"X-Auth-Token":authToken
 		    	}
 		    	
 		    }).done(function(fotos){
