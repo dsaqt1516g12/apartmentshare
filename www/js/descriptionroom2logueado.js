@@ -26,11 +26,9 @@ $(function(){
    getRooms(uri, function(flats){
     $("#stings-list").empty();
     $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 
-        flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price, flats.status, flats.loginid ,flats.fullname, flats.furnished,
+        flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price, flats.status, flats.fullname, flats.furnished,
         flats.phone, flats.email, flats.numpartner, flats.smoker, flats.pets, flats.numrooms, flats.numbathrooms, flats.elevator, flats.plantnum,
         flats.internet, flats.fianza, flats.estancia, flats.campusname, flats.campusaddress, flats.filename));
-	
-	
    });
 
 
@@ -67,12 +65,7 @@ $("#aGoToProfile").click(function(e){
     window.location.replace('micuenta.html');
 });
 
-function listItemHTML(uri, address, description,lastModified, creationTimestamp, id, girlorboy, sqm, price, status, loginid, fullname, furnished, phone, email, numpartner, smoker, pets, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, campusname, campusaddress, filename){
-
-	
-	sessionStorage["loginid"] = JSON.stringify(loginid);
-		var loginidver = JSON.parse(sessionStorage["loginid"]);
-		console.log(loginidver);
+function listItemHTML(uri, address, description,lastModified, creationTimestamp, id, girlorboy, sqm, price, status, fullname, furnished, phone, email, numpartner, smoker, pets, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, campusname, campusaddress, filename){
 
 if( status == 1){
 status = 'Disponible';
@@ -168,7 +161,6 @@ var creationTimestamp = new Date( creationTimestampformat );
   var flatdescription= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Descripcion del piso: '+  flatdescription  + '</h6>';;
   var flatsqm= '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Descripcion del piso: '+  flatsqm  + '</h6>';;
 
- var loginid = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Nombre del anunciante: '+  loginid +'</h6>';;
   var infouser = '<p class="list-group-item-text unclickable">' + ' Información del anunciante' + '</p>';
   var fullname = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Nombre del anunciante: '+  fullname +'</h6>';;
   var email = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Correo electrónico: '+ email +'</h6>';;
@@ -184,7 +176,7 @@ var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:8
 
   return infohab + description + g + sqm + furnished + price+ status +
   infopiso+ numpartner+smoker + pets + numrooms + numbathrooms + elevator+ plantnum + internet + fianza + estancia + campusname + campusaddress 
-  +infouser + loginid+ fullname + email +phone+ creado
+  +infouser + fullname + email +phone+ creado
   +l +modificado +h+ filename ;
 }
 
