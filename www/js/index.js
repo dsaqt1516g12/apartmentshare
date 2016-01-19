@@ -82,16 +82,6 @@ function previousStings(){
 
 
 $("#formBuscarhabitacion").submit(function(e){
- /* var minprice = $('#minprice').val();
-  var maxprice = $('#maxprice').val();
-	var i =0;
-
- ///// if ( maxprice < minprice){
-  ///   alert("El precio máximo no puede ser inferior al precio mínimo");
-///	i++;
-  /}
- /// if(i == 0){ 
-*/
     e.preventDefault();
     BuscarRooms($('#campusname').val(), $('#smoker').val(), $('#pets').val(),  
       $('#girlorboy').val(), $('#numpartner').val(), 
@@ -101,6 +91,12 @@ $("#formBuscarhabitacion").submit(function(e){
        $("#stings-list").empty();
               processRoomsCollection(rooms);  
 	});
+
+});
+
+$("#buttonPrevious").click(function(e) {
+    e.preventDefault();
+     previousStings()
 
 });
 
@@ -120,12 +116,6 @@ function processRoomsCollection(rooms){
       $('#formPrevious').attr('action', rooms["links"].previous.uri);}
   });
 
-   $("#formPrevious").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      previousStings();
-      $("#buttonPrevious").blur();
-    });
 
   $("a.list-group-item").click(function(e){
     e.preventDefault();

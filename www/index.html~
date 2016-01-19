@@ -188,7 +188,7 @@
 
     
         <form id="formBuscarhabitacion">
-          <button id="buttonBuscarhabitacion" type="button" class="btn btn-default center-block">Buscar habitación</button>
+          <button id="buttonBuscarhabitacion" type="submit" class="btn btn-default center-block">Buscar habitación</button>
         </form>
     
   </div>
@@ -213,16 +213,14 @@
         </div>
 <div class="row">
         <form id="formPrevious">
-          <button  type="submit" class="btn btn-default center-block" onClick="document.location.reload();">Actializar</button>
+          <button  type="submit" class="btn btn-default center-block" onClick="document.location.reload();">Actualizar</button>
         </form>
      </div>
+<br>
 
-
-      <div class="row">
-        <form id="formPrevious">
-          <button id="buttonPrevious" type="submit" class="btn btn-default center-block">Anuncios anteriores</button>
-        </form>
-        </div>
+       <button type="button"  id="buttonPrevious">Anuncios anteriores</button>
+       
+      
 
 
       </div>

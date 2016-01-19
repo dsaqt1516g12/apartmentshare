@@ -82,6 +82,12 @@ function previousStings(){
   });
 }
 
+$("#buttonPrevious").click(function(e) {
+    e.preventDefault();
+     previousStings()
+
+});
+
 
 $("#formBuscarhabitacion").submit(function(e){
   e.preventDefault();
@@ -113,13 +119,6 @@ function processRoomsCollection(rooms){
      if(i==lastIndex){
       $('#formPrevious').attr('action', rooms["links"].previous.uri);}
   });
-
-   $("#formPrevious").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      previousStings();
-      $("#buttonPrevious").blur();
-    });
 
   $("a.list-group-item").click(function(e){
     e.preventDefault();

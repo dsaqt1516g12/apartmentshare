@@ -69,6 +69,7 @@ public class Room {
     private String email;
     private String fullname;
     private String phone;
+    private String loginid;
 
     private String filename;
     private String imageURL;
@@ -288,5 +289,13 @@ public class Room {
     }
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public String getLoginid() {
+        return loginid;
+    }
+
+    public void setLoginid(String loginid) {
+        this.loginid = loginid;
     }
 }

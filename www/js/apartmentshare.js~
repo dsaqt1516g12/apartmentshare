@@ -15,19 +15,6 @@ $(function(){
    });
 });
 
-   $("#formCrearpiso").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      $("#buttonCrearpiso").blur();
-	  	window.location.replace('crearpiso.html');
-	
-    });
-
-function previousStings(){
-  loadFlats($('#formPrevious').attr('action'), function(flats){
-    processFlatsCollection(flats);
-  });
-}
 
 function processFlatsCollection(flats){
 
@@ -38,7 +25,7 @@ function processFlatsCollection(flats){
 
       flats.links=linksToMap(flats.links);
       var edit = flats.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
-      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, flats.creationTimestamp, flats.id, flats.numpartner,  flats.filename));
+      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, flats.creationTimestamp, flats.id, flats.numpartner ));
       if(i==0)
         $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
      if(i==lastIndex){
@@ -105,5 +92,5 @@ var creationTimestamp = new Date( creationTimestampformat );
 	var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:88/img/'+ filename +'>';;
   var creationTimestamp = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Fecha de creacón : ' + creationTimestamp +'</h6>';;
   var lastModifield = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Ultima modificacion: '+   lastModifield +'</h6>';;
-  return a + p + m  + filename+  creationTimestamp + lastModifield + '</a>';
+  return a + p + m +filename  +   creationTimestamp + lastModifield + '</a>';
 }

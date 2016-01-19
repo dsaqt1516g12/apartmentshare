@@ -233,6 +233,7 @@ public class RoomDAOImpl implements RoomDAO {
                 room.setFurnished(rs.getInt("roomfurnished"));
                 room.setStatus(rs.getInt("status"));
                 room.setPrice(rs.getInt("price"));
+                room.setLoginid(rs.getString("loginid"));
                 room.setFullname(rs.getString("fullname"));
                 room.setPhone(rs.getString("phone"));
                 room.setEmail(rs.getString("email"));

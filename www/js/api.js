@@ -569,8 +569,13 @@ function crearpiso(campusid, address , description, numpartner, smoker, pets, gi
     }).done(function(flat) { 
 		flat.links = linksToMap(flat.links);
 		console.log(flat);
+
 		
-		UploadImg(authToken.token,flat.id);
+		sessionStorage["idflatimg"] = JSON.stringify(flat.id);
+		var authToken = JSON.parse(sessionStorage["idflatimg"]);
+		
+		console.log(authToken);
+		//UploadImg(authToken.token,flat.id);
 		
     	complete();
   	}).fail(function(jqXHR, textStatus, errorThrown){	

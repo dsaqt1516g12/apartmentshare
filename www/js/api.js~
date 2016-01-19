@@ -353,6 +353,48 @@ function getfotos(uri, complete){
 
 }
 
+function getfotosflat(uri, complete){
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	console.log(authToken.token);
+	sessionStorage["uri-flat"] = JSON.stringify(uri);
+
+	uri=uri+'/img';
+
+	$.ajax({
+		    	type: 'GET',
+		   		url: uri,
+				headers: {
+				"X-Auth-Token":authToken.token
+		    	}
+		    	
+		    }).done(function(fotos){
+			complete(fotos);		
+		})
+		.fail(function(){});
+
+}
+
+function getfotosroom(uri, complete){
+	
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	console.log(authToken.token);
+	sessionStorage["uriroom"] = JSON.stringify(uri);
+	
+	uri=uri+'/img';
+
+	$.ajax({
+		    	type: 'GET',
+		   		url: uri,
+				headers: {
+				"X-Auth-Token":authToken.token
+		    	}
+		    	
+		    }).done(function(fotos){
+			complete(fotos);		
+		})
+		.fail(function(){});
+
+}
 
 function BuscarRooms(campusname, smoker, pets, girlorboy, numpartner, maxprice, minprice, complete){
 
@@ -411,6 +453,24 @@ function loadRoomsList(uri, complete){
 }
 
 function getFlat(uri, complete){
+	$.get(uri)
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	console.log(authToken.token);
+	$.ajax({
+		    	type: 'GET',
+		   		url: uri,
+		    	headers: {
+				"X-Auth-Token":authToken.token
+		    	}
+		    }).done(function(flat){
+			flat.links = linksToMap(flat.links);
+			complete(flat);
+		})
+		.fail(function(data){
+		});
+}
+
+function getMessage(uri, complete){
 	$.get(uri)
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	console.log(authToken.token);
@@ -509,6 +569,14 @@ function crearpiso(campusid, address , description, numpartner, smoker, pets, gi
     }).done(function(flat) { 
 		flat.links = linksToMap(flat.links);
 		console.log(flat);
+
+		
+		sessionStorage["idflatimg"] = JSON.stringify(flat.id);
+		var authToken = JSON.parse(sessionStorage["idflatimg"]);
+		
+		console.log(authToken);
+		//UploadImg(authToken.token,flat.id);
+		
     	complete();
   	}).fail(function(jqXHR, textStatus, errorThrown){	
 			var error = jqXHR.responseJSON;
@@ -520,7 +588,7 @@ function crearpiso(campusid, address , description, numpartner, smoker, pets, gi
 
 function putpiso(campusid, address , description, numpartner, smoker, pets, girlorboy, sqm, furnished, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
-	campusid= '7998490EA1D011E5ABF5002318A56C8C';
+	
 	console.log(authToken.token);
 	var id = JSON.parse(sessionStorage["idflat"]);
 	var uri = JSON.parse(sessionStorage["uri-flat"]);
@@ -531,7 +599,7 @@ function putpiso(campusid, address , description, numpartner, smoker, pets, girl
 	
 	var data ={"id":id,"userid":userid,"campusid":campusid,"address":address,"description":description,"numpartner":numpartner,"smoker":smoker,
 	"pets":pets,"girlorboy":girlorboy,"sqm":sqm,"furnished":furnished,"numrooms":numrooms,"numbathrooms":numbathrooms,"elevator":elevator,
-	"plantnum":plantnum,"internet":internet,"estancia":estancia}
+	"plantnum":plantnum,"internet":internet, "fianza":fianza, "estancia":estancia}
 	$.ajax({
 	type: 'PUT',
 	url: uri,
@@ -613,6 +681,9 @@ function crearhabitacion(description, girlorboy , sqm, furnished, status, price,
 	
     }).done(function(data) { 
 	console.log(data);
+	
+		UploadImgRoom(authToken.token,uri,data.id);
+	
     	complete();
   	}).fail(function(){});
 }
