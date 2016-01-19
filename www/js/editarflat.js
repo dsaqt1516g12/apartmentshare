@@ -4,9 +4,23 @@ $(function(){
       $("#aProfile").append('<span class="caret"></span>');
    });
 
-
+$("#result").text('');
 $("#formEditarpiso").submit(function(e){
     e.preventDefault();
+
+if (isNaN($('#numrooms').val())){
+        $('<div class="alert alert-danger"> <strong>Error!</strong> Debes poner un numero entero para el numero de habitaciones</div>').appendTo($("#result"));
+    }
+  else if (isNaN($('#sqm').val())){
+        $('<div class="alert alert-danger"> <strong>Error!</strong> Debes poner un numero entero en los metros cuadrados del piso</div>').appendTo($("#result"));
+    }
+   else if (isNaN($('#fianza').val())){
+        $('<div class="alert alert-danger"> <strong>Error!</strong> Debes poner un numero entero para la fianza</div>').appendTo($("#result"));
+    }
+   
+    else{
+
+
   	putpiso($('#campusid').val(),  $('#address').val(), $('#description').val(), $('#numpartner').val(), $('#smoker').val(), 
   		$('#pets').val(),$('#girlorboy').val(), $('#sqm').val(), $('#furnished').val(), $('#numrooms').val(), $('#numbathrooms').val(), 
   		$('#elevator').val(), $('#plantnum').val(), $('#internet').val(), $('#fianza').val(), $('#estancia').val(), 
@@ -15,6 +29,9 @@ $("#formEditarpiso").submit(function(e){
 			window.location.reload();
 		  }
 	);
+  	        $('<div class="alert alert-success"> <strong>OK!</strong> Edición finalizada con éxito</div>').appendTo($("#result"));
+
+  }
 });
 
    $("#formAtras").submit(function(e){
@@ -56,7 +73,8 @@ var uri = JSON.parse(sessionStorage["uri-flat"]);
 
 
       $("#stings-list").empty();
-      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, flats.creationTimestamp, flats.numpartner, flats.smoker));
+      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 
+      	flats.creationTimestamp, flats.numpartner, flats.smoker));
    });
 });
 
@@ -88,8 +106,8 @@ if( numpartner == 5){
 numpartner= '5 o más';
 }
 
-lastModifieldformat = lastModifield;
-var lastModifield = new Date( lastModifieldformat );
+lastModifiedformat = lastModified;
+var lastModified = new Date( lastModifiedformat );
 creationTimestampformat= creationTimestamp;
 var creationTimestamp = new Date( creationTimestampformat );
 
@@ -99,12 +117,12 @@ var creationTimestamp = new Date( creationTimestampformat );
 
 
  var numpartner = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Numero de compañeros: '+  numpartner +'</h6>';;
- var smoker = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Fumador: '+  smoker +'</h6>';;
+ var smoker = '<h6 class="list-group-item-heading unclickable" align="center">'+ 'Se permiten fumadores: '+  smoker +'</h6>';;
 
 
  var creationTimestamp = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Fecha de creacón : ' + creationTimestamp +'</h6>';;
-  var lastModifield = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Ultima modificacion: '+   lastModifield +'</h6>';;
-  return p + m + numpartner +smoker + creationTimestamp + lastModifield;
+  var lastModified = '<h6 class="list-group-item-heading unclickable" align="right">'+ 'Ultima modificacion: '+   lastModified +'</h6>';;
+  return p + m + numpartner +smoker  + creationTimestamp + lastModified;
 }
 
 

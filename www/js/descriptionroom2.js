@@ -154,7 +154,7 @@ var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:8
 
 
   return infohab + description + g + sqm + furnished + price+ status +
-  infopiso+ numpartner+smoker + pets + numrooms + numbathrooms + elevator+ plantnum + internet + fianza + estancia + campusname + campusaddress + flatdescription
+  infopiso+ numpartner+smoker + pets + numrooms + numbathrooms + elevator+ plantnum + internet + fianza + estancia + campusname + campusaddress 
   +infouser + fullname + email +phone+ creado
   +l +modificado +h+ filename ;
 }

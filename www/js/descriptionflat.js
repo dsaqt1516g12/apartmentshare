@@ -99,12 +99,18 @@ furnished = 'Si';
 else if( furnished == 0){
 furnished = 'No';
 }
+else if( furnished == 2){
+furnished = 'No';
+}
 
 
 if( elevator == 1){
 elevator = 'Si';
 }
 else if( elevator == 0){
+elevator = 'No';
+}
+else if( elevator == 2){
 elevator = 'No';
 }
 

@@ -24,8 +24,8 @@ $(function(){
 
 //var uri = JSON.parse(sessionStorage["uri-rooms2"]);
    getRooms(uri, function(flats){
-      $("#stings-list").empty();
-        $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 
+    $("#stings-list").empty();
+    $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 
         flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price, flats.status, flats.fullname, flats.furnished,
         flats.phone, flats.email, flats.numpartner, flats.smoker, flats.pets, flats.numrooms, flats.numbathrooms, flats.elevator, flats.plantnum,
         flats.internet, flats.fianza, flats.estancia, flats.campusname, flats.campusaddress, flats.filename));
@@ -175,7 +175,7 @@ var filename = '<img  style=width:300px;height:228px; src= http://147.83.7.207:8
 
 
   return infohab + description + g + sqm + furnished + price+ status +
-  infopiso+ numpartner+smoker + pets + numrooms + numbathrooms + elevator+ plantnum + internet + fianza + estancia + campusname + campusaddress + flatdescription
+  infopiso+ numpartner+smoker + pets + numrooms + numbathrooms + elevator+ plantnum + internet + fianza + estancia + campusname + campusaddress 
   +infouser + fullname + email +phone+ creado
   +l +modificado +h+ filename ;
 }

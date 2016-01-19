@@ -23,20 +23,32 @@ $(function(){
 	$('#status').val(flats.status);
 	$('#description').val(flats.description);
       $("#stings-list").empty();
-      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, 			flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price));
+      $("#stings-list").append(listItemHTML(flats.links["self"].uri, flats.address, flats.description, flats.lastModified, flats.creationTimestamp, flats.id, flats.girlorboy, flats.sqm, flats.price));
    });
 });
 
+$("#result").text('');
+
 $("#formEditarroom").submit(function(e){
       e.preventDefault();
+
+    if (isNaN($('#price').val())){
+        $('<div class="alert alert-danger"> <strong>Error!</strong> Debes poner un numero entero para el precio</div>').appendTo($("#result"));
+    }
+    else if (isNaN($('#sqm').val())){
+        $('<div class="alert alert-danger"> <strong>Error!</strong> Debes poner un numero entero en los metros cuadrados del piso</div>').appendTo($("#result"));
+    }
+    else {
+
+
   puthabitacion($('#description').val(),  $('#girlorboy').val(), $('#sqm').val(), $('#furnished').val(), $('#status').val(), $('#price').val(), function(){
 
 	 $("#buttonEditarroom").blur();
 	  	window.location.replace('descriptionroom.html');
-  		}
+  		});
+              $('<div class="alert alert-success"> <strong>OK!</strong> Edición finalizada con éxito</div>').appendTo($("#result"));
 
-
-	);
+   }
 });
 
    $("#formAtras").submit(function(e){
@@ -67,11 +79,15 @@ var lastModifield = new Date( lastModifieldformat );
 creationTimestampformat= creationTimestamp;
 var creationTimestamp = new Date( creationTimestampformat );
 
-	if ( girlorboy ==  true){
-
-		girlorboy = ' Es indiferente ';
- 		
-	}
+if( girlorboy == 0){
+girlorboy= 'Indiferente';
+}
+else if( girlorboy == 1){
+girlorboy = 'Sólo chicas';
+}
+else if (girlorboy == 2){
+girlorboy = 'Sólo chicos';
+}
 
   var a = '<a class="list-group-item" href="'+ '/'+ id + '">';
   var p = '<p class="list-group-item-text unclickable">' + ' Descripción: ' + description+ '</p>';

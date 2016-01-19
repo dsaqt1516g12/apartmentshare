@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+  <link href='imagenes/favicon.ico' rel='shortcut icon' type='image/png'> 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +16,7 @@
 
 	<body>
 		<!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -24,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand">Mi Habitación</a>
+          <a class="navbar-brand"> Actualizar mi habitación</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         
@@ -32,14 +33,16 @@
                 <li><a id="Quiensomos" href="quiensomoslogueado.html">Acerca de nosotros</a></li>
                 <li><a id="indexusuario" href="indexusuario.html">Volver al índice</a></li>
             </ul>
-          
+
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a id="aProfile" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a id="aGoToProfile">Mi Cuenta</a></li>
+                <li><a id="aGoToProfile" href="micuenta.html">Mi Cuenta</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
+                <li role="separator" class="divider"></li>
+                  <li><a id="aMessages" href="mensajes.html">Mensajes</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a id="aCloseSession">Cerrar Sesión</a></li>
               </ul>
@@ -48,6 +51,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
 
     <div class="container">
     <div class="jumbotron text-center col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1">
@@ -75,7 +79,7 @@
         <label for="furnished">¿La habitación está amueblada?</label>
         <select style="width:10% !important" name="furnished" class="form-control" id="furnished">
                       <option value="1">Si</option>
-                      <option value="2">No</option>                   
+                      <option value="0">No</option>                   
         </select>
    </div>
 
@@ -83,8 +87,8 @@
        <label for="girlorboy">Restricción de sexo</label>
        <select style="width:30% !important" name="girlorboy" class="form-control" id="girlorboy">
        
-                      <option value="1">Solo se admiten hombres</option>
-                      <option value="2">Solo se admiten mujeres</option>
+                      <option value="2">Solo se admiten hombres</option>
+                      <option value="1">Solo se admiten mujeres</option>
                       <option value="0">Indiferente</option>               
       </select>
     </div>
@@ -103,7 +107,7 @@
         <label for="status">Estado de la habitación</label>
         <select style="width:20% !important" name="status" class="form-control" id="status">
                       <option value="1">Disponible</option>
-                      <option value="2">No Disponible</option>
+                      <option value="0">No Disponible</option>
         </select>
     </div>
 
@@ -118,17 +122,18 @@
 
 	  		    <div class="row">
 	    	<form id="formEditarroom">
-    			<button id="buttonEditarroom" type="submit" class="btn btn-default center-block">Editar habitacón</button>
+    			<button id="buttonEditarroom" type="submit" class="btn btn-default center-block">Editar habitación</button>
     		</form>
         <br>
     <div class="row">
 	    	<form id="formAtras">
-    			<button id="buttonAtras" type="submit" class="btn btn-default center-block">Atras</button>
+    			<button id="buttonAtras" type="submit" class="btn btn-default center-block">Atrás</button>
     		</form>
         <br>
 
         <br><br><br>
     </div> <!-- /container -->
+      <div id="result"></div>
     </div>
 
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>

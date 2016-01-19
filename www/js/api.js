@@ -583,7 +583,7 @@ function crearpiso(campusid, address , description, numpartner, smoker, pets, gi
 
 function putpiso(campusid, address , description, numpartner, smoker, pets, girlorboy, sqm, furnished, numrooms, numbathrooms, elevator, plantnum, internet, fianza, estancia, complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
-	campusid= '7998490EA1D011E5ABF5002318A56C8C';
+	
 	console.log(authToken.token);
 	var id = JSON.parse(sessionStorage["idflat"]);
 	var uri = JSON.parse(sessionStorage["uri-flat"]);
@@ -594,7 +594,7 @@ function putpiso(campusid, address , description, numpartner, smoker, pets, girl
 	
 	var data ={"id":id,"userid":userid,"campusid":campusid,"address":address,"description":description,"numpartner":numpartner,"smoker":smoker,
 	"pets":pets,"girlorboy":girlorboy,"sqm":sqm,"furnished":furnished,"numrooms":numrooms,"numbathrooms":numbathrooms,"elevator":elevator,
-	"plantnum":plantnum,"internet":internet,"estancia":estancia}
+	"plantnum":plantnum,"internet":internet, "fianza":fianza, "estancia":estancia}
 	$.ajax({
 	type: 'PUT',
 	url: uri,

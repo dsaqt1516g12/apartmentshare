@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+  <link href='imagenes/favicon.ico' rel='shortcut icon' type='image/png'> 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,8 +15,7 @@
 	</head>
 
 	<body>
-		<!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+	    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -24,22 +24,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand">Mi Cuenta</a>
+          <a class="navbar-brand">Mi Cuenta </a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">   
+        <div id="navbar" class="navbar-collapse collapse">
         
             <ul class="nav navbar-nav navbar-left">
                 <li><a id="Quiensomos" href="quiensomoslogueado.html">Acerca de nosotros</a></li>
                 <li><a id="indexusuario" href="indexusuario.html">Volver al índice</a></li>
-            </ul>      
-          
+            </ul>
+
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a id="aProfile" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a id="aGoToProfile" href="#">Mi Cuenta</a></li>
+                <li><a id="aGoToProfile" href="micuenta.html">Mi Cuenta</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
+                <li role="separator" class="divider"></li>
+                  <li><a id="aMessages" href="mensajes.html">Mensajes</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a id="aCloseSession">Cerrar Sesión</a></li>
               </ul>
@@ -48,6 +50,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
 
     <center>
       <a title="ApartmentShare"><img src="imagenes/apartmentshare.png" alt="ApartmentShare" /></a>
@@ -93,8 +96,52 @@
     <div class="row">
    <form id="formEliminarusuario">
       <a class="btn btn-large btn-primary" href="editarcuenta.html" style="float:center;" type="submit">Editar Cuenta</a>
-          <button id="buttonEliminarusuario" type="submit" class="btn btn-warning " onClick="document.location.reload();">Eliminar mi Cuenta</button>
-        </form>
+        <!-- <button id="buttonEliminarusuario" type="submit" class="btn btn-warning " onClick="document.location.reload();">Eliminar mi Cuenta</button> 
+
+        -->
+
+
+      <button type="button" align="center" class="btn btn-success" href="#delete"  style="background-color: #000000"  data-toggle="modal" id="deleteprofile">Eliminar Usuario</button>
+                      
+                    
+                      <!-- Modal -->
+                      <div class="modal fade"  id="delete"tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header modal-header-success">
+                              <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">&times;</button>
+                              <h4 class="modal-title">Eliminar usuario</h4>
+                            </div>
+                            <div class="modal-body">
+                              <div class="container">
+                                <form id="songForm" class="form-horizontal" role="form">
+                                  <div class="row-md-4">
+                                    <div class="form-group">
+                                      <label for="inputTitle">¿Seguro que quieres eliminar tu cuenta?</label>
+                                      <br>                                     
+
+                                      
+                                      <button id="canceldeleteprofile" type="submit"class="btn btn-default">Cancelar</button>
+                                      <button id="deleteprofilefinal" type="submit" class="btn btn-default">Borrar</button>
+
+                                  </div>
+                                </form>
+                              </div>
+
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
+                    </div>
+
+
+
+
+  </form>
 
     <br><br>
     <button id="buttonRegresar" type="button" class="btn btn-danger right">Atrás</button>

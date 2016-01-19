@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+  <link href='imagenes/favicon.ico' rel='shortcut icon' type='image/png'> 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +16,7 @@
 
 	<body>
 		<!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -24,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand">Mi Piso</a>
+          <a class="navbar-brand"> Actualizar mi piso </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         
@@ -32,14 +33,16 @@
                 <li><a id="Quiensomos" href="quiensomoslogueado.html">Acerca de nosotros</a></li>
                 <li><a id="indexusuario" href="indexusuario.html">Volver al índice</a></li>
             </ul>
-          
+
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a id="aProfile" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a id="aGoToProfile">Mi Cuenta</a></li>
+                <li><a id="aGoToProfile" href="micuenta.html">Mi Cuenta</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a id="aMisPisos" href="apartmentshare.html">Mis Pisos</a></li>
+                <li role="separator" class="divider"></li>
+                  <li><a id="aMessages" href="mensajes.html">Mensajes</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a id="aCloseSession">Cerrar Sesión</a></li>
               </ul>
@@ -48,6 +51,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
 
     <center>
       <a title="ApartmentShare"><img src="imagenes/apartmentshare.png" alt="ApartmentShare" /></a>
@@ -60,16 +64,6 @@
     		<!--/.<button id="buttonUpdate" type="button" class="btn btn-default center-block">Update</button> -->
 		   
     		
-	    	<div class="row row-margin">
-	    		<div class="col-sm-8 col-center-block">
-	    			<div id="stings-list" class="list-group">
-	    				<a class="list-group-item">
-	    					<p class="list-group-item-text">Si me ves, es que no ha redirigido bien a la pagina anterior</p>
-	    					<h6 class="list-group-item-heading" align="right">Cabecera</h6>	
-	    				</a>
-	    			</div>
-	    		</div>
-	    	</div>
 
  <div class="jumbotron text-left">
     <h2>Edita el piso a partir del cual realizar el anuncio</h2>
@@ -77,7 +71,7 @@
       
     <div class="form-group">
         <label for="campusid">Seleccione el Campus UPC</label>
-        <select style="width:20% !important" name="campusid" class="form-control" id="campusid">
+        <select style="width:60% !important" name="campusid" class="form-control" id="campusid">
                       <option value="0713E26AB95611E5AE7CA4DB305B7F0E">Campus FIB, Barcelona </option>
                       <option value="2431ADDEB95111E5AE7CA4DB305B7F0E">Campus EPSEM, Manresa</option>
                       <option value="29AC8985B95311E5AE7CA4DB305B7F0E">Campus ETSAB,</option>
@@ -188,14 +182,14 @@
         <label for="ascensor">¿Tiene acceso a un ascensor?</label>
         <select style="width:10% !important" name="ascensor" class="form-control" id="elevator">
                       <option value="1">Si</option>
-                      <option value="2">No</option>                   
+                      <option value="0">No</option>                   
         </select>
    </div> 
    <div class="form-group">
         <label for="internet">¿Tiene acceso a Internet?</label>
         <select style="width:10% !important" name="internet" class="form-control" id="internet">
                       <option value="1">Si</option>
-                      <option value="2">No</option>                   
+                      <option value="0">No</option>                   
         </select>
    </div>
    <div class="form-group">
@@ -206,9 +200,8 @@
                       <option value="2">2 personas</option>
                       <option value="3">3 personas</option>   
                       <option value="4">4 personas</option>
-                      <option value="5">5 personas</option>   
-                      <option value="6">6 personas o más</option>
-                                       
+                      <option value="5">5 personas o más</option>   
+                                                       
         </select>
     </div>
 
@@ -231,7 +224,7 @@
     </div>
      <div class="form-group">
         <label for="fianza">Indique la fianza que se debe depositar (en €)</label>
-        <input style="width:10% !important" name="fianza" class="form-control" id="fianza" type="text">
+        <input style="width:15% !important" name="fianza" class="form-control" id="fianza" type="text">
     </div>
 
     <div class="form-group">
@@ -259,6 +252,8 @@
 
     		</div>
         </div>
+          <div id="result"></div>
+
     	</div>
  <!-- /container -->
     

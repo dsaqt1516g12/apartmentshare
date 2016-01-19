@@ -1,20 +1,20 @@
 $(function(){
    getCurrentUserProfile(function(user){
 
-	$("#stings-list").empty();
+	    $("#stings-list").empty();
       $("#stings-list").append(listItemHTML(user.loginid, user.fullname, user.email, user.phone));
       $("#aProfile").text(user.fullname + ' ');
-	$('#loginid').val(user.loginid);
-	$('#fullname').val(user.fullname);
-	$('#email').val(user.email);
-	 $('#phone').val(user.phone)
+    	$('#loginid').val(user.loginid);
+    	$('#fullname').val(user.fullname);
+    	$('#email').val(user.email);
+    	$('#phone').val(user.phone)
       $("#aProfile").append('<span class="caret"></span>');
-	   
+    	   
    });
 });
 
-
-$( "#form-signin" ).submit(function( event ) {
+$("#result").text('');
+$( "#editar" ).submit(function( event ) {
   event.preventDefault(); 
 
 
@@ -30,16 +30,21 @@ $( "#form-signin" ).submit(function( event ) {
     $('<div class="alert alert-danger"> <strong>Error!</strong> Escriba un campo de emáil válido (¿Olvidó escribir el punto?)</div>').appendTo($("#result"));
     
   }
-  else{
+  else if (isNaN($('#phone').val())){
+        $('<div class="alert alert-danger"> <strong>Error!</strong> El campo de teléfono sólo acepta caracteres numéricos</div>').appendTo($("#result"));
+    }
+    else {
 
     putUsuario($('#loginid').val(), $('#fullname').val(), $('#email').val(), $('#phone').val(), function(){
-    console.log("change");
-    window.location.replace('micuenta.html');
+    //console.log("change");
+    window.location.replace('indexusuario.html');
    });
+            $('<div class="alert alert-success"> <strong>OK!</strong> Se ha actualizado tu cuenta</div>').appendTo($("#result"));
+
   }
 });
 
- $("#buttonRegresar").click(function(){window.location.replace('indexusuario.html')});
+   $("#buttonRegresar").click(function(){window.location.replace('indexusuario.html')});
 
    $("#formPrevious").submit(function(e){
       e.preventDefault();
@@ -52,13 +57,13 @@ $( "#form-signin" ).submit(function( event ) {
    $("#formEliminarusuario").submit(function(e){
       e.preventDefault();
       e.stopImmediatePropagation();
-  EliminarUsuario(function(){
-  });
- logout(function(){
-  });
-      $("#buttonEliminarusuario").blur();
-	window.location.replace('login.html');
-    });
+      EliminarUsuario(function(){
+      });
+     logout(function(){
+      });
+          $("#buttonEliminarusuario").blur();
+    	window.location.replace('login.html');
+        });
 
 $("#aCloseSession").click(function(e){
   e.preventDefault();

@@ -1,10 +1,10 @@
 $(function(){
    getCurrentUserProfile(function(user){
-	$("#stings-list").empty();
+  $("#stings-list").empty();
       $("#stings-list").append(listItemHTML(user.loginid, user.fullname, user.email, user.phone));
       $("#aProfile").text(user.fullname + ' ');
       $("#aProfile").append('<span class="caret"></span>');
-	   
+     
    });
 
 });
@@ -16,7 +16,7 @@ $(function(){
       e.stopImmediatePropagation();
      // previousStings();
       $("#buttonVerhabitaciones").blur();
-	window.location.replace('listrooms.html');
+  window.location.replace('listrooms.html');
     });
 
    $("#formEliminarusuario").submit(function(e){
@@ -28,9 +28,9 @@ $(function(){
 
  logout(function(){
  });
- $("#deleteprofilefinal").blur();
-	window.location.reload();
-	window.location.replace('login.html');	
+      $("#buttonEliminarusuario").blur();
+  window.location.reload();
+  window.location.replace('login.html');  
 
     });
 
@@ -47,51 +47,5 @@ function listItemHTML(loginid, fullname, email, phone ){
   var fullname = '<h6 class="list-group-item-heading unclickable" align="center">' +fullname+ '</h6>';
   var email = '<h6 class="list-group-item-heading unclickable" align="center">' +email+ '</h6>';
  var phone = '<h6 class="list-group-item-heading unclickable" align="center">' +phone+ '</h6>';
-  return 'Nombre de Usuario' + loginid + 'Nombre completo' + fullname + 'Correo electrónico' + email+ 'Teléfono de contacto'+ phone ;
-}
-
-
-
-$('#canceldeleteprofile').click(function(e){
-  //var usernametodelete =getCookie('username');
-  e.preventDefault();
-
-$("#result").text(' ');
- window.location.replace("micuenta.html"); 
-});
-/*
-$('#deleteprofilefinal').click(function(e){
-  //var usernametodelete =getCookie('username');
-  e.preventDefault();
-  $("#result").text(' ');
-      
-  deleteUser(usernametodelete);
-        
-  
-});
-
-*/
-
-function deleteUser(usernametodelete) {
-var url = API_BASE_URL + 'users/' + username;
-
-console.log(url);
-  
-  $('#searchtab').text('');
-
-  $.ajax({
-    url : url,
-    type : 'DELETE',
-    crossDomain : true,
-
-    dataType : 'json',
-  }).done(function(data, status, jqxhr) {
-
-
-   alert('Usuario eliminado correctamente, Esperamos volver a verle algún día');
-   window.location.replace("signin.html");        
-      }).fail(function() {
-         alert('No se ha podido borrar');
-  });
-
+  return 'Nombre de Usuario' + loginid + 'Nombre completo' + fullname + 'Correo electr�nico' + email+ 'Tel�fono de contacto'+ phone ;
 }
