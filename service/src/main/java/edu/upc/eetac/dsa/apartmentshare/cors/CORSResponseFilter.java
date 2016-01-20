@@ -8,6 +8,7 @@ import java.io.IOException;
 /**
  * Created by mazp on 12/12/15.
  */
+@Provider
 public class CORSResponseFilter implements ContainerResponseFilter {
     @Override
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
